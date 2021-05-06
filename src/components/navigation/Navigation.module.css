@@ -1,0 +1,48 @@
+.Navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: hsla(240, 5%, 13%, 1);
+    box-shadow: 0 0 .2em .2em hsla(0, 0%, 0%, .2);
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.scrolled {
+    box-shadow: 0 0 .8em .3em hsla(0, 0%, 0%, .2);
+}
+
+.scrolled:not(.floaterVisible) {
+    border-bottom: 2px solid black;
+}
+
+.tablet {
+    padding: 0 .5em;
+}
+
+.mobile {
+    padding: 0 .3em;
+}
+
+.Wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8em;
+    max-width: 1366px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1000px) {
+    .Wrapper {
+        padding: 0 1.5em;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .Wrapper {
+        padding: 0;
+    }
+}

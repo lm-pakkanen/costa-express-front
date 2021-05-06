@@ -1,0 +1,30 @@
+{
+
+    "404": {
+        "description": "The page you were looking for could not be found."
+    },
+
+    "fatalError": {
+        "title": "Well this is embarassing.",
+        "description": {
+            "0": "The website encountered a fatal error.",
+            "1": "This error has been recorded.",
+            "2": "If the error persists, please contact the webmaster at "
+        },
+        "attachErrors": "Please attach these error messages in the email:"
+    },
+
+    "index": {
+
+        "hero": {
+            "heading": "Websites",
+            "content": {
+                "0": "According to studies X% of users leave the website if it takes longer than three seconds to load it.",
+                "1": "Generally around X% of users browse websites with their mobile devices, such as phones.",
+                "2": "For those reasons we use our own software platform which is optimized for the loading speed of our websites. In the development process we use a \"Mobile first\" -strategy, with which the website is developed primarily for mobile devices.",
+                "3": "This platform is not used in our less expensive \"WordPress\" -websites."
+            }
+        }
+
+    }
+}

@@ -1,0 +1,16 @@
+.Page {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1366px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding-top: 90px;
+    box-sizing: border-box;
+}

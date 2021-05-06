@@ -1,0 +1,17 @@
+.NotFoundContainer {
+    width: 100%;
+    max-width: 15em;
+    margin: auto;
+    text-align: center;
+}
+
+.NotFoundContainer > h1 {
+    font-size: 7em;
+    border-bottom: 2px solid hsla(0, 100%, 45%, .8);
+    line-height: .8em;
+    margin-bottom: .2em;
+}
+
+.NotFoundContainer > div {
+
+}

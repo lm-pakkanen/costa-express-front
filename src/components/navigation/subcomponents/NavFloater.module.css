@@ -1,0 +1,35 @@
+.NavFloater {
+    position: absolute;
+    top: 90px;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    padding: 5.5em 0 5em 0;
+    background: hsla(240, 5%, 13%, 1);
+    border-bottom: 3px solid hsla(0, 100%, 50%, .50);
+    box-shadow: -.25em .25em .1em 0 hsla(0, 0%, 0%, .2), .2em .25em .1em 0 hsla(0, 0%, 0%, .2);
+    z-index: 10000;
+}
+
+.NavFloater.scrolled {
+    box-shadow: -.8em .8em .3em -.6em hsla(0, 0%, 0%, .2);
+}
+
+@media screen and (min-width: 600px) {
+    .NavFloater {
+        left: initial;
+        padding: 8em 5em 6em 5em;
+        border: 3px solid hsla(0, 100%, 50%, .50);
+        border-top: none;
+        border-right: none;
+        border-radius: 0 0 0 4em;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .NavFloater {
+        padding: 6em 6em 5em 5em;
+    }
+}

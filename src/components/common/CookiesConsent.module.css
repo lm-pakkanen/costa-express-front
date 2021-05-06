@@ -1,0 +1,75 @@
+.Wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: hsla(240, 6%, 0%, .5);
+    z-index: 9000;
+}
+
+.Wrapper.hidden {
+    display: none;
+}
+
+.Container {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2em;
+    left: 2em;
+    padding: 3em 2em;
+    color: black;
+    background: hsla(240, 5%, 14%, 1);;
+    border: 3px solid hsla(0, 100%, 50%, .65);
+    border-radius: .4em;
+    text-align: center;
+}
+
+.Header {
+    margin-bottom: 2em;
+}
+
+.Header > div {
+    font-size: 1.1em;
+    margin: .5em 0;
+}
+
+.Header > div:first-of-type {
+    margin: 0 0 .5em 0;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.Controls {
+    max-width: 14em;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.CookieButton {
+    width: 100%;
+    padding: .4em 1em;
+    margin: .4em 0;
+    border: none;
+    border-radius: .2em;
+    box-shadow: 0 0 .3em .2em hsla(250, 5%, 0%, .4);
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.CookieButton.accept {
+    background: hsla(120, 100%, 17%, 1) linear-gradient(hsla(120, 100%, 22%, 1), hsla(120, 100%, 30%, .3));
+}
+
+.CookieButton.accept:hover {
+    background: hsla(120, 100%, 20%, 1) linear-gradient(hsla(120, 100%, 25%, 1), hsla(120, 100%, 34%, .3));
+}
+
+.CookieButton.reject {
+    background: hsla(0, 100%, 45%, .65) linear-gradient(hsla(0, 100%, 32%, 1), hsla(0, 100%, 20%, .3));
+}
+
+.CookieButton.reject:hover {
+    background: hsla(0, 100%, 50%, .65) linear-gradient(hsla(0, 100%, 37%, 1), hsla(0, 100%, 20%, .3));
+}

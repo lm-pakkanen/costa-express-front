@@ -1,0 +1,14 @@
+html, body, #root {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+
+html {
+    background: hsla(240, 5%, 14%, 1);
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('./_assets/fonts/Helvetica/Helvetica.ttf');
+}

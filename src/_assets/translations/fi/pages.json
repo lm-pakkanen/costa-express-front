@@ -1,0 +1,100 @@
+{
+
+    "privacyPolicy": {
+        "title": "Tietosuoja",
+        "description": "Rekisteriseloste",
+        "sections": {
+            "0": {
+                "title": "1. Rekisterinpitäjä",
+                "fields": {
+                    "0": "Harriot Software Tmi (Jäljempänä \"Harriot Software\")",
+                    "1": "Yo-Kylä 11 B 14",
+                    "2": "20540 Turku",
+                    "3": "SUOMI"
+                }
+            },
+            "1": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            },
+            "2": {
+                "title": "3. Rekisterin nimi",
+                "fields": {
+                    "0": "Harriot Software asiakasrekisteri"
+                }
+            },
+            "3": {
+                "title": "4. Henkilötietojen käsittelyn tarkoitus",
+                "fields": {
+                    "0": "Henkilötietoja käsitellään henkilötietolain (523/1999) 8 §:n perusteella asiakkuuteen ja asialliseen yhteyteen perustuvan suhteen hoitamiseen (mukaan lukien asiakasviestintä), kehittämiseen, analysointiin ja tilastointiin sekä liiketoiminnan suunnitteluun ja kehittämiseen. Rekisterin sisältämiä henkilötietoja voidaan käyttää soveltuvan lainsäädännön sallimin tavoin Harriot Software:n valikoimien yhteistyökumppaneiden suoramainontaan, etämyyntiin tai muuhun suoramarkkinointiin, mielipide- tai markkinatutkimukseen tai muihin näihin rinnastettaviin osoitteellisiin lähetyksiin. Rekisteröityä koskevia ostos-, käyttö- ja asiointitietoja käytetään rekisteröidyn toimintojen analysointiin ja profilointiin sekä rekisteröidylle tarjottavien etujen ja asiakkuuden tietosisällön kehittämiseksi ja kohdentamiseksi rekisteröityä kiinnostavaksi."
+                }
+            },
+            "4": {
+                "title": "5. Rekisterin tietosisältö",
+                "fields": {
+                    "0": "Rekisterissä voidaan käsitellä seuraaviin ryhmiin kuuluvia tietoja ja niiden muutostietoja:"
+                }
+            },
+            "5": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            },
+            "6": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            },
+            "7": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            },
+            "8": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            },
+            "9": {
+                "title": "2. Rekisterin ylläpitäjä",
+                "fields": {
+                    "0": "Harriot Software"
+                }
+            }
+        }
+    },
+
+    "404": {
+        "description": "Etsimääsi sivua ei löydetty."
+    },
+
+    "fatalError": {
+        "title": "Tämäpä kiusallista.",
+        "description": {
+            "0": "Sivusto kohtasi vakavan virhetilan.",
+            "1": "Virhe on tallennettu.",
+            "2": "Jos virhetila ei pääty, ota yhteyttä sivuston hallintaan sähköpostilla: "
+        },
+        "attachErrors": "Lisääthän nämä virheviestit sähköpostiisi, kiitos!"
+    },
+
+    "index": {
+
+        "hero": {
+            "heading": "Verkkosivustot",
+            "content": {
+                "0": "Tutkimusten mukaan X% verkkosivustojen käyttäjistä poistuvat sivustolta jos sivun lataamisessa kestää yli 3 sekuntia.",
+                "1": "Noin X% käyttäjistä selaa sivustoa mobiililaitteella, esimerkiksi puhelimella.",
+                "2": "Siksipä käytämme sivustoissamme kehittämäämme ohjelmistoalustaa, joka on optimoitu sivuston toimintanopeuteen. Kehitysprosessissa sovellamme \"Mobile first\" -strategiaa, jolla sivusto kehitetään ensisijaisesti mobiililaitteita varten.",
+                "3": "Edullisemmissa \"WordPress\" -sivustoissamme emme käytä tätä alustaa."
+            }
+        }
+
+    }
+}
