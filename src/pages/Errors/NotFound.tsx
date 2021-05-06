@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import NotFoundContainer from '../../components/pages/Errors/Errors';
 import Page from '../../components/pages/Page';
@@ -10,8 +9,6 @@ interface Props {}
 
 const NotFound: React.FC<Props> = () => {
 
-    const { t: translatePages } = useTranslation('pages');
-
     return (
 
         <Page style={styles.NotFound}>
@@ -19,9 +16,7 @@ const NotFound: React.FC<Props> = () => {
             <NotFoundContainer>
 
                 <h1>404</h1>
-                <div>
-                    { translatePages('404.description') }
-                </div>
+                <div>Etsimääsi sivua ei löydetty.</div>
             </NotFoundContainer>
 
         </Page>

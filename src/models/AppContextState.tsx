@@ -24,11 +24,6 @@ const AppContextState: IAppState = {
 
 	},
 
-	authentication: {
-		jwt: undefined,
-		isLoading: false
-	},
-
 	navigation: {
 		refs: [],
 		isFloaterVisible: false,

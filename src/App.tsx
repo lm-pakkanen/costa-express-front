@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 import { useStoreConfigure } from './hooks/useStoreConfigure';
 
 import NotFound from './pages/Errors/NotFound';
 
 import Index from './pages/Index';
-import Projects from './pages/Projects';
 
 import './reset.css';
 import './global.css';
@@ -26,19 +24,12 @@ const App: React.FC<Props> = () => {
         setIsConfigReady(true);
     });
 
-    const { t: translate, ready: isI18nReady } = useTranslation('navigation');
-
     // TODO: Proper component
-    if (!isConfigReady || !isI18nReady) {
+    if (!isConfigReady) {
         return (
             <>loading...</>
         );
     }
-
-    /** Utility for converting translation to path */
-    const getPath = (page: string) => {
-        return `/${page}`;
-    };
 
     return (
         <div id={'app'} className={styles.App}>
@@ -46,7 +37,7 @@ const App: React.FC<Props> = () => {
             <Switch>
 
                 <Route
-                    path={getPath(translate('links.urls.privacyPolicy'))}
+                    path={'tietosuoja'}
                     exact
                     component={
                         () => <PrivacyPolicy />
@@ -54,18 +45,10 @@ const App: React.FC<Props> = () => {
                 />
 
                 <Route
-                    path={getPath('')}
+                    path={''}
                     exact
                     component={
                         () => <Index />
-                    }
-                />
-
-                <Route
-                    path={getPath(translate('links.urls.projects'))}
-                    exact
-                    component={
-                        () => <Projects />
                     }
                 />
 

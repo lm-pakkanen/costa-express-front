@@ -19,23 +19,3 @@ export function addStylesToClass(originStyle: string, styleList: string[]) {
 	return originStyle;
 
 }
-
-export function createAuthorizationHeader(firstVal: string, secondVal: string, type: 'Basic' | 'Bearer' = 'Basic') {
-
-	let token = firstVal + ':' + secondVal;
-	token = btoa(token);
-
-	return `${type} ${token}`;
-
-}
-
-export function createJWTAuthorizationHeader(jwt: string, type: 'Basic' | 'Bearer' = 'Bearer') {
-	return `${type} ${jwt}`;
-}
-
-export function parseJwt(jwt: string) {
-	if (!jwt) { return; }
-	const base64Url = jwt.split('.')[1];
-	const base64 = base64Url.replace('-', '+').replace('_', '/');
-	return JSON.parse(window.atob(base64));
-}

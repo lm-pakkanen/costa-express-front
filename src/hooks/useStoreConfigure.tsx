@@ -1,41 +1,10 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { appStore } from '../contexts/AppContext';
-import { authentication, meta, navigation, language } from '../config/actions';
+import { meta, navigation } from '../config/actions';
 
 import useMemoryController from '../hooks/controllers/useMemoryController';
-import useUserController from '../hooks/controllers/useUserController';
-import { useTranslation } from 'react-i18next';
-
-const useLanguageConfigure = () => {
-
-	const { dispatch } = useContext(appStore);
-	const { getLanguage: getMemoryLanguage } = useMemoryController();
-
-	const { i18n } = useTranslation();
-
-	const [isConfigureReady, setisConfigureReady] = useState(false);
-
-	const memoryLanguage = getMemoryLanguage();
-
-	useEffect(() => {
-
-		if (typeof memoryLanguage === 'undefined') {
-			setisConfigureReady(true);
-			return;
-		}
-
-		i18n.changeLanguage(memoryLanguage).then(() => {
-			setisConfigureReady(true);
-		});
-
-		dispatch({ type: language.setLanguage, payload: memoryLanguage });
-
-	}, [ i18n, memoryLanguage, dispatch ]);
-
-	return isConfigureReady;
-};
 
 const useNavConfigure = () => {
 
@@ -70,21 +39,7 @@ const useNavConfigure = () => {
 
 	}, [ dispatch ]);
 
-}
-
-const useAuthConfigure = () => {
-
-	const appContext = useContext(appStore);
-	const { dispatch } = appContext;
-
-	const { getJWT } = useUserController();
-	const jwt = getJWT();
-
-	useEffect(() => {
-		dispatch({ type: authentication.setSessionUser, payload: jwt });
-	}, [ jwt, dispatch ]);
-
-}
+};
 
 const useMetaConfigure = () => {
 
@@ -213,14 +168,12 @@ const useMetaConfigure = () => {
 		state.meta.viewport.tablet_width
 	]);
 
-}
+};
 
 export const useStoreConfigure = async () => {
 
 	useMetaConfigure();
-	useAuthConfigure();
-	useNavConfigure();
 
-	return useLanguageConfigure();
+	return useNavConfigure();
 
-}
+};

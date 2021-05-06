@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 
-import { authentication, language, meta, navigation } from '../config/actions';
+import { meta, navigation } from '../config/actions';
 
 import AppContextState from './../models/AppContextState';
 import { CError } from '../models/Errors';
@@ -23,16 +23,6 @@ const AppContextProvider: React.FC<Props> = (props) => {
 	function appContextReducer(state: IAppState, action: IStoreAction) {
 
 		switch (action.type) {
-
-			case language.setLanguage:
-
-				return {
-					...state,
-					meta: {
-						...state.meta,
-						language: action.payload
-					}
-				};
 
 			case meta.setPath:
 
@@ -115,16 +105,6 @@ const AppContextProvider: React.FC<Props> = (props) => {
 						errors: stateErrors
 					}
 
-				};
-
-			case authentication.setSessionUser:
-
-				return {
-					...state,
-					authentication: {
-						...state.authentication,
-						jwt: action.payload
-					}
 				};
 
 			case navigation.toggleFloater:

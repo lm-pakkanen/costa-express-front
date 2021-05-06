@@ -2,8 +2,6 @@ import { useContext } from 'react';
 
 import { appStore } from '../../contexts/AppContext';
 
-import useAPIController from '../../hooks/controllers/useAPIController';
-
 import { FatalCError } from '../../models/Errors';
 
 import ICError from '../../interfaces/ICError';
@@ -14,12 +12,8 @@ const useErrorController = () => {
 	const appContext = useContext(appStore);
 	const { state } = appContext;
 
-	const {
-		callSendErrors
-	} = useAPIController();
-
 	const handleErrors = (errors: Array<ICError | IFatalCError>) => {
-		callSendErrors(errors).then(() => {}).catch((error) => {});
+		console.error(errors);
 	};
 
 	const getErrors = (): Array<ICError | IFatalCError> => {

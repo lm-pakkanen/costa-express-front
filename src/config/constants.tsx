@@ -1,9 +1,9 @@
 const constants = {
-    BASE_URI: 'https://harriot.fi',
+    BASE_URI: 'https://costaexpress.fi',
     BASE_URI_DEV: 'http://localhost:3000',
     BASE_API_URI: 'https://api.harriot.fi/',
     BASE_API_URI_DEV: 'http://api.harriot.fi/',
-    WEBMASTER_EMAIL: 'info@harriot.fi',
+    WEBMASTER_EMAIL: 'jukka.pakkanen@qnet.fi',
     ANALYTICS: {
         GOOGLE: {
             TRACKING_ID: 'UA-xxxxxxx'
@@ -18,15 +18,7 @@ const constants = {
         MARKETING: 3
     },
     API: {
-        ENDPOINTS: {
-            ERRORS: 'home/errors',
-            USERS: 'users',
-            USER_LOGIN: 'users/login',
-            JWT_VERIFY: 'users/jwt-verify',
-            EMAIL_EXISTS: 'users/email-exists',
-            USERNAME_EXISTS: 'users/username-exists',
-
-        }
+        ENDPOINTS: {}
     }
 };
 

@@ -1,14 +1,3 @@
 Following notes are for FRAMEWORK ONLY
 
-TODO: package.json information / dependencies
-TODO: ReadMe.md information
-
-TODO: public -> index.html information
 TODO: public -> favicon
-TODO: public -> manifest.json information
-
-TODO: src -> config -> constants.js information
-
-TODO: src -> pages -> page information / components ...
-
-TODO: src -> controllers -> MemoryController -> change memory domains

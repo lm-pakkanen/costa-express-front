@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import constants from '../../config/constants';
 
@@ -8,8 +7,6 @@ import Page from '../../components/pages/Page';
 import ICError from '../../interfaces/ICError';
 import IFatalCError from '../../interfaces/IFatalCError';
 
-import pagesTranslations from '../../_assets/translations/fi/pages.json';
-
 import styles from './FatalError.module.css';
 
 interface Props {
@@ -17,8 +14,6 @@ interface Props {
 }
 
 const FatalError: React.FC<Props> = (props) => {
-
-	const { t: translatePages } = useTranslation('pages');
 
 	const ErrorList: React.FC = () => {
 
@@ -56,31 +51,21 @@ const FatalError: React.FC<Props> = (props) => {
 			<div className={styles.Container}>
 
 				<div className={styles.Title}>
-					{ translatePages('fatalError.title') }
+					Tämäpä kiusallista.
 				</div>
 
 				<div>
 
-					{
-						Object.keys(pagesTranslations.fatalError.description).map((key) => {
-
-							return (
-								<div key={key}>
-
-									{ translatePages(`fatalError.description.${key}`) }
-
-									{ key === '2' && <MailToLink /> }
-
-								</div>
-							)
-
-						})
-
-					}
+					<div>Sivusto kohtasi vakavan virhetilan.</div>
+					<div>Virhe on tallennettu.</div>
+					<div>
+						Jos virhetila esiintyy uudelleen, ota yhteyttä sivuston hallintaan sähköpostilla:
+						<MailToLink />
+					</div>
 
 				</div>
 
-				<div>{ translatePages('fatalError.attachErrors') }</div>
+				<div>Lisääthän nämä virheviestit sähköpostiisi, kiitos!</div>
 
 				<div className={styles.ErrorList}>
 					{
