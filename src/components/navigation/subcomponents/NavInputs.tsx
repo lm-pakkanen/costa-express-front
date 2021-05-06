@@ -1,17 +1,12 @@
-import React, { useContext, useState } from 'react';
-
-import { useTranslation } from 'react-i18next';
+import React, { useContext } from 'react';
 
 import { navigation } from '../../../config/actions';
 
 import { appStore } from '../../../contexts/AppContext';
 
-import useLanguageController from '../../../hooks/controllers/useLanguageController';
-
 import { addStylesToClass } from '../../../helpers';
 
 import IImage from '../../../interfaces/IImage';
-import { SupportedLangs } from '../../../interfaces/types';
 
 import styles from './NavInputs.module.css';
 
@@ -35,11 +30,6 @@ interface INavLink {
 	title?: string,
 	image?: IImage,
 	styles?: string[]
-}
-
-interface INavLanguageInput {
-	img: IImage,
-	handleClick: (e: React.MouseEvent<HTMLImageElement>) => void,
 }
 
 
@@ -109,8 +99,6 @@ export const NavFloaterToggler: React.FC = () => {
 	const { state, dispatch } = appContext;
 	const ref = state.navigation.refs.togglerRef;
 
-	const { t: translate } = useTranslation('navigation');
-
 	const handleClick = (e: React.MouseEvent) => {
 		dispatch({ type: navigation.toggleFloater });
 	};
@@ -120,7 +108,7 @@ export const NavFloaterToggler: React.FC = () => {
 	return (
 		<div
 			className={defaultStyle}
-			title={translate('links.titles.floaterToggler')}
+			title={'Valikko'}
 			ref={ref}
 			onClick={handleClick}
 		>
@@ -131,101 +119,4 @@ export const NavFloaterToggler: React.FC = () => {
 			</div>
 		</div>
 	);
-};
-
-export const NavLanguageInput: React.FC<INavLanguageInput> = (props) => {
-
-	const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
-		e.preventDefault();
-		props.handleClick(e);
-	};
-
-	const style = addStylesToClass(styles.NavLink, [styles.NavLanguageInput]);
-
-	return (
-		<img
-			className={style}
-			src={props.img.url}
-			alt={props.img.alt}
-			title={props.img.title}
-			onClick={handleClick}
-		/>
-	);
-
-};
-
-export const LanguageSwitcher: React.FC = () => {
-
-	const {
-		getSupportedLanguages,
-		handleLanguageSwitch
-	} = useLanguageController();
-
-	const { i18n } = useTranslation('common');
-
-	const supportedLanguages = getSupportedLanguages();
-
-	const currentLanguage = i18n.language as SupportedLangs;
-	const currentLanguageImage = supportedLanguages[currentLanguage].img;
-
-	/**
-	 * Current language is stored in currentLanguage
-	 * Delete current language from object to not render it twice
-	 */
-	delete supportedLanguages[currentLanguage];
-
-	const handleFloaterShow = () => {
-		setFloaterStyle(styles.NavLanguageFloater);
-	};
-
-	const handleFloaterHide = () => {
-		setFloaterStyle(floaterDefaultStyle);
-	};
-
-	const floaterDefaultStyle = addStylesToClass(styles.NavLanguageFloater, [styles.hidden]);
-	const [floaterStyle, setFloaterStyle] = useState(floaterDefaultStyle);
-
-	return (
-
-		<div
-			className={styles.NavLanguageSwitcher}
-			onMouseEnter={handleFloaterShow}
-			onMouseLeave={handleFloaterHide}
-		>
-
-			<NavLanguageInput
-				img={currentLanguageImage}
-				handleClick={() => {
-					/** Ignore click on current language in menu */
-				}}
-			/>
-
-			<ul className={floaterStyle}>
-
-				{
-					/** Render each supported language as input */
-					Object.keys(supportedLanguages).map((lang) => {
-
-						const language = lang as SupportedLangs;
-
-						return (
-							<li key={language}>
-								<NavLanguageInput
-									img={supportedLanguages[language].img}
-									handleClick={() => {
-										handleLanguageSwitch(language);
-									}}
-								/>
-							</li>
-						);
-
-					})
-				}
-
-			</ul>
-
-		</div>
-
-	);
-
 };
