@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 
-import { AboutUs, Brand, Contact, Projects } from './Links';
+import { Brand, Contact } from './Links';
 import NavLinksLeft from './NavLinksLeft';
 import NavLinksRight from './NavLinksRight';
 import NavFloater from './NavFloater';
+
+import { NavFloaterToggler } from './NavInputs';
 
 import { appStore } from '../../../contexts/AppContext';
 
@@ -25,9 +27,8 @@ const MobileNavigation: React.FC = () => {
 
 			<NavFloater>
 
-				<Projects path={path} styles={[styles.FloaterLink]} />
+				<NavFloaterToggler />
 				<Contact path={path} styles={[styles.FloaterLink]} />
-				<AboutUs path={path} styles={[styles.FloaterLink]} />
 
 			</NavFloater>
 		</>
