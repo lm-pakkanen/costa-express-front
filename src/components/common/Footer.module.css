@@ -1,15 +1,7 @@
 .FooterWrapper {
     position: relative;
-    height: 180px;
+    height: 65px;
     overflow: hidden;
-}
-
-.FooterWrapper > img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 180px;
 }
 
 .Footer {
@@ -19,7 +11,7 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    height: 90px;
+    height: 65px;
     padding: 0 3em 0;
     box-sizing: border-box;
 }
@@ -36,5 +28,5 @@
 }
 
 .ContentWrapper.Links > a {
-    margin: 0 1em;
+    margin: 0 2em;
 }

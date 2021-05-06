@@ -19,11 +19,11 @@ const Page: React.FC<Props> = (props) => {
 
     return (
         <div className={style}>
+            <Navigation />
             <div className={styles.Wrapper}>
-                <Navigation />
                 {props.children}
-                <Footer />
             </div>
+            <Footer />
             <CookiesConsent />
         </div>
     );
