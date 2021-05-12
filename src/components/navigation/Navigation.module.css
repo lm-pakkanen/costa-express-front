@@ -4,14 +4,14 @@
     left: 0;
     right: 0;
     height: 90px;
-    background: hsla(240, 5%, 13%, 1);
+    background: hsla(240, 5%, 10%, .2);
     box-shadow: 0 0 .2em .2em hsla(0, 0%, 0%, .2);
     box-sizing: border-box;
     z-index: 100;
 }
 
 .scrolled {
-    box-shadow: 0 0 .8em .3em hsla(0, 0%, 0%, .2);
+    background: hsla(240, 5%, 10%, 1);
 }
 
 .scrolled:not(.floaterVisible) {
