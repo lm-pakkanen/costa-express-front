@@ -23,7 +23,11 @@ const MobileNavigation: React.FC = () => {
 				<Brand path={path} />
 			</NavLinksLeft>
 
-			<NavLinksRight />
+			<NavLinksRight>
+
+				<Contact path={path} />
+
+			</NavLinksRight>
 
 			<NavFloater>
 

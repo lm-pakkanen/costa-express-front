@@ -3,26 +3,30 @@
 /** ================= */
 .NavLink {
     display: inline-block;
-    height: 55px;
-    line-height: 55px;
+    height: 60px;
+    line-height: 60px;
     padding: 0 .6em;
-    margin: .9em .2em;
+    margin: auto .2em;
     color: white;
     background: none;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
     text-decoration: none;
     box-sizing: border-box;
     border: none;
 }
 .NavLink:hover {
-    border-bottom: 2px solid hsla(240, 5%, 10%, 1);
+    border-bottom: 2px solid hsla(240, 5%, 75%, .8);
+}
+
+.NavLinkBrand {
+    height: 80px;
+    line-height: 90px;
 }
 
 .NavLinkBrand > img {
     width: 120px;
-    margin-bottom: -13%;
 }
 
 .NavLinkActive {
