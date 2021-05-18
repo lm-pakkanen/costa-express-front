@@ -29,19 +29,49 @@ const ContactForm: React.FC<Props> = () => {
 		<div className={styles.ContactForm}>
 
 			<FieldRow>
-				<TextInput value={''} label={'Sähköpostiosoite'} onChange={() => {console.log('changed')}} />
+				<h1 className={styles.FormTitle}>
+					Ota meihin yhteyttä!
+				</h1>
+				<h2 className={styles.FormDescription}>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				</h2>
 			</FieldRow>
 
 			<FieldRow>
-				<TextInput value={''} label={'Etu- ja sukunimi'} onChange={() => {console.log('changed')}} />
+
+				<TextInput value={''}
+				           placeholder={'Sähköpostiosoite'}
+				           label={'Sähköpostiosoite'}
+				           onChange={() => {console.log('changed')}}
+				/>
+
 			</FieldRow>
 
 			<FieldRow>
-				<TextAreaInput value={''} label={'Viestin sisältö'} onChange={() => {console.log('changed')}} />
+
+				<TextInput value={''}
+				           placeholder={'Etu- ja sukunimi'}
+				           label={'Etu- ja sukunimi'}
+				           onChange={() => {console.log('changed')}}
+				/>
+
+			</FieldRow>
+
+			<FieldRow>
+
+				<TextAreaInput value={''}
+				               label={'Viesti'}
+				               onChange={() => {console.log('changed')}}
+				/>
+
 			</FieldRow>
 
 			<FieldRow style={styles.SubmitButtonRow}>
-				<SubmitButton value={'Lähetä viesti'} onClick={() => {console.log('clicked')}} />
+
+				<SubmitButton value={'Lähetä viesti'}
+				              onClick={() => {console.log('clicked')}}
+				/>
+
 			</FieldRow>
 
 		</div>

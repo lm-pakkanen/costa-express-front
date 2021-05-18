@@ -9,7 +9,7 @@
 .TextAreaInput
 {
     width: 100%;
-    padding: .5em;
+    padding: .6em 1em;
     font-size: 16px;
     border-radius: .3em;
     border-top: 2px solid hsla(200, 100%, 5%, .7);
@@ -29,7 +29,7 @@
 
 .SubmitButton {
     padding: .5em 3em;
-    margin: 2em auto 0;
+    margin: 1.5em auto 0;
     color: white !important;
     background-color: hsla(200, 78%, 50%, 1);
     background-image: linear-gradient(hsla(200, 90%, 45%, .7), hsla(200, 80%, 25%, .6));
