@@ -21,6 +21,17 @@ const useContactForm = (): IContactFormState => {
 	};
 
 	const onFormSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+
+		e.preventDefault();
+
+		const emailTemplateID = '';
+
+		const messageVariables = {
+			sender_email: senderEmail,
+			sender_name: senderName,
+			message: messageContent
+		};
+
 		// TODO: implement form submission
 	};
 
