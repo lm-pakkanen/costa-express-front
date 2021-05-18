@@ -12,7 +12,6 @@ interface Props {}
 
 const Contact: React.FC<Props> = () => {
 
-
 	return (
 		<PageBoundary>
 

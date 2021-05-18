@@ -10,19 +10,19 @@ interface IInput {
 
 
 interface ITextInput extends IInput {
-	onChange: () => void
+	onChange: (e: any) => void
 	placeholder?: string
 	label?: string
 }
 
 interface ITextAreaInput extends IInput {
-	onChange: () => void,
+	onChange: (e: any) => void,
 	placeholder?: string
 	label?: string
 }
 
 interface ISubmitButton extends IInput {
-	onClick: () => void
+	onClick: (e: any) => void
 }
 
 export const TextInput: React.FC<ITextInput> = (props) => {
@@ -70,9 +70,8 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 				placeholder={props.placeholder}
 				onChange={props.onChange}
 				rows={15}
-			>
-				{props.value}
-			</textarea>
+				value={props.value}
+			/>
 
 		</>
 	);

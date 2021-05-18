@@ -4,6 +4,7 @@ import { TextInput, TextAreaInput, SubmitButton } from './ContactFormInputs';
 
 import styles from './ContactForm.module.css';
 import { addStylesToClass } from '../../../helpers';
+import useContactForm from '../../../hooks/useContactForm';
 
 interface Props {}
 
@@ -25,6 +26,17 @@ const FieldRow: React.FC<IFieldRow> = (props) => {
 
 const ContactForm: React.FC<Props> = () => {
 
+	const contactForm = useContactForm();
+
+	const { sender, messageContent, methods } = contactForm;
+
+	const {
+		onSenderEmailChange,
+		onSenderNameChange,
+		onMessageContentChange,
+		onFormSubmit
+	} = methods;
+
 	return (
 		<div className={styles.ContactForm}>
 
@@ -39,29 +51,29 @@ const ContactForm: React.FC<Props> = () => {
 
 			<FieldRow>
 
-				<TextInput value={''}
+				<TextInput value={sender.email}
 				           placeholder={'Sähköpostiosoite'}
 				           label={'Sähköpostiosoite'}
-				           onChange={() => {console.log('changed')}}
+				           onChange={onSenderEmailChange}
 				/>
 
 			</FieldRow>
 
 			<FieldRow>
 
-				<TextInput value={''}
+				<TextInput value={sender.name}
 				           placeholder={'Etu- ja sukunimi'}
 				           label={'Etu- ja sukunimi'}
-				           onChange={() => {console.log('changed')}}
+				           onChange={onSenderNameChange}
 				/>
 
 			</FieldRow>
 
 			<FieldRow>
 
-				<TextAreaInput value={''}
+				<TextAreaInput value={messageContent}
 				               label={'Viesti'}
-				               onChange={() => {console.log('changed')}}
+				               onChange={onMessageContentChange}
 				/>
 
 			</FieldRow>
@@ -69,7 +81,7 @@ const ContactForm: React.FC<Props> = () => {
 			<FieldRow style={styles.SubmitButtonRow}>
 
 				<SubmitButton value={'Lähetä viesti'}
-				              onClick={() => {console.log('clicked')}}
+				              onClick={onFormSubmit}
 				/>
 
 			</FieldRow>
