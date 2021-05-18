@@ -12,6 +12,7 @@ import './global.css';
 
 import styles from './App.module.css';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Contact from './pages/Contact';
 
 interface Props {}
 
@@ -37,7 +38,7 @@ const App: React.FC<Props> = () => {
             <Switch>
 
                 <Route
-                    path={'tietosuoja'}
+                    path={'/tietosuoja'}
                     exact
                     component={
                         () => <PrivacyPolicy />
@@ -45,7 +46,15 @@ const App: React.FC<Props> = () => {
                 />
 
                 <Route
-                    path={''}
+                    path={'/ota-yhteytta'}
+                    exact
+                    component={
+                        () => <Contact />
+                    }
+                />
+
+                <Route
+                    path={'/'}
                     exact
                     component={
                         () => <Index />

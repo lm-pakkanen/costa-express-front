@@ -1,0 +1,6 @@
+.ContactContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 5em 2.5em;
+    flex: 1;
+}

@@ -1,7 +1,8 @@
 .FooterWrapper {
     position: relative;
-    height: 65px;
-    overflow: hidden;
+    height: 80px;
+    padding-top: 15px;
+    box-sizing: border-box;
 }
 
 .Footer {

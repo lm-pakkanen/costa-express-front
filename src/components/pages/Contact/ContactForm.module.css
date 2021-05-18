@@ -1,0 +1,21 @@
+.ContactForm {
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    padding: 2em 1.6em 3em;
+    background: white;
+    border:  2px solid hsla(240, 10%, 10%, 1);
+    border-radius: .5em;
+}
+
+.FieldRow {
+    margin: 1.2em auto;
+}
+
+.ContactForm * {
+    color: hsla(200, 80%, 10%, 1);
+}
+
+.SubmitButtonRow {
+    margin: 0 auto;
+}
