@@ -9,7 +9,11 @@ import Footer from '../common/Footer';
 import styles from './Page.module.css';
 
 interface Props {
-    style: string
+    style: string,
+    navigationStyle?: string,
+    wrapperStyle?: string,
+    footerStyle?: string,
+    cookieConsentStyle?: string
 }
 
 const Page: React.FC<Props> = (props) => {
@@ -17,10 +21,16 @@ const Page: React.FC<Props> = (props) => {
     let style = styles.Page;
     style = addStylesToClass(style, [props.style]);
 
+    let wrapperStyle = styles.Wrapper;
+
+    if (props.wrapperStyle) {
+        wrapperStyle = addStylesToClass(wrapperStyle, [props.wrapperStyle]);
+    }
+
     return (
         <div className={style}>
             <Navigation />
-            <div className={styles.Wrapper}>
+            <div className={wrapperStyle}>
                 {props.children}
             </div>
             <Footer />

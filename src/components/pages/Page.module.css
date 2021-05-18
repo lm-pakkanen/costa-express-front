@@ -1,7 +1,6 @@
 .Page {
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
-    padding: 100px 0 65px 0;
     box-sizing: border-box;
 }
 
@@ -11,5 +10,7 @@
     max-width: 1366px;
     height: 100%;
     margin: 0 auto;
+    padding-bottom: 15px;
     box-sizing: border-box;
+    overflow: visible;
 }

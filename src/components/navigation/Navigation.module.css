@@ -4,13 +4,13 @@
     left: 0;
     right: 0;
     height: 100px;
-    background: hsla(240, 5%, 10%, 0);
+    background: hsla(240, 5%, 6%, 0);
     box-sizing: border-box;
     z-index: 100;
 }
 
 .scrolled {
-    background: hsla(240, 5%, 10%, .9);
+    background: hsla(240, 5%, 6%, 1);
 }
 
 .scrolled:not(.floaterVisible) {

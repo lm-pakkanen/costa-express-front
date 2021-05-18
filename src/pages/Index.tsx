@@ -16,9 +16,13 @@ const Index: React.FC<Props> = () => {
     return (
         <PageBoundary>
 
-            <Page style={styles.Index}>
+            <Page
+                style={styles.Index}
+                navigationStyle={styles.NavigationStyle}
+                wrapperStyle={styles.WrapperStyle}
+            >
 
-                <SubPage>
+                <SubPage styles={[styles.subPageStyle]}>
 
                     <IndexContainer>
 

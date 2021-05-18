@@ -1,5 +1,9 @@
 .Index {
+}
 
+.subPageStyle {
+    background: url('http://localhost:3000/img/Mobile hero.svg') no-repeat center;
+    background-size: cover;
 }
 
 .HeroTextContainer {
