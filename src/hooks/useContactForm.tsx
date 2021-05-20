@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import emailjs from 'emailjs-com';
 
-import IContactFormState from '../interfaces/IContactFormState';
 import { Validator } from '../helpers';
+
+import IContactFormState from '../interfaces/IContactFormState';
 
 const useContactForm = (): IContactFormState => {
 
@@ -40,19 +41,13 @@ const useContactForm = (): IContactFormState => {
 
 		clearFormErrors();
 
-		const emailValid = Validator.validateEmail(senderEmail);
-
-		if (!(typeof emailValid === 'boolean' && emailValid)) {
-			return setSenderEmailError(emailValid);
-		}
+		if (!validateFields()) { return; }
 
 		const messageVariables = {
 			sender_email: senderEmail,
 			sender_name: senderName,
 			message: messageContent
 		};
-
-		// TODO: Separate logic to controller
 
 		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
 
@@ -69,17 +64,45 @@ const useContactForm = (): IContactFormState => {
 			return;
 		}
 
-		emailjs.init(emailUserID);
-
-		emailjs.send(emailProviderID, emailTemplateID, messageVariables)
+		sendEmail(emailUserID, emailProviderID, emailTemplateID, messageVariables)
 			.then(() => {
 				setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
 			})
-			.catch(() => {
+			.catch((err) => {
+
+				console.error(err);
+
 				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 				setFormAlert(errMessage);
 				setFormError(errMessage);
-			});
+
+			})
+
+	};
+
+	const validateFields = () => {
+
+		const emailValid = Validator.validateEmail(senderEmail);
+
+		if (!(typeof emailValid === 'boolean' && emailValid)) {
+			return setSenderEmailError(emailValid);
+		}
+
+		return true;
+
+	};
+
+	const sendEmail = async (userID: string, providerID: string, templateID: string, variables: { [key: string]: string }) => {
+		return new Promise(async (resolve, reject) => {
+
+			try {
+				await emailjs.send(providerID, templateID, variables, userID);
+				resolve(true);
+			} catch (err) {
+				reject(err);
+			}
+
+		});
 
 	};
 
