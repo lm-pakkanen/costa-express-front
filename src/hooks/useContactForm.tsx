@@ -29,12 +29,11 @@ const useContactForm = (): IContactFormState => {
 
 	const onFormSubmit = (e: React.FormEvent<HTMLInputElement>) => {
 
+		e.preventDefault();
+
 		clearFormErrors();
 
 		// TODO: Check validity of inputs
-
-		e.preventDefault();
-
 		// TODO: Separate logic to controller
 
 		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
