@@ -5,7 +5,8 @@ import { addStylesToClass } from '../../../helpers';
 
 interface IInput {
 	value: string,
-	style?: string
+	style?: string,
+	hasError?: boolean
 }
 
 
@@ -28,6 +29,10 @@ interface ISubmitButton extends IInput {
 export const TextInput: React.FC<ITextInput> = (props) => {
 
 	let style = styles.TextInput;
+
+	if (props.hasError) {
+		style = addStylesToClass(style, [styles.TextInputWithError])
+	}
 
 	if (props.style) {
 		style = addStylesToClass(style, [props.style]);
@@ -53,6 +58,10 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 
 	let style = styles.TextAreaInput;
+
+	if (props.hasError) {
+		style = addStylesToClass(style, [styles.TextAreaInputWithError])
+	}
 
 	if (props.style) {
 		style = addStylesToClass(style, [props.style]);

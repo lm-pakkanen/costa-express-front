@@ -85,7 +85,9 @@ const useContactForm = (): IContactFormState => {
 		const emailValid = Validator.validateEmail(senderEmail);
 
 		if (!(typeof emailValid === 'boolean' && emailValid)) {
-			return setSenderEmailError(emailValid);
+			setFormError(emailValid);
+			setSenderEmailError(emailValid);
+			return;
 		}
 
 		return true;

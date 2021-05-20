@@ -23,6 +23,14 @@
 
 }
 
+.TextInputWithError {
+    background: hsla(0, 100%, 40%, .6);
+}
+
+.TextInputAreaWithError {
+
+}
+
 .TextAreaInput {
     padding: 1em;
 }

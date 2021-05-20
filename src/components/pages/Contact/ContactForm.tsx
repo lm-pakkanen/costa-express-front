@@ -28,7 +28,14 @@ const ContactForm: React.FC<Props> = () => {
 
 	const contactForm = useContactForm();
 
-	const { sender, messageContent, methods } = contactForm;
+	const {
+		sender,
+		messageContent,
+		messageContentError,
+		methods,
+		formError,
+		formAlert
+	} = contactForm;
 
 	const {
 		onSenderEmailChange,
@@ -36,6 +43,10 @@ const ContactForm: React.FC<Props> = () => {
 		onMessageContentChange,
 		onFormSubmit
 	} = methods;
+
+	if (formAlert) {
+		alert(formAlert);
+	}
 
 	return (
 		<div className={styles.ContactForm}>
@@ -54,8 +65,14 @@ const ContactForm: React.FC<Props> = () => {
 				<TextInput value={sender.email}
 				           placeholder={'Sähköpostiosoite'}
 				           label={'Sähköpostiosoite'}
+				           hasError={sender.emailError !== null}
 				           onChange={onSenderEmailChange}
 				/>
+
+				{
+					sender.emailError &&
+					<div>{sender.emailError}</div>
+				}
 
 			</FieldRow>
 
@@ -64,8 +81,14 @@ const ContactForm: React.FC<Props> = () => {
 				<TextInput value={sender.name}
 				           placeholder={'Etu- ja sukunimi'}
 				           label={'Etu- ja sukunimi'}
+				           hasError={sender.nameError !== null}
 				           onChange={onSenderNameChange}
 				/>
+
+				{
+					sender.nameError &&
+					<div>{sender.nameError}</div>
+				}
 
 			</FieldRow>
 
@@ -73,10 +96,23 @@ const ContactForm: React.FC<Props> = () => {
 
 				<TextAreaInput value={messageContent}
 				               label={'Viesti'}
+				               hasError={messageContentError !== null}
 				               onChange={onMessageContentChange}
 				/>
 
+				{
+					messageContentError &&
+					<div>{messageContentError}</div>
+				}
+
 			</FieldRow>
+
+			{
+				formError &&
+				<FieldRow>
+					<div>{formError}</div>
+				</FieldRow>
+			}
 
 			<FieldRow style={styles.SubmitButtonRow}>
 
