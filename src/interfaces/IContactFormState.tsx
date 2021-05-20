@@ -9,6 +9,8 @@ interface IContactFormState {
 	sender: ISender,
 	messageContent: string,
 	messageContentError: null | string,
+	formError: null | string,
+	formAlert: null | string,
 	methods: {
 		[key: string]: (e: any) => void
 	}

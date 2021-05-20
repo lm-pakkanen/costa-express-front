@@ -3,17 +3,21 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
 import IContactFormState from '../interfaces/IContactFormState';
+import { Validator } from '../helpers';
 
 const useContactForm = (): IContactFormState => {
 
+	const [formError, setFormError] = useState<null | string>(null);
+	const [formAlert, setFormAlert] = useState<null | string>(null);
+
 	const [senderEmail, setSenderEmail] = useState('');
-	const [senderEmailError, setSenderEmailError] = useState(null);
+	const [senderEmailError, setSenderEmailError] = useState<null | string>(null);
 
 	const [senderName, setSenderName] = useState('');
-	const [senderNameError, setSenderNameError] = useState(null);
+	const [senderNameError, setSenderNameError] = useState<null | string>(null);
 
 	const [messageContent, setMessageContent] = useState('');
-	const [messageContentError, setMessageContentError] = useState(null);
+	const [messageContentError, setMessageContentError] = useState<null | string>(null);
 
 	const onSenderEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
 		setSenderEmailError(null);
@@ -36,17 +40,10 @@ const useContactForm = (): IContactFormState => {
 
 		clearFormErrors();
 
-		// TODO: Check validity of inputs
-		// TODO: Separate logic to controller
+		const emailValid = Validator.validateEmail(senderEmail);
 
-		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
-
-		const emailProviderID = process.env.REACT_APP_EMAILJS_PROVIDER;
-		const emailTemplateID = process.env.REACT_APP_EMAILJS_TEMPLATE;
-
-		if (!(emailUserID && emailProviderID && emailTemplateID)) {
-			// TODO: Handle error
-			return;
+		if (!(typeof emailValid === 'boolean' && emailValid)) {
+			return setSenderEmailError(emailValid);
 		}
 
 		const messageVariables = {
@@ -55,16 +52,33 @@ const useContactForm = (): IContactFormState => {
 			message: messageContent
 		};
 
+		// TODO: Separate logic to controller
+
+		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
+
+		const emailProviderID = process.env.REACT_APP_EMAILJS_PROVIDER;
+		const emailTemplateID = process.env.REACT_APP_EMAILJS_TEMPLATE;
+
+		/**
+		 * Environment variables missing, email cannot be sent
+		 */
+		if (!(emailUserID && emailProviderID && emailTemplateID)) {
+			const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
+			setFormAlert(errMessage);
+			setFormError(errMessage);
+			return;
+		}
+
 		emailjs.init(emailUserID);
 
 		emailjs.send(emailProviderID, emailTemplateID, messageVariables)
 			.then(() => {
-				// TODO: Handle successful submit
-				console.debug('email sent');
+				setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
 			})
 			.catch(() => {
-				// TODO: Handle error
-				console.debug('failed to send email');
+				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
+				setFormAlert(errMessage);
+				setFormError(errMessage);
 			});
 
 	};
@@ -84,6 +98,8 @@ const useContactForm = (): IContactFormState => {
 		},
 		messageContent: messageContent,
 		messageContentError: messageContentError,
+		formError,
+		formAlert,
 		methods: {
 			onSenderEmailChange,
 			onSenderNameChange,
