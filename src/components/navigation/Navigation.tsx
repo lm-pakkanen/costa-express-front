@@ -22,7 +22,6 @@ const Navigation: React.FC<Props> = () => {
     const [style, setStyle] = useState(defaultStyle);
 
     const isScrolled = useScrollStatus();
-    console.debug(isScrolled);
     const isFloaterVisible = state.navigation.isFloaterVisible;
 
     const deviceType = state.meta.viewport.deviceType;

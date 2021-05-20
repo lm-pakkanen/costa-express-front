@@ -5,17 +5,19 @@ import { appStore } from '../../../contexts/AppContext';
 import { addStylesToClass } from '../../../helpers';
 
 import floaterStyles from './NavFloater.module.css';
+import useScrollStatus from '../../../hooks/useScrollStatus';
 
 interface Props {}
 
 const NavFloater: React.FC<Props> = (props) => {
 
     const appContext = useContext(appStore);
-    const { navigation, meta } = appContext.state;
+    const { navigation } = appContext.state;
 
     const ref = navigation.refs.floaterRef;
     const isVisible = navigation.isFloaterVisible;
-    const isScrolled = meta.viewport.isScrolled;
+
+    const isScrolled = useScrollStatus();
 
     let style = floaterStyles.NavFloater;
 
