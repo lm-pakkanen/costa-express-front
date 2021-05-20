@@ -16,14 +16,17 @@ const useContactForm = (): IContactFormState => {
 	const [messageContentError, setMessageContentError] = useState(null);
 
 	const onSenderEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setSenderEmailError(null);
 		setSenderEmail(e.currentTarget.value);
 	};
 
 	const onSenderNameChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setSenderNameError(null);
 		setSenderName(e.currentTarget.value);
 	};
 
 	const onMessageContentChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setMessageContentError(null);
 		setMessageContent(e.currentTarget.value);
 	};
 
