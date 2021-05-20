@@ -9,6 +9,7 @@ import TabletNavigation from './subcomponents/_TabletNavigation';
 import MobileNavigation from './subcomponents/_MobileNavigation';
 
 import styles from './Navigation.module.css';
+import useScrollStatus from '../../hooks/useScrollStatus';
 
 interface Props {}
 
@@ -20,7 +21,8 @@ const Navigation: React.FC<Props> = () => {
     const defaultStyle = styles.Navigation;
     const [style, setStyle] = useState(defaultStyle);
 
-    const isScrolled = state.meta.viewport.isScrolled;
+    const isScrolled = useScrollStatus();
+    console.debug(isScrolled);
     const isFloaterVisible = state.navigation.isFloaterVisible;
 
     const deviceType = state.meta.viewport.deviceType;

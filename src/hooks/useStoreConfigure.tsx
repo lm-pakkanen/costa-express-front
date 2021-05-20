@@ -74,30 +74,6 @@ const useMetaConfigure = () => {
 		dispatch({ type: meta.setPath, payload: path });
 	}, [ dispatch, path ]);
 
-	const stateIsScrolled = state.meta.viewport.isScrolled;
-
-	/** Handles scroll event */
-	useEffect(() => {
-
-		const handleScroll = () => {
-
-			const isScrolled = window.scrollY !== 0;
-
-			if (isScrolled !== stateIsScrolled) {
-				dispatch({ type: meta.setScrolledStatus, payload: isScrolled });
-			}
-
-		};
-
-		handleScroll();
-
-		document.addEventListener('scroll', handleScroll);
-
-		return () => {
-			document.removeEventListener('scroll', handleScroll);
-		};
-
-	}, [ stateIsScrolled, dispatch ]);
 
 	/** Throws errors from memory to appBoundary */
 	function getErrors() {

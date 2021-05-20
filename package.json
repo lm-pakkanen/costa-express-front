@@ -33,6 +33,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-test-renderer": "^17.0.1",
+    "react-tracked": "^1.7.1",
+    "tracked": "^1.1.1",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.0.5",

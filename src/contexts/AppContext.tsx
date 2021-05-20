@@ -62,21 +62,6 @@ const AppContextProvider: React.FC<Props> = (props) => {
 					}
 				};
 
-			case meta.setScrolledStatus:
-
-				const isScrolled = action.payload;
-
-				return {
-					...state,
-					meta: {
-						...state.meta,
-						viewport: {
-							...state.meta.viewport,
-							isScrolled
-						}
-					}
-				};
-
 			case meta.clearErrors:
 
 				return {

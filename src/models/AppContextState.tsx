@@ -12,7 +12,6 @@ const AppContextState: IAppState = {
 		cookiesLevel: constants.COOKIES_LEVELS.NONE,
 
 		viewport: {
-			isScrolled: undefined,
 			deviceType: 'desktop',
 			tablet_width: 850,
 			mobile_width: 600

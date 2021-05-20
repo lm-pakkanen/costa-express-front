@@ -7,7 +7,6 @@ interface IAppStateMeta {
 	isCookiesAccepted: boolean,
 	cookiesLevel: number,
 	viewport: {
-		isScrolled: boolean | undefined,
 		deviceType: 'desktop' | 'tablet' | 'mobile',
 		tablet_width?: number,
 		mobile_width?: number,
