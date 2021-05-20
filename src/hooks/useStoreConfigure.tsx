@@ -91,17 +91,10 @@ const useMetaConfigure = () => {
 
 		handleScroll();
 
-		let stall: ReturnType<typeof setTimeout>;
-
-		const t = () => {
-			clearTimeout(stall);
-			stall = setTimeout(handleScroll, 20);
-		}
-
-		document.addEventListener('scroll', t);
+		document.addEventListener('scroll', handleScroll);
 
 		return () => {
-			document.removeEventListener('scroll', t);
+			document.removeEventListener('scroll', handleScroll);
 		};
 
 	}, [ stateIsScrolled, dispatch ]);
