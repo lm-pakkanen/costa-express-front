@@ -86,57 +86,6 @@ const useMetaConfigure = () => {
 	}
 	getErrors();
 
-	/** Handles resize events */
-	useEffect(() => {
-
-		const handleResize = () => {
-
-			let deviceType = 'desktop';
-
-			/** Set device type based in window inner width */
-			if (state.meta.viewport.mobile_width && state.meta.viewport.tablet_width) {
-
-				const mobile: number = state.meta.viewport.mobile_width;
-				const tablet: number= state.meta.viewport.tablet_width;
-
-				if (window.innerWidth <= mobile) {
-					deviceType = 'mobile';
-				} else if (window.innerWidth <= tablet) {
-					deviceType = 'tablet';
-				}
-
-			}
-
-			if (state.meta.viewport.deviceType !== deviceType) {
-				dispatch({ type: navigation.toggleFloater, payload: false });
-			}
-
-			return dispatch({ type: meta.setDeviceType, payload: deviceType});
-
-		};
-
-		handleResize();
-
-		let stall: ReturnType<typeof setTimeout>;
-
-		const func = () => {
-			clearTimeout(stall);
-			stall = setTimeout(handleResize, 20);
-		};
-
-		window.addEventListener('resize', func);
-
-		return () => {
-			window.removeEventListener('resize', func);
-		}
-
-	}, [
-		dispatch,
-		state.meta.viewport.deviceType,
-		state.meta.viewport.mobile_width,
-		state.meta.viewport.tablet_width
-	]);
-
 };
 
 export const useStoreConfigure = async () => {

@@ -47,21 +47,6 @@ const AppContextProvider: React.FC<Props> = (props) => {
 					}
 				};
 
-			case meta.setDeviceType:
-
-				const deviceType: 'desktop' | 'tablet' | 'mobile' = action.payload;
-
-				return {
-					...state,
-					meta: {
-						...state.meta,
-						viewport: {
-							...state.meta.viewport,
-							deviceType: deviceType
-						}
-					}
-				};
-
 			case meta.clearErrors:
 
 				return {
