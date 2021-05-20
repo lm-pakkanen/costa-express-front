@@ -32,7 +32,6 @@ const useContactForm = (): IContactFormState => {
 		clearFormErrors();
 
 		// TODO: Check validity of inputs
-		// TODO: For security, move email variables to .env
 
 		e.preventDefault();
 
