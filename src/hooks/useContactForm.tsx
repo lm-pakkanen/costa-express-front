@@ -22,16 +22,22 @@ const useContactForm = (): IContactFormState => {
 
 	const onSenderEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
 		setSenderEmailError(null);
+		setFormError(null);
+		setFormAlert(null);
 		setSenderEmail(e.currentTarget.value);
 	};
 
 	const onSenderNameChange = (e: React.FormEvent<HTMLInputElement>) => {
 		setSenderNameError(null);
+		setFormError(null);
+		setFormAlert(null);
 		setSenderName(e.currentTarget.value);
 	};
 
 	const onMessageContentChange = (e: React.FormEvent<HTMLInputElement>) => {
 		setMessageContentError(null);
+		setFormError(null);
+		setFormAlert(null);
 		setMessageContent(e.currentTarget.value);
 	};
 
@@ -82,12 +88,29 @@ const useContactForm = (): IContactFormState => {
 
 	const validateFields = () => {
 
-		const emailValid = Validator.validateEmail(senderEmail);
+		let hasError = false;
+
+		const emailValid = Validator.validateContactFormEmail(senderEmail);
+		const nameValid = Validator.validateContactFormName(senderName);
+		const messageValid = Validator.validateContactFormMessage(messageContent);
 
 		if (!(typeof emailValid === 'boolean' && emailValid)) {
-			setFormError(emailValid);
 			setSenderEmailError(emailValid);
-			return;
+			hasError = true;
+		}
+
+		if (!(typeof nameValid === 'boolean' && nameValid)) {
+			setSenderNameError(nameValid);
+			hasError = true;
+		}
+
+		if (!(typeof messageValid === 'boolean' && messageValid)) {
+			setMessageContentError(messageValid);
+			hasError = true;
+		}
+
+		if (hasError) {
+			return setFormError('Jossain kentässä on virheellistä tietoa.');
 		}
 
 		return true;
@@ -112,6 +135,8 @@ const useContactForm = (): IContactFormState => {
 		setSenderEmailError(null);
 		setSenderNameError(null);
 		setMessageContentError(null);
+		setFormError(null);
+		setFormAlert(null);
 	};
 
 	return {

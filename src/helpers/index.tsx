@@ -1,4 +1,5 @@
 import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
 
 import constants from '../config/constants';
 
@@ -24,14 +25,34 @@ export function addStylesToClass(originStyle: string, styleList: string[]) {
 
 export const Validator = {
 
-	validateEmail: (email: string) => {
+	validateContactFormEmail: (email: string) => {
 
 		if (isEmail(email)) {
-			return true
+			return true;
 		} else {
-			return 'Sähköpostiosoite ei ole kelvollinen.'
+			return 'Sähköpostiosoite ei ole kelvollinen.';
 		}
 
 	},
+
+	validateContactFormName: (name: string) => {
+
+		if (isEmpty(name)) {
+			return 'Kenttä ei voi olla tyhjä.'
+		}
+
+		return true;
+
+	},
+
+	validateContactFormMessage: (message: string) => {
+
+		if (isEmpty(message)) {
+			return 'Kenttä ei voi olla tyhjä.'
+		}
+
+		return true;
+
+	}
 
 };

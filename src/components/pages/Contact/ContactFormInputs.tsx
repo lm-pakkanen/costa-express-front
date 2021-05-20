@@ -26,6 +26,11 @@ interface ISubmitButton extends IInput {
 	onClick: (e: any) => void
 }
 
+interface IFieldError {
+	style?: string,
+	message: string
+}
+
 export const TextInput: React.FC<ITextInput> = (props) => {
 
 	let style = styles.TextInput;
@@ -101,6 +106,22 @@ export const SubmitButton: React.FC<ISubmitButton> = (props) => {
 		>
 			{props.value}
 		</button>
+	);
+
+};
+
+export const FieldError: React.FC<IFieldError> = (props) => {
+
+	let style = styles.FieldError;
+
+	if (props.style) {
+		style = addStylesToClass(style, [props.style]);
+	}
+
+	return (
+		<div className={style}>
+			{props.message}
+		</div>
 	);
 
 };

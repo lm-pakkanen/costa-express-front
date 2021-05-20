@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { TextInput, TextAreaInput, SubmitButton } from './ContactFormInputs';
+import { TextInput, TextAreaInput, SubmitButton, FieldError } from './ContactFormInputs';
 
 import styles from './ContactForm.module.css';
+import inputStyles from './ContactFormInputs.module.css';
+
 import { addStylesToClass } from '../../../helpers';
 import useContactForm from '../../../hooks/useContactForm';
 
@@ -71,7 +73,7 @@ const ContactForm: React.FC<Props> = () => {
 
 				{
 					sender.emailError &&
-					<div>{sender.emailError}</div>
+					<FieldError message={sender.emailError} />
 				}
 
 			</FieldRow>
@@ -87,7 +89,7 @@ const ContactForm: React.FC<Props> = () => {
 
 				{
 					sender.nameError &&
-					<div>{sender.nameError}</div>
+					<FieldError message={sender.nameError} />
 				}
 
 			</FieldRow>
@@ -102,7 +104,7 @@ const ContactForm: React.FC<Props> = () => {
 
 				{
 					messageContentError &&
-					<div>{messageContentError}</div>
+					<FieldError message={messageContentError} />
 				}
 
 			</FieldRow>
@@ -110,7 +112,7 @@ const ContactForm: React.FC<Props> = () => {
 			{
 				formError &&
 				<FieldRow>
-					<div>{formError}</div>
+					<FieldError message={formError} style={inputStyles.FormError} />
 				</FieldRow>
 			}
 
