@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { meta, navigation } from '../config/actions';
+
+type IDeviceType = 'mobile' | 'tablet' | 'desktop';
 
 interface IViewportState {
-
+	viewport: {
+		width: number,
+		height: number
+	},
+	deviceType: IDeviceType
 }
 
-const useViewport = (target: Window | Element = window, onResizedCallback: () => void): IViewportState => {
+const useViewport = (onResizedCallback: () => void): IViewportState => {
 
 	// TODO: Variables
 	const mobileWidth = 400;
@@ -14,13 +19,13 @@ const useViewport = (target: Window | Element = window, onResizedCallback: () =>
 	const [viewportWidth, setViewportWidth] = useState(0);
 	const [viewportHeight, setViewportHeight] = useState(0);
 
-	const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('mobile');
+	const [deviceType, setDeviceType] = useState<IDeviceType>('mobile');
 
 	useEffect(() => {
 
 		const handleResize = () => {
 
-			let _deviceType: 'mobile' | 'tablet' | 'desktop' = 'desktop';
+			let _deviceType: IDeviceType = 'desktop';
 
 			if (window.innerWidth <= mobileWidth) {
 				_deviceType = 'mobile';
@@ -29,6 +34,9 @@ const useViewport = (target: Window | Element = window, onResizedCallback: () =>
 			}
 
 			setDeviceType(_deviceType);
+
+			setViewportWidth(window.innerWidth);
+			setViewportHeight(window.innerHeight);
 
 			/**
 			 *  Allows for event-triggering when target is resized
@@ -41,21 +49,20 @@ const useViewport = (target: Window | Element = window, onResizedCallback: () =>
 
 		handleResize();
 
-		target.addEventListener('resize', handleResize);
+		window.addEventListener('resize', handleResize);
 
 		return () => {
-			target.removeEventListener('resize', handleResize);
+			window.removeEventListener('resize', handleResize);
 		}
 
-	}, [
-		          dispatch,
-		          state.meta.viewport.deviceType,
-		          state.meta.viewport.mobile_width,
-		          state.meta.viewport.tablet_width
-	          ]);
+	}, [ mobileWidth, tabletWidth ]);
 
 	return {
-
+		viewport: {
+			width: viewportWidth,
+			height: viewportHeight
+		},
+		deviceType
 	};
 
 }
