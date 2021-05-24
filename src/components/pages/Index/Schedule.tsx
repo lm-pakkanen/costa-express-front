@@ -8,7 +8,7 @@ interface IScheduleBody {}
 
 interface ISchedule {}
 
-const ScheduleTitle: React.FC<IScheduleTitle> = (props) => {
+const ScheduleTitle: React.FC<IScheduleTitle> = () => {
 
 	return (
 		<h3 className={styles.ScheduleTitle}>
@@ -34,13 +34,13 @@ const ScheduleBodyRow: React.FC = (props) => {
 	);
 };
 
-const ScheduleBodyRowSeparator: React.FC = (props) => {
+const ScheduleBodyRowSeparator: React.FC = () => {
 	return (
 		<div className={styles.ScheduleBodyRowSeparator} />
 	);
 }
 
-const ScheduleBody: React.FC<IScheduleBody> = (props) => {
+const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 	return (
 		<div className={styles.ScheduleBody}>
@@ -106,10 +106,10 @@ const ScheduleBody: React.FC<IScheduleBody> = (props) => {
 
 };
 
-const Schedule: React.FC<ISchedule> = (props) => {
+const Schedule: React.FC<ISchedule> = () => {
 
 	return (
-		<div className={styles.Wrapper}>
+		<div className={styles.Wrapper} id={'Schedule'}>
 			<ScheduleTitle />
 			<ScheduleBody />
 		</div>
