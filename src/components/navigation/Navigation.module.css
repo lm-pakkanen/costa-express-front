@@ -27,7 +27,7 @@
 .Wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 0 8em;
+    padding: 0 2em;
     height: 100%;
     max-width: 1366px;
     margin: 0 auto;
@@ -36,12 +36,10 @@
 
 @media screen and (max-width: 1000px) {
     .Wrapper {
-        padding: 0 1.5em;
     }
 }
 
 @media screen and (max-width: 750px) {
     .Wrapper {
-        padding: 0;
     }
 }
