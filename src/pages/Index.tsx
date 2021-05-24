@@ -22,7 +22,7 @@ const Index: React.FC<Props> = () => {
                 wrapperStyle={styles.WrapperStyle}
             >
 
-                <SubPage styles={[styles.subPageStyle]}>
+                <SubPage styles={[styles.SubPageStyle]}>
 
                     <IndexContainer>
 

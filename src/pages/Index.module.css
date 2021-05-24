@@ -1,7 +1,8 @@
 .Index {
+    padding-top: 0;
 }
 
-.subPageStyle {
+.SubPageStyle {
     background: url('http://localhost:3000/img/Mobile hero.svg') no-repeat center;
     background-size: cover;
 }
