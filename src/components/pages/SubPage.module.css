@@ -4,3 +4,7 @@
     min-height: 100vh;
     flex: 1;
 }
+
+.SubPage:last-child {
+    min-height: calc(100vh - 65px);
+}

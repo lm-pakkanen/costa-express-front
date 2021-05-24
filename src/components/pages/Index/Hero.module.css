@@ -1,0 +1,38 @@
+.HeroCTA {
+    display: flex;
+    flex-direction: column;
+}
+
+.HeroCTAButton {
+    min-width: 220px;
+    padding: .45em 1.3em;
+    margin: 0 auto 1.2em;
+    background-color: hsla(0, 85%, 35%, 1);
+    background-image: linear-gradient(hsla(0, 90%, 38%, .7), hsla(0, 90%, 25%, .6));
+    border: 2px solid hsla(0, 100%, 20%, .6);
+    border-radius: .8em;
+    box-shadow: 0 .1em .3em .2em hsla(240, 5%, 10%, .5);
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.HeroCTAButton:last-of-type {
+    margin: 0 auto;
+}
+
+.HeroLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 2.5em;
+}
+
+.Logo {
+    font-size: 2em;
+}
+
+.Slogan {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}

@@ -4,8 +4,10 @@ import PageBoundary from '../components/boundaries/PageBoundary';
 
 import Page from '../components/pages/Page';
 import SubPage from '../components/pages/SubPage';
+import LayoutContainer from '../components/pages/LayoutContainer';
 
-import IndexContainer from '../components/pages/Index/IndexContainer';
+import Hero from '../components/pages/Index/Hero';
+import Schedule from '../components/pages/Index/Schedule';
 
 import styles from './Index.module.css';
 
@@ -18,15 +20,27 @@ const Index: React.FC<Props> = () => {
 
             <Page
                 style={styles.Index}
-                navigationStyle={styles.NavigationStyle}
-                wrapperStyle={styles.WrapperStyle}
+                wrapperStyle={styles.PageWrapper}
+                navigationStyle={styles.Navigation}
             >
 
-                <SubPage styles={[styles.SubPageStyle]}>
+                <SubPage style={styles.HeroSubPage}>
 
-                    <IndexContainer>
+                    <LayoutContainer style={styles.HeroLayoutContainer}>
 
-                    </IndexContainer>
+                        <Hero />
+
+                    </LayoutContainer>
+
+                </SubPage>
+
+                <SubPage>
+
+                    <LayoutContainer>
+
+                        <Schedule />
+
+                    </LayoutContainer>
 
                 </SubPage>
 

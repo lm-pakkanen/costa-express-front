@@ -1,11 +1,10 @@
-.IndexContainer {
+.LayoutContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 100px 0;
+    margin: 100px 0 0;
     padding: 0 2em;
     box-sizing: border-box;
     overflow: hidden;
-    color: white;
     flex: 1;
 }
