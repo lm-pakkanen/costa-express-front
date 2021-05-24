@@ -18,7 +18,7 @@ const useScrollStatus = (target: Document | Element = document) => {
 			target.removeEventListener('scroll', handleScroll);
 		};
 
-	}, [ scrolled ]);
+	}, [ target, scrolled ]);
 
 	return scrolled;
 

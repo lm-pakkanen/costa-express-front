@@ -46,7 +46,7 @@ const useMetaConfigure = () => {
 	const path = useLocation().pathname;
 
 	const appContext = useContext(appStore);
-	const { dispatch, state } = appContext;
+	const { dispatch } = appContext;
 
 	const {
 		getCookieConsent,
