@@ -57,7 +57,15 @@ const Navigation: React.FC<Props> = (props) => {
 
         setStyle(newStyle);
 
-    }, [ isScrolled, isFloaterVisible, deviceType, defaultStyle, setStyle ]);
+    }, [
+        isScrolled,
+        isFloaterVisible,
+        deviceType,
+        defaultStyle,
+        setStyle,
+        props.scrolledStyle,
+        props.style
+    ]);
 
     return (
 
