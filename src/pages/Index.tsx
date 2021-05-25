@@ -36,7 +36,7 @@ const Index: React.FC<Props> = () => {
 
                 <SubPage>
 
-                    <LayoutContainer>
+                    <LayoutContainer style={styles.ScheduleLayoutContainer}>
 
                         <Schedule />
 

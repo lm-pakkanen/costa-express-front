@@ -1,5 +1,8 @@
 .Wrapper {
+    display: flex;
+    flex-direction: column;
     overflow: auto;
+    padding: 30px;
 }
 
 .ScheduleTitle {
@@ -12,6 +15,9 @@
 .ScheduleBody {
     display: flex;
     overflow: auto;
-    border: 2px solid hsla(240, 5%, 20%, .6);
+    background: hsla(240, 5%, 10%, .6);
+    border: 3px solid hsla(240, 5%, 12%, .9);
     border-radius: .2em;
+    box-shadow: 0 0 .4em .3em hsla(240, 5%, 5%, .7);
+    box-sizing: border-box;
 }

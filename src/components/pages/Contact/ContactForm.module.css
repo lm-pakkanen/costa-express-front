@@ -6,7 +6,7 @@
     background: hsla(240, 5%, 10%, .6);
     border: 3px solid hsla(240, 5%, 20%, .6);
     border-radius: .3em;
-    box-shadow: 0 0 .4em .2em hsla(250, 5%, 5%, 1);
+    box-shadow: 0 0 .4em .2em hsla(240, 5%, 5%, 1);
 }
 
 .FieldRow {
