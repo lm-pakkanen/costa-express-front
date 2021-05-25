@@ -1,7 +1,8 @@
 import React from 'react';
 
-import styles from './Schedule.module.css';
 import { TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
+
+import styles from './Schedule.module.css';
 
 interface IScheduleTitle {}
 
