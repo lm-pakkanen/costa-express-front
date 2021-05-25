@@ -9,13 +9,13 @@
 .TextAreaInput
 {
     width: 100%;
-    padding: .6em .5em;
-    background: hsla(240, 5%, 12%, .7);
-    border-top: 2px solid hsla(240, 5%, 50%, .7);
-    border-left: 2px solid hsla(240, 5%, 50%, .7);
-    border-right: 2px solid hsla(240, 5%, 25%, .9);
-    border-bottom: 2px solid hsla(240, 5%, 25%, .9);
-    border-radius: .3em;
+    padding: .9em .8em;
+    background: hsla(240, 5%, 7%, .8);
+    border-top: 2px solid hsla(240, 5%, 3%, .7);
+    border-left: 2px solid hsla(240, 5%, 3%, .7);
+    border-right: 2px solid hsla(240, 5%, 6%, 1);
+    border-bottom: 2px solid hsla(240, 5%, 6%, 1);
+    border-radius: .1em;
     font-size: inherit;
     font-weight: inherit;
     text-decoration: none;
@@ -23,14 +23,24 @@
     box-sizing: border-box;
 }
 
-.TextInput {
-
+.TextInput:focus,
+.TextAreaInput:focus
+{
+    background: hsla(240, 5%, 8%, .8);
+    box-shadow: 0 0 .2em .1em hsla(240, 5%, 8%, .6);
 }
+
 
 .TextInputWithError,
 .TextAreaInputWithError
 {
-    background: hsla(0, 60%, 50%, .9);
+    background: hsla(0, 70%, 14%, .7);
+}
+
+.TextInputWithError:focus,
+.TextAreaInputWithError:focus
+{
+    background: hsla(0, 70%, 15%, .7);
 }
 
 .TextAreaInput > * {
@@ -50,24 +60,28 @@
     font-weight: bold;
 }
 
+.SubmitButton:hover {
+    background-image: linear-gradient(hsla(200, 90%, 52%, .7), hsla(200, 80%, 25%, .6));
+}
+
 label {
     padding-left: .5em;
 }
 
 .FieldError {
     margin: .5em .3em 0;
-    color: hsla(0, 60%, 50%, 1) !important;
+    color: hsla(0, 70%, 50%, 1) !important;
     font-weight: bold;
     font-size: .9em;
 }
 
 .FormError {
-    padding: .5em 1em;
+    padding: 1.2em 1em;
     margin: 1em 0;
     color: white !important;
     border-radius: 2px;
-    background: hsla(0, 60%, 50%, 1);
-    box-shadow: 0 0 .7em .5em hsla(0, 0%, 0%, .2);
-    font-size: 1.2em;
+    background: hsla(0, 70%, 15%, .8);
+    box-shadow: 0 0 .7em .5em hsla(0, 0%, 0%, .3);
+    font-size: 1.1em;
     text-align: center;
 }

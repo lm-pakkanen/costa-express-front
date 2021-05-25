@@ -65,7 +65,7 @@ const ContactForm: React.FC<Props> = () => {
 			<FieldRow>
 
 				<TextInput value={sender.email}
-				           placeholder={'Sähköpostiosoite'}
+				           placeholder={'Sähköpostiosoite...'}
 				           label={'Sähköpostiosoite'}
 				           hasError={sender.emailError !== null}
 				           onChange={onSenderEmailChange}
@@ -81,7 +81,7 @@ const ContactForm: React.FC<Props> = () => {
 			<FieldRow>
 
 				<TextInput value={sender.name}
-				           placeholder={'Etu- ja sukunimi'}
+				           placeholder={'Etu- ja sukunimi...'}
 				           label={'Etu- ja sukunimi'}
 				           hasError={sender.nameError !== null}
 				           onChange={onSenderNameChange}
@@ -98,6 +98,7 @@ const ContactForm: React.FC<Props> = () => {
 
 				<TextAreaInput value={messageContent}
 				               label={'Viesti'}
+				               placeholder={'Viesti...'}
 				               hasError={messageContentError !== null}
 				               onChange={onMessageContentChange}
 				/>
