@@ -13,9 +13,10 @@
     flex-direction: column;
     height: 65px;
     padding: 0 2em 0;
+    background: hsla(240, 6%, 10%, 1);
+    border-top: 2px solid hsla(240, 6%, 5%, .7);
     font-size: .9em;
     box-sizing: border-box;
-    background: hsla(240, 5%, 6%, 1);
 }
 
 .ContentWrapper {
