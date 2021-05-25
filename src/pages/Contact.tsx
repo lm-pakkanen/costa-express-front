@@ -3,7 +3,8 @@ import React from 'react';
 import PageBoundary from '../components/boundaries/PageBoundary';
 
 import Page from '../components/pages/Page';
-import ContactContainer from '../components/pages/Contact/ContactContainer';
+import LayoutContainer from '../components/pages/LayoutContainer';
+
 import ContactForm from '../components/pages/Contact/ContactForm';
 
 import styles from './Contact.module.css';
@@ -17,11 +18,11 @@ const Contact: React.FC<Props> = () => {
 
 			<Page style={styles.Contact}>
 
-				<ContactContainer>
+				<LayoutContainer>
 
 					<ContactForm />
 
-				</ContactContainer>
+				</LayoutContainer>
 
 			</Page>
 
