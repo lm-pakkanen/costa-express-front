@@ -10,10 +10,10 @@ import inputStyles from './NavInputs.module.css';
 
 interface ILink {
 	path: string,
-	styles?: string[]
+	style?: string
 }
 
-export const Brand: React.FC<ILink> = (props) => {
+export const Brand: React.FC<ILink> = () => {
 
 	const logo: IImage = {
 		url:  `${constants.BASE_URI}/img/logo.svg`,
@@ -27,9 +27,8 @@ export const Brand: React.FC<ILink> = (props) => {
 			href={new URL('/', constants.BASE_URI)}
 			text={'CostaExpress'}
 			title={'Etusivu'}
-			isActive={props.path === '/'}
 			image={logo}
-			styles={[inputStyles.NavLinkBrand]}
+			style={inputStyles.NavLinkBrand}
 		/>
 	);
 
@@ -43,8 +42,8 @@ export const Contact: React.FC<ILink> = (props) => {
 			href={new URL('ota-yhteytta', constants.BASE_URI)}
 			text={'Ota yhteyttä'}
 			title={'Ota yhteyttä'}
-			isActive={props.path === 'ota-yhteytta'}
-			styles={props.styles}
+			isActive={props.path === '/ota-yhteytta'}
+			style={props.style}
 		/>
 	);
 

@@ -32,7 +32,7 @@ const MobileNavigation: React.FC = () => {
 			<NavFloater>
 
 				<NavFloaterToggler />
-				<Contact path={path} styles={[styles.FloaterLink]} />
+				<Contact path={path} style={styles.FloaterLink} />
 
 			</NavFloater>
 		</>

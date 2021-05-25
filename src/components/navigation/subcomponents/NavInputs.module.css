@@ -16,7 +16,9 @@
     box-sizing: border-box;
     border: none;
 }
-.NavLink:hover {
+.NavLink:hover,
+.NavLink.active
+{
     border-bottom: 2px solid hsla(240, 5%, 75%, .8);
 }
 
@@ -27,10 +29,6 @@
 
 .NavLinkBrand > img {
     width: 120px;
-}
-
-.NavLinkActive {
-    border-bottom: 2px solid hsla(0, 100%, 54%, .5);
 }
 
 /** ===================== */

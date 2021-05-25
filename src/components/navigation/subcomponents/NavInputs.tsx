@@ -10,26 +10,24 @@ import IImage from '../../../interfaces/IImage';
 
 import styles from './NavInputs.module.css';
 
-interface INavButton {
+interface INavInput {
 	id: string,
-	type?: 'button' | 'submit',
 	text: string | number,
 	title?: string,
 	isActive?: boolean,
-	onClick?: (e?: React.MouseEvent<HTMLInputElement>) => void,
-	buttonRef?: React.MutableRefObject<any>,
-	styles?: string[]
+	style?: string
 }
 
-interface INavLink {
-	id: string,
+interface INavButton extends INavInput {
+	type?: 'button' | 'submit',
+	buttonRef?: React.MutableRefObject<any>,
+	onClick?: (e?: React.MouseEvent<HTMLInputElement>) => void,
+}
+
+interface INavLink extends INavInput {
 	href: URL,
-	text: string | number,
-	isActive?: boolean,
 	target?: '_blank' | '_self',
-	title?: string,
 	image?: IImage,
-	styles?: string[]
 }
 
 
@@ -39,7 +37,7 @@ export const NavButton:React.FC<INavButton> = (props) => {
 
 	if (props.isActive) { style = addStylesToClass(style, [styles.active]); }
 
-	if (props.styles) { style = addStylesToClass(style, props.styles); }
+	if (props.style) { style = addStylesToClass(style, [props.style]); }
 
 	return (
 		<input
@@ -62,7 +60,7 @@ export const NavLink:React.FC<INavLink> = (props) => {
 
 	let style = styles.NavLink;
 
-	if (props.styles) { style = addStylesToClass(style, props.styles); }
+	if (props.style) { style = addStylesToClass(style, [props.style]); }
 
 	if (props.isActive) { style = addStylesToClass(style, [styles.active]); }
 
@@ -99,7 +97,7 @@ export const NavFloaterToggler: React.FC = () => {
 	const { state, dispatch } = appContext;
 	const ref = state.navigation.refs.togglerRef;
 
-	const handleClick = (e: React.MouseEvent) => {
+	const handleClick = () => {
 		dispatch({ type: navigation.toggleFloater });
 	};
 
