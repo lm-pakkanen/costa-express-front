@@ -20,6 +20,10 @@
     margin: 0 auto;
 }
 
+.HeroCTAButton:hover {
+    background-image: linear-gradient(hsla(0, 90%, 44%, .7), hsla(0, 90%, 26%, .6));
+}
+
 .HeroLogo {
     display: flex;
     flex-direction: column;
