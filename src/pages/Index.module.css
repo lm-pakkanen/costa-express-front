@@ -1,3 +1,8 @@
+.Navigation {
+    background: hsla(240, 6%, 8%, 0);
+    border: none;
+}
+
 .Index {
     padding-top: 0;
 }

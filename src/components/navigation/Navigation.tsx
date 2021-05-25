@@ -11,9 +11,12 @@ import MobileNavigation from './subcomponents/_MobileNavigation';
 import styles from './Navigation.module.css';
 import useScrollStatus from '../../hooks/useScrollStatus';
 
-interface Props {}
+interface Props {
+    style?: string,
+    scrolledStyle?: string
+}
 
-const Navigation: React.FC<Props> = () => {
+const Navigation: React.FC<Props> = (props) => {
 
     const appContext = useContext(appStore);
     const { state } = appContext;
@@ -31,7 +34,15 @@ const Navigation: React.FC<Props> = () => {
         let newStyle = defaultStyle;
 
         if (isScrolled) {
-            newStyle = addStylesToClass(newStyle, [styles.scrolled]);
+
+            if (props.scrolledStyle) {
+                newStyle = addStylesToClass(newStyle, [props.scrolledStyle]);
+            } else {
+                newStyle = addStylesToClass(newStyle, [styles.scrolled]);
+            }
+
+        } else if (props.style) {
+            newStyle = addStylesToClass(newStyle, [props.style]);
         }
 
         if (isFloaterVisible) {

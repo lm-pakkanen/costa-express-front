@@ -29,7 +29,7 @@ const Page: React.FC<Props> = (props) => {
 
     return (
         <div className={style}>
-            <Navigation />
+            <Navigation style={props.navigationStyle} />
             <div className={wrapperStyle}>
                 {props.children}
             </div>
