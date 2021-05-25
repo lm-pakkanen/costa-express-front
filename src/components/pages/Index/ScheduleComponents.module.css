@@ -1,0 +1,15 @@
+.TableColumn {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.TableRow {
+    padding: 1.5em;
+    text-align: center;
+}
+
+.TableRowSeparator {
+    height: 2px;
+    background: hsla(240, 5%, 20%, .6);
+}

@@ -15,19 +15,3 @@
     border: 2px solid hsla(240, 5%, 20%, .6);
     border-radius: .2em;
 }
-
-.ScheduleBodyColumn {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.ScheduleBodyRow {
-    padding: 1.5em;
-    text-align: center;
-}
-
-.ScheduleBodyRowSeparator {
-    height: 2px;
-    background: hsla(240, 5%, 20%, .6);
-}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Schedule.module.css';
+import { TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
 
 interface IScheduleTitle {}
 
@@ -18,88 +19,68 @@ const ScheduleTitle: React.FC<IScheduleTitle> = () => {
 
 };
 
-const ScheduleBodyColumn: React.FC = (props) => {
-	return (
-		<div className={styles.ScheduleBodyColumn}>
-			{ props.children }
-		</div>
-	);
-};
 
-const ScheduleBodyRow: React.FC = (props) => {
-	return (
-		<div className={styles.ScheduleBodyRow}>
-			{ props.children }
-		</div>
-	);
-};
-
-const ScheduleBodyRowSeparator: React.FC = () => {
-	return (
-		<div className={styles.ScheduleBodyRowSeparator} />
-	);
-}
 
 const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 	return (
 		<div className={styles.ScheduleBody}>
 
-			<ScheduleBodyColumn>
+			<TableColumn>
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Lähtöpaikka
-				</ScheduleBodyRow>
+				</TableRow>
 
-				<ScheduleBodyRowSeparator />
+				<TableRowSeparator />
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Suomi
-				</ScheduleBodyRow>
+				</TableRow>
 
-			</ScheduleBodyColumn>
+			</TableColumn>
 
-			<ScheduleBodyColumn>
+			<TableColumn>
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Kohde
-				</ScheduleBodyRow>
+				</TableRow>
 
-				<ScheduleBodyRowSeparator />
+				<TableRowSeparator />
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Espanja
-				</ScheduleBodyRow>
+				</TableRow>
 
-			</ScheduleBodyColumn>
+			</TableColumn>
 
-			<ScheduleBodyColumn>
+			<TableColumn>
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Lähtee
-				</ScheduleBodyRow>
+				</TableRow>
 
-				<ScheduleBodyRowSeparator />
+				<TableRowSeparator />
 
-				<ScheduleBodyRow>
+				<TableRow>
 					29.5.2021
-				</ScheduleBodyRow>
+				</TableRow>
 
-			</ScheduleBodyColumn>
+			</TableColumn>
 
-			<ScheduleBodyColumn>
+			<TableColumn>
 
-				<ScheduleBodyRow>
+				<TableRow>
 					Perillä
-				</ScheduleBodyRow>
+				</TableRow>
 
-				<ScheduleBodyRowSeparator />
+				<TableRowSeparator />
 
-				<ScheduleBodyRow>
+				<TableRow>
 					6.6.2021
-				</ScheduleBodyRow>
+				</TableRow>
 
-			</ScheduleBodyColumn>
+			</TableColumn>
 
 		</div>
 	);
