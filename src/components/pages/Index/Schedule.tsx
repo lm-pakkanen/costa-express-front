@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import papa from 'papaparse';
+import React from 'react';
+
+import useSchedule from '../../../hooks/controllers/useSchedule';
 
 import { TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
 
-interface IScheduleDataRow {
-	startCountry: string,
-	endCountry: string,
-	startTime: string,
-	endTime: string
-}
-
 interface IScheduleData {
-	startCountries: string[],
-	endCountries: string[],
-	startTimes: string[],
-	endTimes: string[]
+	startCountries: null | string[],
+	endCountries: null | string[],
+	startTimes: null | string[],
+	endTimes: null | string[]
 }
 
 interface IGetDataRows {
@@ -32,52 +26,6 @@ interface IScheduleBody {}
 
 interface ISchedule {}
 
-const getScheduleData = async () => {
-
-	const getCSVData = async () => {
-
-		try {
-
-			const fileContents = await fetch('/assets/Schedule.csv');
-
-			if (!fileContents.body) {
-				return false;
-			}
-
-			const reader = fileContents.body.getReader();
-			const readResult = await reader.read();
-
-			const decoder = new TextDecoder('utf-8');
-
-			return decoder.decode(readResult.value);
-
-		} catch (err) {
-			console.error(err);
-			return false;
-		}
-
-	};
-
-	const csvData = await getCSVData();
-
-	if (!csvData) {
-		return false;
-	}
-
-	const parsedData = papa.parse(csvData, { header: true });
-
-	if (parsedData.errors.length !== 0) {
-		console.error(parsedData.errors);
-		return false;
-	}
-
-	if (!parsedData.data) {
-		return false;
-	}
-
-	return parsedData.data;
-
-};
 
 const ScheduleTitle: React.FC<IScheduleTitle> = () => {
 
@@ -93,9 +41,11 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
 	if (!(props.data && props.column)) { return <TableRow /> }
 
-	const jsx = props.data[props.column].map(
-		(row: string) => <TableRow key={Math.random()}>{row}</TableRow>
-	);
+	const data = props.data[props.column];
+
+	if (!data) { return <TableRow /> }
+
+	const jsx = data.map((row: string) => <TableRow key={Math.random()}>{ row }</TableRow> );
 
 	return (
 		<>{jsx}</>
@@ -105,46 +55,7 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
 const ScheduleBody: React.FC<IScheduleBody> = () => {
 
-	const [scheduleData, setScheduleData] = useState<null | IScheduleData>(null)
-
-	useEffect(() => {
-
-		getScheduleData().then((data) => {
-
-			if (!data) {
-				console.error('No data was found for schedule');
-				return false;
-			}
-
-
-			const startCountries = [];
-			const endCountries = [];
-			const startTimes = [];
-			const endTimes = [];
-
-			for (let _row of data) {
-
-				const row = _row as IScheduleDataRow;
-
-				startCountries.push(row.startCountry);
-				endCountries.push(row.endCountry);
-				startTimes.push(row.startTime);
-				endTimes.push(row.endTime);
-
-			}
-
-			const resultData = {
-				startCountries,
-				endCountries,
-				startTimes,
-				endTimes
-			};
-
-			setScheduleData(resultData);
-
-		});
-
-	}, []);
+	const { data: scheduleData } = useSchedule();
 
 	return (
 		<div className={styles.ScheduleBody}>
