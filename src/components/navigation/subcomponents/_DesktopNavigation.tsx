@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Brand, Contact } from './Links';
+import { Brand } from './Links';
 
 import { appStore } from '../../../contexts/AppContext';
 
@@ -21,8 +21,6 @@ const DesktopNavigation: React.FC = () => {
 			</NavLinksLeft>
 
 			<NavLinksRight>
-
-				<Contact path={path} />
 
 			</NavLinksRight>
 

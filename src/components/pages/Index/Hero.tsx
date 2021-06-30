@@ -66,8 +66,8 @@ const HeroCTA: React.FC<IHeroCTA> = (props) => {
 		window.location.hash = 'Schedule';
 	};
 
-	const RedirectToContactPage = () => {
-		window.location.href = `${constants.BASE_URI}/ota-yhteytta`;
+	const ScrollToContactInfo = () => {
+		window.location.hash = 'ContactInfo';
 	};
 
 	return (
@@ -80,8 +80,8 @@ const HeroCTA: React.FC<IHeroCTA> = (props) => {
 			/>
 
 			<HeroCTAButton value={'Ota yhteyttä'}
-			               title={'Ota meihin yhteyttä sähköpostilla'}
-			               onClick={RedirectToContactPage}
+			               title={'Ota meihin yhteyttä'}
+			               onClick={ScrollToContactInfo}
 			/>
 
 		</div>

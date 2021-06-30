@@ -46,7 +46,7 @@ const App: React.FC<Props> = () => {
                 />
 
                 <Route
-                    path={'/ota-yhteytta'}
+                    path={'/tarjouspyynto'}
                     exact
                     component={
                         () => <Contact />
