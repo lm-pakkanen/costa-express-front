@@ -1,20 +1,20 @@
 .FooterWrapper {
     position: relative;
     height: 65px;
+    border-top: 2px solid hsla(240, 5%, 3%, .5);
     box-sizing: border-box;
 }
 
 .Footer {
     position: absolute;
+    top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    height: 65px;
-    padding: 0 2em 0;
+    height: 63px;
     background: hsla(240, 6%, 10%, 1);
-    border-top: 2px solid hsla(240, 6%, 5%, .7);
     font-size: .9em;
     box-sizing: border-box;
 }
@@ -32,4 +32,17 @@
 
 .ContentWrapper.Links > a {
     margin: 0 2em;
+}
+
+@media screen and (min-width: 1000px) {
+
+    .Footer {
+        max-width: 1366px;
+        margin: 0 auto;
+    }
+
+    .ContentWrapper.Links {
+        justify-content: flex-start;
+    }
+
 }
