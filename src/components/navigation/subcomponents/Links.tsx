@@ -17,8 +17,8 @@ export const Brand: React.FC<ILink> = () => {
 
 	const logo: IImage = {
 		url:  `${constants.BASE_URI}/img/logo.svg`,
-		alt: 'CostaExpress etusivu',
-		title: 'Etusivu'
+		alt: 'Etusivu',
+		title: 'CostaExpress etusivu'
 	};
 
 	return (

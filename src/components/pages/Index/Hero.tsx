@@ -5,6 +5,7 @@ import constants from '../../../config/constants';
 import { addStylesToClass } from '../../../helpers';
 
 import styles from './Hero.module.css'
+import IImage from '../../../interfaces/IImage';
 
 interface IHeroLogo {}
 
@@ -21,10 +22,16 @@ interface IHero  {}
 
 const HeroLogo: React.FC<IHeroLogo> = (props) => {
 
+	const logo: IImage = {
+		url:  `${constants.BASE_URI}/img/logo.svg`,
+		alt: 'CostaExpress',
+		title: 'CostaExpress'
+	};
+
 	return (
 		<div className={styles.HeroLogo}>
 			<h1 className={styles.Logo}>
-				<img src={''} alt={'CostaExpress'} />
+				<img src={logo.url} alt={logo.alt} title={logo.title} />
 			</h1>
 
 			<h2 className={styles.Slogan}>
