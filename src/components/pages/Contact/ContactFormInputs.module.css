@@ -49,7 +49,7 @@
 
 .SubmitButton {
     padding: .5em 3em;
-    margin: 1.5em auto 0;
+    margin: 1em auto 0;
     color: white !important;
     background-color: hsla(200, 78%, 50%, 1);
     background-image: linear-gradient(hsla(200, 90%, 45%, .7), hsla(200, 80%, 25%, .6));
@@ -84,4 +84,12 @@ label {
     box-shadow: 0 0 .7em .5em hsla(0, 0%, 0%, .3);
     font-size: 1.1em;
     text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+
+    .TextInput {
+        max-width: 500px;
+    }
+
 }

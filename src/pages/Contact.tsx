@@ -16,7 +16,7 @@ const Contact: React.FC<Props> = () => {
 	return (
 		<PageBoundary>
 
-			<Page style={styles.Contact}>
+			<Page style={styles.Contact} wrapperStyle={styles.PageWrapper} >
 
 				<LayoutContainer>
 

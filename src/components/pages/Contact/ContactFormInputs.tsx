@@ -18,6 +18,7 @@ interface ITextInput extends IInput {
 
 interface ITextAreaInput extends IInput {
 	onChange: (e: any) => void,
+	rows: number,
 	placeholder?: string
 	label?: string
 }
@@ -83,7 +84,7 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 				className={style}
 				placeholder={props.placeholder}
 				onChange={props.onChange}
-				rows={15}
+				rows={props.rows}
 				value={props.value}
 			/>
 
