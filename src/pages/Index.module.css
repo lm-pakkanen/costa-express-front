@@ -21,3 +21,8 @@
 .ScheduleLayoutContainer {
     padding: 20px;
 }
+
+.ScheduleScrollAnchor {
+    position: absolute;
+    bottom: 100px;
+}

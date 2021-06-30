@@ -8,6 +8,7 @@ import LayoutContainer from '../components/pages/LayoutContainer';
 
 import Hero from '../components/pages/Index/Hero';
 import Schedule from '../components/pages/Index/Schedule';
+import InfoBoxes from '../components/pages/Index/InfoBoxes';
 
 import styles from './Index.module.css';
 
@@ -30,6 +31,8 @@ const Index: React.FC<Props> = () => {
 
                         <Hero />
 
+                        <span id={'Schedule'} className={styles.ScheduleScrollAnchor} />
+
                     </LayoutContainer>
 
                 </SubPage>
@@ -39,6 +42,8 @@ const Index: React.FC<Props> = () => {
                     <LayoutContainer style={styles.ScheduleLayoutContainer}>
 
                         <Schedule />
+
+                        <InfoBoxes />
 
                     </LayoutContainer>
 

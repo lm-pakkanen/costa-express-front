@@ -116,7 +116,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 const Schedule: React.FC<ISchedule> = () => {
 
 	return (
-		<div className={styles.Wrapper} id={'Schedule'}>
+		<div className={styles.Wrapper}>
 			<ScheduleTitle />
 			<ScheduleBody />
 		</div>
