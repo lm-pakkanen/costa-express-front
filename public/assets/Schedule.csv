@@ -1,3 +1,3 @@
-startCountry,endCountry,startTime,endTime
-Suomi,Espanja,29.5.2021,3.6.2021
-Espanja,Suomi,6.6.2021,10.6.2021
+startCountry,endCountry,startTime,endTime,hasSpaceAvailable
+Suomi,Espanja,29.5.2021,3.6.2021,true
+Espanja,Suomi,6.6.2021,10.6.2021,false

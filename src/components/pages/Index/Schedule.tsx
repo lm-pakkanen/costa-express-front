@@ -7,10 +7,11 @@ import { TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
 import styles from './Schedule.module.css';
 
 interface IScheduleData {
-	startCountries: null | string[],
-	endCountries: null | string[],
-	startTimes: null | string[],
-	endTimes: null | string[]
+	startCountryList: null | string[],
+	endCountryList: null | string[],
+	startTimeList: null | string[],
+	endTimeList: null | string[],
+	hasSpaceAvailableList: null | boolean[]
 }
 
 interface IGetDataRows {
@@ -18,14 +19,17 @@ interface IGetDataRows {
 	column: IScheduleFields,
 }
 
-type IScheduleFields = 'startCountries' | 'endCountries' | 'startTimes' | 'endTimes';
+interface IGetRequestButton {
+	data: null | IScheduleData
+}
+
+type IScheduleFields = 'startCountryList' | 'endCountryList' | 'startTimeList' | 'endTimeList';
 
 interface IScheduleTitle {}
 
 interface IScheduleBody {}
 
 interface ISchedule {}
-
 
 const ScheduleTitle: React.FC<IScheduleTitle> = () => {
 
@@ -53,9 +57,27 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
 };
 
+const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
+
+	if (!props.data) { return <TableRow /> }
+
+	const data = props.data['hasSpaceAvailableList'];
+
+	if (!data) { return <TableRow /> }
+
+	const jsx = data.map((row: boolean) => <TableRow key={Math.random()}> {
+		row ? <button value={'Pyydä tarjous'} /> : 'Kuljetus täynnä'
+	} </TableRow> );
+
+	return <>{jsx}</>;
+
+};
+
 const ScheduleBody: React.FC<IScheduleBody> = () => {
 
-	const { data: scheduleData } = useSchedule();
+	const { error, data: scheduleData } = useSchedule();
+
+	if (error) console.error(error);
 
 	return (
 		<div className={styles.ScheduleBody}>
@@ -68,7 +90,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'startCountries'} />
+				<GetDataRows data={scheduleData} column={'startCountryList'} />
 
 			</TableColumn>
 
@@ -80,7 +102,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'endCountries'} />
+				<GetDataRows data={scheduleData} column={'endCountryList'} />
 
 			</TableColumn>
 
@@ -92,7 +114,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'startTimes'} />
+				<GetDataRows data={scheduleData} column={'startTimeList'} />
 
 			</TableColumn>
 
@@ -104,7 +126,19 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'endTimes'} />
+				<GetDataRows data={scheduleData} column={'endTimeList'} />
+
+			</TableColumn>
+
+			<TableColumn>
+
+				<TableRow>
+					Pyydä tarjous
+				</TableRow>
+
+				<TableRowSeparator />
+
+				<GetRequestButton data={scheduleData} />
 
 			</TableColumn>
 

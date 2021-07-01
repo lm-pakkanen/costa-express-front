@@ -7,7 +7,8 @@ interface IScheduleDataRow {
 	startCountry: string,
 	endCountry: string,
 	startTime: string,
-	endTime: string
+	endTime: string,
+	hasSpaceAvailable: string
 }
 
 
@@ -15,10 +16,11 @@ const useSchedule = () => {
 
 	const [error, setError] = useState<null | CError>(null);
 
-	const [startCountries, setStartCountries] = useState<null | string[]>([]);
-	const [endCountries, setEndCountries] = useState<null | string[]>([]);
-	const [startTimes, setStartTimes] = useState<null | string[]>([]);
-	const [endTimes, setEndTimes] = useState<null | string[]>([]);
+	const [startCountryList, setStartCountryList] = useState<null | string[]>([]);
+	const [endCountryList, setEndCountryList] = useState<null | string[]>([]);
+	const [startTimeList, setStartTimeList] = useState<null | string[]>([]);
+	const [endTimeList, setEndTimeList] = useState<null | string[]>([]);
+	const [hasSpaceAvailableList, setHasSpaceAvailableList] = useState<null | boolean[]>([]);
 
 
 	const getScheduleData = async () => {
@@ -77,7 +79,7 @@ const useSchedule = () => {
 
 		getScheduleData().then((data) => {
 
-			if (!data || error) {
+			if (!data) {
 				return;
 			}
 
@@ -85,6 +87,7 @@ const useSchedule = () => {
 			const _endCountries = [];
 			const _startTimes = [];
 			const _endTimes = [];
+			const _hasSpaceAvailableList = [];
 
 			for (let _row of data) {
 
@@ -94,24 +97,28 @@ const useSchedule = () => {
 				_endCountries.push(row.endCountry);
 				_startTimes.push(row.startTime);
 				_endTimes.push(row.endTime);
+				_hasSpaceAvailableList.push(JSON.parse(row.hasSpaceAvailable.toLowerCase()));
 
 			}
 
-			setStartCountries(_startCountries);
-			setEndCountries(_endCountries);
-			setStartTimes(_startTimes);
-			setEndTimes(_endTimes);
+			setStartCountryList(_startCountries);
+			setEndCountryList(_endCountries);
+			setStartTimeList(_startTimes);
+			setEndTimeList(_endTimes);
+			setHasSpaceAvailableList(_hasSpaceAvailableList)
 
 		});
 
-	}, [ error ]);
+	}, []);
 
 	return {
+		error,
 		data: {
-			startCountries,
-			endCountries,
-			startTimes,
-			endTimes
+			startCountryList,
+			endCountryList,
+			startTimeList,
+			endTimeList,
+			hasSpaceAvailableList
 		}
 	};
 
