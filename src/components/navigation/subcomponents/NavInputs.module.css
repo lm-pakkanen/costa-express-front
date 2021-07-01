@@ -2,32 +2,33 @@
 /** NAVLINK COMPONENT */
 /** ================= */
 .NavLink {
-    display: inline-block;
-    height: 60px;
-    line-height: 60px;
+    display: flex;
+    flex-direction: column;
     padding: 0 .6em;
-    margin: auto .2em;
+    margin: 0 .2em;
     background: none;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 1.1em;
+    font-size: 16px;
     text-decoration: none;
-    box-sizing: border-box;
+    text-align: center;
     border: none;
 }
 
-.NavLink:hover,
-.NavLink.active
+.NavLink > div {
+    margin-top: 30px;
+    height: 25px;
+}
+
+.NavLink:hover > div,
+.NavLink.active > div,
+.NavLinkBrand:hover > div
 {
     border-bottom: 2px solid hsla(0, 100%, 40%, .8);
 }
 
 .NavLinkBrand {
-    //height: 80px;
-    //line-height: 90px;
 }
 
-.NavLinkBrand > img {
+.NavLinkBrand img {
     width: 120px;
 }
 

@@ -72,17 +72,21 @@ export const NavLink:React.FC<INavLink> = (props) => {
 			title={props.title && props.title}
 			target={props.target && props.target}
 		>
-			{props.image
-				?
-				(
-					<img
-						src={props.image.url.toString()}
-						alt={props.image.alt}
-						title={props.image.title && props.image.title}
-					/>
-				)
-				: props.text
-			}
+			<div>
+
+				{props.image
+					?
+					(
+						<img
+							src={props.image.url.toString()}
+							alt={props.image.alt}
+							title={props.image.title && props.image.title}
+						/>
+					)
+					: props.text
+				}
+
+			</div>
 		</a>
 	);
 }

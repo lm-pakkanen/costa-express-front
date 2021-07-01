@@ -56,10 +56,15 @@ const ContactForm: React.FC<Props> = () => {
 
 			<div className={styles.FormTitleWrapper}>
 				<h1 className={styles.FormTitle}>
-					Ota meihin yhteyttä!
+					Lähetä tarjouspyyntö kuljetukselle
 				</h1>
 				<h2 className={styles.FormDescription}>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					<span>
+						Tällä lomakkeella voit lähettää tarjouspyynnön kuljetukselle.
+					</span>
+					<span>
+						Ilmoitathan tiedot rahdista mahdollisimman tarkasti.
+					</span>
 				</h2>
 			</div>
 
@@ -70,7 +75,7 @@ const ContactForm: React.FC<Props> = () => {
 					<div>
 
 						<TextInput value={sender.name}
-						           placeholder={'Etu- ja sukunimi...'}
+						           placeholder={'Etu- ja sukunimi'}
 						           label={'Etu- ja sukunimi'}
 						           hasError={sender.nameError !== null}
 						           onChange={onSenderNameChange}
@@ -109,9 +114,24 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
+						<TextInput value={'12.7.2021'}
+						           label={'Kuljetuksen päivämäärä'}
+						           descriptionAfter={'Valitaksesi eri kuljetuksen, palaa etusivulle.'}
+						           readonly
+						/>
+
+					</div>
+
+				</FieldRow>
+
+				<FieldRow>
+
+					<div>
+
 						<TextAreaInput value={messageContent}
-						               label={'Viesti'}
-						               placeholder={'Viesti...'}
+						               label={'Tiedot rahdista'}
+						               placeholder={'Kuvaile rahdattavia tavaroita lyhyesti'}
+						               descriptionAfter={'Kerro millaista rahtia, kuinka paljon, miten rahti on pakattu, ja miten painavia rahdattavat ovat.'}
 						               hasError={messageContentError !== null}
 						               onChange={onMessageContentChange}
 						               rows={7}
@@ -126,13 +146,6 @@ const ContactForm: React.FC<Props> = () => {
 
 				</FieldRow>
 
-				{
-					formError &&
-					<FieldRow>
-						<FieldError message={formError} style={inputStyles.FormError} />
-					</FieldRow>
-				}
-
 				<FieldRow style={styles.SubmitButtonRow}>
 
 					<SubmitButton value={'Lähetä viesti'}
@@ -140,6 +153,11 @@ const ContactForm: React.FC<Props> = () => {
 					/>
 
 				</FieldRow>
+
+				{
+					formError &&
+					<FieldError message={formError} style={inputStyles.FormError} />
+				}
 
 			</div>
 

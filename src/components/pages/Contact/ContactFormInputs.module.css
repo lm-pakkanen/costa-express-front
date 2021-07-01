@@ -2,46 +2,49 @@
 .TextAreaInput,
 .SubmitButton
 {
-    margin-top: .4em;
+    margin: .4em 0 .8em;
 }
 
 .TextInput,
 .TextAreaInput
 {
     padding: .7em .5em;
-    background: hsla(216, 20%, 99%, 1);
-    border-top: 2px solid hsla(216, 20%, 60%, .7);
-    border-left: 2px solid hsla(216, 20%, 3%, .7);
-    border-right: 2px solid hsla(216, 20%, 6%, 1);
-    border-bottom: 2px solid hsla(216, 20%, 6%, 1);
+    background: hsla(216, 20%, 98%, 1);
     border: none;
     box-shadow: 0 0 .1em .1em hsla(240, 5%, 85%, .9);
     border-radius: .1em;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: inherit;
     text-decoration: none;
     font-family: inherit;
     box-sizing: border-box;
 }
 
-.TextInput:focus,
-.TextAreaInput:focus
+.TextInput:read-only,
+.TextAreaInput:read-only
 {
-    background: hsla(216, 20%, 96%, 1);
-    box-shadow: 0 0 0 .1em hsla(240, 5%, 70%, 1);
+    background: hsla(0, 0%, 90%, 1);
+    cursor: not-allowed;
+}
+
+.TextInput:focus:not(:read-only),
+.TextAreaInput:focus:not(:read-only)
+{
+    background: hsla(216, 20%, 99%, 1);
+    box-shadow: 0 0 .5em .1em hsla(240, 5%, 85%, .9);
 }
 
 
 .TextInputWithError,
 .TextAreaInputWithError
 {
-    background: hsla(0, 70%, 14%, .7);
+    box-shadow: 0 0 .1em .1em hsla(0, 90%, 40%, 1);
 }
 
 .TextInputWithError:focus,
 .TextAreaInputWithError:focus
 {
-    background: hsla(0, 70%, 15%, .7);
+    box-shadow: 0 0 .3em .1em hsla(0, 90%, 40%, 1);
 }
 
 .TextAreaInput > * {
@@ -65,29 +68,27 @@
     background-image: linear-gradient(hsla(141, 70%, 35%, .1), hsla(141, 70%, 15%, .1));
 }
 
-label {
-    color: hsla(240, 5%, 20%, 1);
+.FieldLabel {
     padding: 0 0 .3em .1em;
+    color: hsla(240, 5%, 20%, 1);
     font-weight: bold;
     font-size: 16px;
 }
 
+.FieldDescription {
+    padding: 0 0 .3em .1em;
+    color: hsla(240, 5%, 40%, 1);
+    font-size: 14px;
+}
+
 .FieldError {
-    margin: .5em .3em 0;
+    margin: .2em 0 0;
     color: hsla(0, 70%, 50%, 1) !important;
-    font-weight: bold;
-    font-size: .9em;
+    font-size: 14px;
 }
 
 .FormError {
-    padding: 1.2em 1em;
-    margin: 1em 0;
-    color: white !important;
-    border-radius: 2px;
-    background: hsla(0, 70%, 15%, .8);
-    box-shadow: 0 0 .7em .5em hsla(0, 0%, 0%, .3);
-    font-size: 1.1em;
-    text-align: center;
+    margin-top: 1.5em;
 }
 
 @media screen and (min-width: 1000px) {

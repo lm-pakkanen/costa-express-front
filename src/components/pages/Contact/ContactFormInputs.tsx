@@ -6,20 +6,23 @@ import { addStylesToClass } from '../../../helpers';
 interface IInput {
 	value: string,
 	style?: string,
+	descriptionBefore?: string,
+	descriptionAfter?: string,
 	hasError?: boolean
+	readonly?: boolean
 }
 
 
 interface ITextInput extends IInput {
-	onChange: (e: any) => void
-	placeholder?: string
-	label?: string
+	onChange?: (e: any) => void
+	placeholder?: string,
+	label?: string,
 }
 
 interface ITextAreaInput extends IInput {
-	onChange: (e: any) => void,
+	onChange?: (e: any) => void,
 	rows: number,
-	placeholder?: string
+	placeholder?: string,
 	label?: string
 }
 
@@ -48,14 +51,30 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 		<>
 
 			{ props.label && (
-				<label>{props.label}</label>
+				<label className={styles.FieldLabel}>
+					{ props.label }
+				</label>
+			)}
+
+			{ props.descriptionBefore && (
+				<span className={styles.FieldDescription}>
+					{ props.descriptionBefore }
+				</span>
 			)}
 
 			<input type={'text'}
 			       className={style}
 			       value={props.value}
 			       placeholder={props.placeholder}
-			       onChange={props.onChange} />
+			       onChange={props.onChange}
+			       readOnly={props.readonly}
+			/>
+
+			{ props.descriptionAfter && (
+				<span className={styles.FieldDescription}>
+					{ props.descriptionAfter }
+				</span>
+			)}
 
 		</>
 	);
@@ -77,7 +96,15 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 		<>
 
 			{ props.label && (
-				<label>{props.label}</label>
+				<label className={styles.FieldLabel}>
+					{ props.label }
+				</label>
+			)}
+
+			{ props.descriptionBefore && (
+				<span className={styles.FieldDescription}>
+					{ props.descriptionBefore }
+				</span>
 			)}
 
 			<textarea
@@ -86,7 +113,14 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 				onChange={props.onChange}
 				rows={props.rows}
 				value={props.value}
+				readOnly={props.readonly}
 			/>
+
+			{ props.descriptionAfter && (
+				<span className={styles.FieldDescription}>
+					{ props.descriptionAfter }
+				</span>
+			)}
 
 		</>
 	);
