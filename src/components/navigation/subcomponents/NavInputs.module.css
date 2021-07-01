@@ -7,7 +7,6 @@
     line-height: 60px;
     padding: 0 .6em;
     margin: auto .2em;
-    color: white;
     background: none;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
@@ -16,15 +15,16 @@
     box-sizing: border-box;
     border: none;
 }
+
 .NavLink:hover,
 .NavLink.active
 {
-    border-bottom: 2px solid hsla(240, 5%, 75%, .8);
+    border-bottom: 2px solid hsla(0, 100%, 40%, .8);
 }
 
 .NavLinkBrand {
-    height: 80px;
-    line-height: 90px;
+    //height: 80px;
+    //line-height: 90px;
 }
 
 .NavLinkBrand > img {

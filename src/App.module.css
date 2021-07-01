@@ -3,9 +3,8 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    font-family: 'Helvetica';
 }
 
 .App * {
-    color: hsla(225, 5%, 97%, 1);
+    font-family: 'Helvetica';
 }

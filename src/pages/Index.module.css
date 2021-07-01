@@ -1,13 +1,20 @@
-.Navigation {
-    background: hsla(240, 6%, 8%, 0);
-    border: none;
-}
-
 .Index {
     padding-top: 0;
 }
 
+.Navigation {
+    background: hsla(0, 0%, 0%, 0);
+    border: none;
+    box-shadow: none;
+    color: white;
+}
+
+.Navigation * {
+    color: hsla(240, 35%, 95%, 1);
+}
+
 .HeroSubPage {
+    min-height: 100vh;
     background: url('http://localhost:3000/img/Mobile hero.svg') no-repeat center;
     background-size: cover;
 }
@@ -15,11 +22,10 @@
 .HeroLayoutContainer {
     justify-content: center;
     padding: 0;
-    margin: 100px 0 0;
 }
 
 .ScheduleLayoutContainer {
-    padding: 20px;
+    padding: 4em 2em;
 }
 
 .ScheduleScrollAnchor {

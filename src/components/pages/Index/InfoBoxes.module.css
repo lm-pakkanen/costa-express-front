@@ -1,8 +1,9 @@
 .Title {
+    color: hsla(240, 5%, 10%, 1);
+    margin-bottom: 1em;
     font-size: 1.6em;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 1em;
 }
 
 .Container {
@@ -12,10 +13,11 @@
     max-width: 300px;
     margin: 0 auto;
     padding: 10px;
-    background: hsla(240, 5%, 10%, .6);
-    border: 2px solid hsla(240, 5%, 3%, .5);
-    border-radius: .2em;
-    box-shadow: 0 0 .4em .3em hsla(240, 5%, 5%, .7);
+    color: hsla(240, 35%, 95%, 1);
+    background: hsla(240, 5%, 20%, 1);
+    border: 2px solid hsla(240, 5%, 3%, .2);
+    border-radius: .5em;
+    box-shadow: .1em .1em .2em .1em hsla(240, 5%, 20%, .6);
     box-sizing: border-box;
 }
 

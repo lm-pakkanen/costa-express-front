@@ -4,18 +4,18 @@
     left: 0;
     right: 0;
     height: 100px;
-    background: hsla(240, 6%, 10%, 1);
+    background: hsla(216, 20%, 100%, 1);
+    box-shadow: 0 0 .1em .1em hsla(240, 5%, 3%, .1);
     box-sizing: border-box;
-    z-index: 100;
+    z-index: 1000;
+}
+
+.Navigation * {
+    color: hsla(240, 5%, 10%, 1);
 }
 
 .scrolled {
-    background: hsla(240, 6%, 10%, 1);
-    border-bottom: 2px solid hsla(240, 5%, 3%, .5);
-    box-shadow: 0 0 .8em .3em hsla(240, 5%, 3%, .3);
-}
 
-.scrolled:not(.floaterVisible) {
 }
 
 .tablet {
@@ -34,14 +34,4 @@
     max-width: 1366px;
     margin: 0 auto;
     box-sizing: border-box;
-}
-
-@media screen and (max-width: 1000px) {
-    .Wrapper {
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .Wrapper {
-    }
 }

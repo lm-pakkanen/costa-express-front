@@ -67,50 +67,62 @@ const ContactForm: React.FC<Props> = () => {
 
 				<FieldRow>
 
-					<TextInput value={sender.name}
-					           placeholder={'Etu- ja sukunimi...'}
-					           label={'Etu- ja sukunimi'}
-					           hasError={sender.nameError !== null}
-					           onChange={onSenderNameChange}
-					/>
+					<div>
 
-					{
-						sender.nameError &&
-						<FieldError message={sender.nameError} />
-					}
+						<TextInput value={sender.name}
+						           placeholder={'Etu- ja sukunimi...'}
+						           label={'Etu- ja sukunimi'}
+						           hasError={sender.nameError !== null}
+						           onChange={onSenderNameChange}
+						/>
 
-				</FieldRow>
+						{
+							sender.nameError &&
+							<FieldError message={sender.nameError} />
+						}
 
-				<FieldRow>
-
-					<TextInput value={sender.email}
-					           placeholder={'Sähköpostiosoite...'}
-					           label={'Sähköpostiosoite'}
-					           hasError={sender.emailError !== null}
-					           onChange={onSenderEmailChange}
-					/>
-
-					{
-						sender.emailError &&
-						<FieldError message={sender.emailError} />
-					}
+					</div>
 
 				</FieldRow>
 
 				<FieldRow>
 
-					<TextAreaInput value={messageContent}
-					               label={'Viesti'}
-					               placeholder={'Viesti...'}
-					               hasError={messageContentError !== null}
-					               onChange={onMessageContentChange}
-					               rows={7}
-					/>
+					<div>
 
-					{
-						messageContentError &&
-						<FieldError message={messageContentError} />
-					}
+						<TextInput value={sender.email}
+						           placeholder={'Sähköpostiosoite'}
+						           label={'Sähköpostiosoite'}
+						           hasError={sender.emailError !== null}
+						           onChange={onSenderEmailChange}
+						/>
+
+						{
+							sender.emailError &&
+							<FieldError message={sender.emailError} />
+						}
+
+					</div>
+
+				</FieldRow>
+
+				<FieldRow>
+
+					<div>
+
+						<TextAreaInput value={messageContent}
+						               label={'Viesti'}
+						               placeholder={'Viesti...'}
+						               hasError={messageContentError !== null}
+						               onChange={onMessageContentChange}
+						               rows={7}
+						/>
+
+						{
+							messageContentError &&
+							<FieldError message={messageContentError} />
+						}
+
+					</div>
 
 				</FieldRow>
 

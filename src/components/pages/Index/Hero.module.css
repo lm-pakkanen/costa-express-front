@@ -7,12 +7,13 @@
     min-width: 220px;
     padding: .45em 1.3em;
     margin: 0 auto 1.2em;
+    color: hsla(240, 35%, 95%, 1);
     background-color: hsla(0, 85%, 35%, 1);
     background-image: linear-gradient(hsla(0, 90%, 38%, .7), hsla(0, 90%, 25%, .6));
     border: 2px solid hsla(240, 5%, 3%, .5);;
     border-radius: .8em;
     box-shadow: 0 .1em .3em .2em hsla(240, 5%, 10%, .5);
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
