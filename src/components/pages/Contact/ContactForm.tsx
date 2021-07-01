@@ -28,6 +28,10 @@ const FieldRow: React.FC<IFieldRow> = (props) => {
 
 const ContactForm: React.FC<Props> = () => {
 
+	const urlParams = new URLSearchParams(window.location.search);
+
+	const selectedDate = urlParams.get('date');
+
 	const contactForm = useContactForm();
 
 	const {
@@ -75,7 +79,6 @@ const ContactForm: React.FC<Props> = () => {
 					<div>
 
 						<TextInput value={sender.name}
-						           placeholder={'Etu- ja sukunimi'}
 						           label={'Etu- ja sukunimi'}
 						           hasError={sender.nameError !== null}
 						           onChange={onSenderNameChange}
@@ -95,7 +98,6 @@ const ContactForm: React.FC<Props> = () => {
 					<div>
 
 						<TextInput value={sender.email}
-						           placeholder={'Sähköpostiosoite'}
 						           label={'Sähköpostiosoite'}
 						           hasError={sender.emailError !== null}
 						           onChange={onSenderEmailChange}
@@ -114,7 +116,7 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={'12.7.2021'}
+						<TextInput value={selectedDate ?? ''}
 						           label={'Kuljetuksen päivämäärä'}
 						           descriptionAfter={'Valitaksesi eri kuljetuksen, palaa etusivulle.'}
 						           readonly
@@ -128,9 +130,48 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
+						<TextInput value={''}
+						           label={'Nouto-osoite'}
+						           descriptionAfter={'Ilmoita katuosoite, postinumero ja postitoimipaikka rahdin noudolle.'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+					</div>
+
+				</FieldRow>
+
+				<FieldRow>
+
+					<div>
+
+						<TextInput value={''}
+						           label={'Toimitusosoite'}
+						           descriptionAfter={'Ilmoita kohteen katuosoite, postinumero ja postitoimipaikka.'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+					</div>
+
+				</FieldRow>
+
+				<FieldRow>
+
+					<div>
+
 						<TextAreaInput value={messageContent}
 						               label={'Tiedot rahdista'}
-						               placeholder={'Kuvaile rahdattavia tavaroita lyhyesti'}
 						               descriptionAfter={'Kerro millaista rahtia, kuinka paljon, miten rahti on pakattu, ja miten painavia rahdattavat ovat.'}
 						               hasError={messageContentError !== null}
 						               onChange={onMessageContentChange}
