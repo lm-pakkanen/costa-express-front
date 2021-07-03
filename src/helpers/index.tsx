@@ -3,6 +3,8 @@ import isEmpty from 'validator/lib/isEmpty';
 
 import constants from '../config/constants';
 
+type ValidatorArgument = null | string;
+
 export function redirectTo(target: string = document.referrer) {
 
 	if (window.location.href !== target) {
@@ -25,34 +27,35 @@ export function addStylesToClass(originStyle: string, styleList: string[]) {
 
 export const Validator = {
 
-	validateContactFormEmail: (email: string) => {
+	validateContactFormEmail: (email: ValidatorArgument) => {
 
-		if (isEmail(email)) {
-			return true;
-		} else {
+		if (!email) {
+			return 'Kenttä ei voi olla tyhjä.';
+		}
+
+		if (!isEmail(email)) {
 			return 'Sähköpostiosoite ei ole kelvollinen.';
 		}
 
+		return true;
 	},
 
-	validateContactFormName: (name: string) => {
+	validateContactFormName: (name: ValidatorArgument) => {
 
-		if (isEmpty(name)) {
+		if (!name || isEmpty(name)) {
 			return 'Kenttä ei voi olla tyhjä.'
 		}
 
 		return true;
-
 	},
 
-	validateContactFormMessage: (message: string) => {
+	validateContactFormMessage: (message: ValidatorArgument) => {
 
-		if (isEmpty(message)) {
+		if (!message || isEmpty(message)) {
 			return 'Kenttä ei voi olla tyhjä.'
 		}
 
 		return true;
-
 	}
 
 };
