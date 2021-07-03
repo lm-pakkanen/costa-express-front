@@ -43,7 +43,9 @@ const ContactForm: React.FC<Props> = () => {
 		sender,
 		startDate,
 		pickupAddress,
+		pickupPhone,
 		deliveryAddress,
+		deliveryPhone,
 		cargoDescription,
 		messageContent,
 		formError,
@@ -95,6 +97,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Etunimi'}
 						           hasError={sender.firstName.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -107,6 +110,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Sukunimi'}
 						           hasError={sender.lastName.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -127,6 +131,7 @@ const ContactForm: React.FC<Props> = () => {
 						           label={'Sähköpostiosoite'}
 						           hasError={sender.emailAddress.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -147,6 +152,7 @@ const ContactForm: React.FC<Props> = () => {
 						           label={'Kuljetuksen päivämäärä'}
 						           descriptionAfter={'Valitaksesi eri kuljetuksen, palaa etusivulle.'}
 						           readonly
+						           required
 						/>
 
 					</div>
@@ -164,6 +170,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Katuosoite'}
 						           hasError={pickupAddress.street.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -176,6 +183,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Postinumero ja postitoimipaikka'}
 						           hasError={pickupAddress.zipAndCity.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -188,11 +196,25 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Maa'}
 						           hasError={pickupAddress.country.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
 							pickupAddress.country.error &&
 							<FieldError message={pickupAddress.country.error} />
+						}
+
+						<TextInput value={pickupPhone.value}
+						           placeholder={'Puhelinnumero'}
+						           descriptionAfter={'Puhelinnumero on vapaaehtoinen.'}
+						           name={'pickupPhone'}
+						           hasError={pickupPhone.error !== null}
+						           onChange={onFormChange}
+						/>
+
+						{
+							pickupPhone.error &&
+							<FieldError message={pickupPhone.error} />
 						}
 
 					</div>
@@ -210,6 +232,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Katuosoite'}
 						           hasError={deliveryAddress.street.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -222,6 +245,7 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Postinumero ja postitoimipaikka'}
 						           hasError={deliveryAddress.zipAndCity.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -234,11 +258,25 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Maa'}
 						           hasError={deliveryAddress.country.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
 							deliveryAddress.country.error &&
 							<FieldError message={deliveryAddress.country.error} />
+						}
+
+						<TextInput value={deliveryPhone.value}
+						           placeholder={'Puhelinnumero'}
+						           descriptionAfter={'Puhelinnumero on vapaaehtoinen.'}
+						           name={'deliveryPhone'}
+						           hasError={deliveryPhone.error !== null}
+						           onChange={onFormChange}
+						/>
+
+						{
+							deliveryPhone.error &&
+							<FieldError message={deliveryPhone.error} />
 						}
 
 					</div>
@@ -255,7 +293,8 @@ const ContactForm: React.FC<Props> = () => {
 						               descriptionAfter={'Kerro millaista rahtia, kuinka paljon, miten rahti on pakattu, ja miten painavia rahdattavat ovat.'}
 						               hasError={cargoDescription.error !== null}
 						               onChange={onFormChange}
-						               rows={7}
+						               rows={6}
+						               required
 						/>
 
 						{
@@ -276,7 +315,8 @@ const ContactForm: React.FC<Props> = () => {
 						               label={'Vapaamuotoinen viesti (valinnainen)'}
 						               hasError={messageContent.error !== null}
 						               onChange={onFormChange}
-						               rows={4}
+						               rows={6}
+						               required
 						/>
 
 						{

@@ -11,6 +11,7 @@ interface IInput {
 	descriptionAfter?: string,
 	hasError?: boolean
 	readonly?: boolean
+	required?: boolean
 }
 
 
@@ -70,6 +71,7 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 			       placeholder={props.placeholder}
 			       onChange={props.onChange}
 			       readOnly={props.readonly}
+			       required={props.readonly}
 			/>
 
 			{ props.descriptionAfter && (
@@ -117,6 +119,7 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 				rows={props.rows}
 				value={props.value ?? ''}
 				readOnly={props.readonly}
+				required={props.readonly}
 			/>
 
 			{ props.descriptionAfter && (

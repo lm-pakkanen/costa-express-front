@@ -8,18 +8,6 @@ import IContactFormState, { IFormDataValue } from '../interfaces/IContactFormSta
 
 interface IFormData {
 	[key: string]: IFormDataValue
-	/*firstName: IFormDataValue,
-	lastName: IFormDataValue,
-	emailAddress: IFormDataValue,
-	startDate: IFormDataValue,
-	pickupAddressStreet: IFormDataValue,
-	pickupAddressZipAndCity: IFormDataValue,
-	pickupAddressCountry: IFormDataValue,
-	deliveryAddressStreet: IFormDataValue,
-	deliveryAddressZipAndCity: IFormDataValue,
-	deliveryAddressCountry: IFormDataValue,
-	cargoDescription: IFormDataValue,
-	messageContent: IFormDataValue*/
 }
 
 const useContactForm = (): IContactFormState => {
@@ -40,9 +28,11 @@ const useContactForm = (): IContactFormState => {
 		pickupAddressStreet: initialValue,
 		pickupAddressZipAndCity: initialValue,
 		pickupAddressCountry: initialValue,
+		pickupPhone: initialValue,
 		deliveryAddressStreet: initialValue,
 		deliveryAddressZipAndCity: initialValue,
 		deliveryAddressCountry: initialValue,
+		deliveryPhone: initialValue,
 		cargoDescription: initialValue,
 		messageContent: initialValue
 	};
@@ -67,9 +57,11 @@ const useContactForm = (): IContactFormState => {
 		const pickupAddressStreetError = errors.pickupAddressStreet ?? null;
 		const pickupAddressZipAndCityError = errors.pickupAddressZipAndCity ?? null;
 		const pickupAddressCountryError = errors.pickupAddressCountry ?? null;
+		const pickupPhoneError = errors.pickupPhone ?? null;
 		const deliveryAddressStreetError = errors.deliveryAddressStreet ?? null;
 		const deliveryAddressZipAndCityError = errors.deliveryAddressZipAndCity ?? null;
 		const deliveryAddressCountryError = errors.deliveryAddressCountry ?? null;
+		const deliveryPhoneError = errors.deliveryPhone ?? null;
 		const cargoDescriptionError = errors.cargoDescription ?? null;
 		const messageContentError = errors.messageContent ?? null;
 
@@ -99,6 +91,10 @@ const useContactForm = (): IContactFormState => {
 				...formData.pickupAddressCountry,
 				error: pickupAddressCountryError
 			},
+			pickupPhone: {
+				...formData.pickupPhone,
+				error: pickupPhoneError
+			},
 			deliveryAddressStreet: {
 				...formData.deliveryAddressStreet,
 				error: deliveryAddressStreetError
@@ -110,6 +106,10 @@ const useContactForm = (): IContactFormState => {
 			deliveryAddressCountry: {
 				...formData.deliveryAddressCountry,
 				error: deliveryAddressCountryError
+			},
+			deliveryPhone: {
+				...formData.deliveryPhone,
+				error: deliveryPhoneError
 			},
 			cargoDescription: {
 				...formData.cargoDescription,
@@ -144,25 +144,14 @@ const useContactForm = (): IContactFormState => {
 			pickupAddressStreet: data.pickupAddress.street.value,
 			pickupAddressZipAndCity: data.pickupAddress.zipAndCity.value,
 			pickupAddressCountry: data.pickupAddress.country.value,
+			pickupPhone: data.pickupPhone.value,
 			deliveryAddressStreet: data.deliveryAddress.street.value,
 			deliveryAddressZipAndCity: data.deliveryAddress.zipAndCity.value,
 			deliveryAddressCountry: data.deliveryAddress.country.value,
+			deliveryPhone: data.deliveryPhone.value,
 			cargoDescription: data.cargoDescription.value,
 			messageContent: data.messageContent.value,
 		};
-
-		let hasNullValues = false;
-
-		Object.entries(messageVariables).forEach(([key, value]) => {
-			if (value === null) { return hasNullValues = true; }
-		});
-
-		if (hasNullValues) {
-			const errMessage = 'Jokin annetuista kentistä on tyhjä. Sähköpostin lähetys ei onnistunut.';
-			setFormAlert(errMessage);
-			setFormError(errMessage);
-			return;
-		}
 
 		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
 
@@ -279,11 +268,13 @@ const useContactForm = (): IContactFormState => {
 				zipAndCity: formData.pickupAddressZipAndCity,
 				country: formData.pickupAddressCountry
 			},
+			pickupPhone: formData.pickupPhone,
 			deliveryAddress: {
 				street: formData.deliveryAddressStreet,
 				zipAndCity: formData.deliveryAddressZipAndCity,
 				country: formData.deliveryAddressCountry
 			},
+			deliveryPhone: formData.deliveryPhone,
 			cargoDescription: formData.cargoDescription,
 			messageContent: formData.messageContent,
 			formError,
