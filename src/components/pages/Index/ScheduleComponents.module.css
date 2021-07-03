@@ -5,12 +5,29 @@
 }
 
 .TableRow {
-    padding: 1.5em;
+    padding: 0 20px;
     text-align: center;
     white-space: nowrap;
+}
+
+.TableRow > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65px;
 }
 
 .TableRowSeparator {
     height: 2px;
     background: hsla(240, 5%, 12%, 1);
+}
+
+.RequestProposalButton {
+    padding: .6em .8em;
+    color: hsla(240, 35%, 95%, 1);
+    background-color: hsla(141, 70%, 45%, 1);
+    background-image: linear-gradient(hsla(141, 70%, 45%, .4), hsla(141, 70%, 30%, .8));
+    border: 2px solid hsla(141, 70%, 20%, .2);;
+    border-radius: .5em;
+    box-shadow: 0 .1em .2em .1em hsla(240, 5%, 10%, .8);
 }

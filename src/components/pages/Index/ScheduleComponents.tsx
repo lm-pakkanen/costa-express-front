@@ -23,3 +23,15 @@ export const TableRowSeparator: React.FC = () => {
 		<div className={styles.TableRowSeparator} />
 	);
 }
+
+export const RequestProposalButton: React.FC = () => {
+	return (
+
+		<button
+			className={styles.RequestProposalButton}
+		>
+			Pyydä tarjous
+		</button>
+
+	);
+}

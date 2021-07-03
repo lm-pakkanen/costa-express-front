@@ -2,7 +2,7 @@ import React from 'react';
 
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
-import { TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
+import { RequestProposalButton, TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
 
@@ -49,7 +49,7 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
 	if (!data) { return <TableRow /> }
 
-	const jsx = data.map((row: string) => <TableRow key={Math.random()}>{ row }</TableRow> );
+	const jsx = data.map((row: string) => <TableRow key={Math.random()}>{ <span>{row}</span> }</TableRow> );
 
 	return (
 		<>{jsx}</>
@@ -66,7 +66,10 @@ const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 	if (!data) { return <TableRow /> }
 
 	const jsx = data.map((row: boolean) => <TableRow key={Math.random()}> {
-		row ? <button value={'Pyydä tarjous'} /> : 'Kuljetus täynnä'
+		row ?
+			<span><RequestProposalButton /></span>
+			:
+			<span>Kuljetus täynnä</span>
 	} </TableRow> );
 
 	return <>{jsx}</>;
@@ -77,15 +80,13 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 
 	const { error, data: scheduleData } = useSchedule();
 
-	if (error) console.error(error);
-
 	return (
 		<div className={styles.ScheduleBody}>
 
 			<TableColumn>
 
 				<TableRow>
-					Lähtöpaikka
+					<span>Lähtöpaikka</span>
 				</TableRow>
 
 				<TableRowSeparator />
@@ -97,7 +98,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 			<TableColumn>
 
 				<TableRow>
-					Kohde
+					<span>Kohde</span>
 				</TableRow>
 
 				<TableRowSeparator />
@@ -109,7 +110,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 			<TableColumn>
 
 				<TableRow>
-					Lähtee
+					<span>Lähtee</span>
 				</TableRow>
 
 				<TableRowSeparator />
@@ -121,7 +122,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 			<TableColumn>
 
 				<TableRow>
-					Perillä
+					<span>Perillä</span>
 				</TableRow>
 
 				<TableRowSeparator />
@@ -133,7 +134,7 @@ const ScheduleBody: React.FC<IScheduleBody> = () => {
 			<TableColumn>
 
 				<TableRow>
-					Pyydä tarjous
+					<span>Pyydä tarjous</span>
 				</TableRow>
 
 				<TableRowSeparator />
