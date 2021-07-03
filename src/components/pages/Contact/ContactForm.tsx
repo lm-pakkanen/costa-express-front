@@ -63,9 +63,9 @@ const ContactForm: React.FC<Props> = () => {
 		setStartDate(selectedDate);
 	}, [ selectedDate ]);
 
-	if (formAlert) {
-		alert(formAlert);
-	}
+	useEffect(() => {
+		if (formAlert) { alert(formAlert); }
+	}, [ formAlert ]);
 
 	return (
 
