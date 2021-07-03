@@ -25,6 +25,7 @@
 {
     background: hsla(0, 0%, 90%, 1);
     cursor: not-allowed;
+    user-select: none;
 }
 
 .TextInput:focus:not(:read-only),
