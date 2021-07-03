@@ -132,15 +132,37 @@ const useContactForm = (): IContactFormState => {
 
 		clearFormErrors();
 
-		if (!validateFields()) {  }
+		const data = getFormData();
 
-		/*
+		if (!validateFields(data)) { return;  }
 
 		const messageVariables = {
-			sender_email: senderEmail,
-			sender_name: senderName,
-			message: messageContent
+			senderFirstName: data.sender.firstName.value,
+			senderLastName: data.sender.lastName.value,
+			senderEmailAddress: data.sender.emailAddress.value,
+			startDate: data.startDate.value,
+			pickupAddressStreet: data.pickupAddress.street.value,
+			pickupAddressZipAndCity: data.pickupAddress.zipAndCity.value,
+			pickupAddressCountry: data.pickupAddress.country.value,
+			deliveryAddressStreet: data.deliveryAddress.street.value,
+			deliveryAddressZipAndCity: data.deliveryAddress.zipAndCity.value,
+			deliveryAddressCountry: data.deliveryAddress.country.value,
+			cargoDescription: data.cargoDescription.value,
+			messageContent: data.messageContent.value,
 		};
+
+		let hasNullValues = false;
+
+		Object.entries(messageVariables).forEach(([key, value]) => {
+			if (value === null) { return hasNullValues = true; }
+		});
+
+		if (hasNullValues) {
+			const errMessage = 'Jokin annetuista kentistä on tyhjä. Sähköpostin lähetys ei onnistunut.';
+			setFormAlert(errMessage);
+			setFormError(errMessage);
+			return;
+		}
 
 		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
 
@@ -149,7 +171,7 @@ const useContactForm = (): IContactFormState => {
 
 		/**
 		 * Environment variables missing, email cannot be sent
-		 *//*
+		 */
 		if (!(emailUserID && emailProviderID && emailTemplateID)) {
 			const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 			setFormAlert(errMessage);
@@ -164,18 +186,15 @@ const useContactForm = (): IContactFormState => {
 			.catch((err) => {
 
 				console.error(err);
-
 				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 				setFormAlert(errMessage);
 				setFormError(errMessage);
 
-			})
-
-			*/
+			});
 
 	};
 
-	const validateFields = () => {
+	const validateFields = (data: IContactFormState) => {
 
 		const updateErrors = (state: IFormData, field: string, error: string) => {
 
@@ -186,12 +205,12 @@ const useContactForm = (): IContactFormState => {
 
 		};
 
-		const data = getFormData();
-
 		const emailValid = Validator.validateContactFormEmail(data.sender.emailAddress.value);
 		const firstNameValid = Validator.validateContactFormName(data.sender.firstName.value);
 		const lastNameValid = Validator.validateContactFormName(data.sender.lastName.value);
 		const messageValid = Validator.validateContactFormMessage(data.messageContent.value);
+
+		// TODO: Validate rest of the fields
 
 		let errors = {};
 
@@ -222,7 +241,7 @@ const useContactForm = (): IContactFormState => {
 		return hasError ? setFormError('Jossain kentässä on virheellistä tietoa.') : true;
 	};
 
-	const sendEmail = async (userID: string, providerID: string, templateID: string, variables: { [key: string]: string }) => {
+	const sendEmail = async (userID: string, providerID: string, templateID: string, variables: { [key: string]: null | string }) => {
 		return new Promise(async (resolve, reject) => {
 
 			try {
@@ -247,7 +266,7 @@ const useContactForm = (): IContactFormState => {
 
 	};
 
-	const getFormData = () => {
+	const getFormData = (): IContactFormState => {
 		return {
 			sender: {
 				firstName: formData.firstName,
