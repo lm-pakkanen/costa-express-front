@@ -4,7 +4,8 @@ import styles from './ContactFormInputs.module.css';
 import { addStylesToClass } from '../../../helpers';
 
 interface IInput {
-	value: string,
+	value: null | string,
+	name?: string,
 	style?: string,
 	descriptionBefore?: string,
 	descriptionAfter?: string,
@@ -63,8 +64,9 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 			)}
 
 			<input type={'text'}
+			       name={props.name}
 			       className={style}
-			       value={props.value}
+			       value={props.value ?? ''}
 			       placeholder={props.placeholder}
 			       onChange={props.onChange}
 			       readOnly={props.readonly}
@@ -108,11 +110,12 @@ export const TextAreaInput: React.FC<ITextAreaInput> = (props) => {
 			)}
 
 			<textarea
+				name={props.name}
 				className={style}
 				placeholder={props.placeholder}
 				onChange={props.onChange}
 				rows={props.rows}
-				value={props.value}
+				value={props.value ?? ''}
 				readOnly={props.readonly}
 			/>
 
@@ -136,6 +139,7 @@ export const SubmitButton: React.FC<ISubmitButton> = (props) => {
 
 	return (
 		<button type={'button'}
+		        name={props.name}
 		        className={style}
 		        onClick={props.onClick}
 		>

@@ -1,14 +1,27 @@
+export interface IFormDataValue {
+	value: null | string,
+	error: null | string
+}
+
+interface IAddress {
+	street: IFormDataValue,
+	zipAndCity: IFormDataValue,
+	country: IFormDataValue
+}
+
 interface ISender {
-	email: string,
-	emailError: null | string,
-	name: string,
-	nameError: null | string
+	firstName: IFormDataValue,
+	lastName: IFormDataValue,
+	emailAddress: IFormDataValue,
 }
 
 interface IContactFormState {
 	sender: ISender,
-	messageContent: string,
-	messageContentError: null | string,
+	startDate: IFormDataValue,
+	pickupAddress: IAddress,
+	deliveryAddress: IAddress,
+	cargoDescription: IFormDataValue,
+	messageContent: IFormDataValue,
 	formError: null | string,
 	formAlert: null | string,
 	methods: {

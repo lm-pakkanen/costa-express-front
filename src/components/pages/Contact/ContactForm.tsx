@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { TextInput, TextAreaInput, SubmitButton, FieldError } from './ContactFormInputs';
 
@@ -7,6 +7,7 @@ import inputStyles from './ContactFormInputs.module.css';
 
 import { addStylesToClass } from '../../../helpers';
 import useContactForm from '../../../hooks/useContactForm';
+import IContactFormState from '../../../interfaces/IContactFormState';
 
 interface Props {}
 
@@ -40,19 +41,25 @@ const ContactForm: React.FC<Props> = () => {
 
 	const {
 		sender,
+		startDate,
+		pickupAddress,
+		deliveryAddress,
+		cargoDescription,
 		messageContent,
-		messageContentError,
-		methods,
 		formError,
-		formAlert
-	} = contactForm;
+		formAlert,
+		methods
+	}: IContactFormState = contactForm;
 
 	const {
-		onSenderEmailChange,
-		onSenderNameChange,
-		onMessageContentChange,
+		setStartDate,
+		onFormChange,
 		onFormSubmit
 	} = methods;
+
+	useEffect(() => {
+		setStartDate(selectedDate);
+	}, [ selectedDate ]);
 
 	if (formAlert) {
 		alert(formAlert);
@@ -82,27 +89,29 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={sender.name}
+						<TextInput value={sender.firstName.value}
+						           name={'firstName'}
 						           label={'Etu- ja sukunimi'}
 						           placeholder={'Etunimi'}
-						           hasError={sender.nameError !== null}
-						           onChange={onSenderNameChange}
+						           hasError={sender.firstName.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							sender.nameError &&
-							<FieldError message={sender.nameError} />
+							sender.firstName.error &&
+							<FieldError message={sender.firstName.error} />
 						}
 
-						<TextInput value={sender.name}
+						<TextInput value={sender.lastName.value}
+						           name={'lastName'}
 						           placeholder={'Sukunimi'}
-						           hasError={sender.nameError !== null}
-						           onChange={onSenderNameChange}
+						           hasError={sender.lastName.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							sender.nameError &&
-							<FieldError message={sender.nameError} />
+							sender.lastName.error &&
+							<FieldError message={sender.lastName.error} />
 						}
 
 					</div>
@@ -113,15 +122,16 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={sender.email}
+						<TextInput value={sender.emailAddress.value}
+						           name={'emailAddress'}
 						           label={'Sähköpostiosoite'}
-						           hasError={sender.emailError !== null}
-						           onChange={onSenderEmailChange}
+						           hasError={sender.emailAddress.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							sender.emailError &&
-							<FieldError message={sender.emailError} />
+							sender.emailAddress.error &&
+							<FieldError message={sender.emailAddress.error} />
 						}
 
 					</div>
@@ -132,7 +142,8 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={selectedDate ?? ''}
+						<TextInput value={startDate.value}
+						           name={'startDate'}
 						           label={'Kuljetuksen päivämäärä'}
 						           descriptionAfter={'Valitaksesi eri kuljetuksen, palaa etusivulle.'}
 						           readonly
@@ -146,39 +157,42 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={''}
+						<TextInput value={pickupAddress.street.value}
+						           name={'pickupAddressStreet'}
 						           label={'Nouto-osoite'}
 						           descriptionBefore={'Ilmoita rahdin nouto-osoite.'}
 						           placeholder={'Katuosoite'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={pickupAddress.street.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							pickupAddress.street.error &&
+							<FieldError message={pickupAddress.street.error} />
 						}
 
-						<TextInput value={''}
+						<TextInput value={pickupAddress.zipAndCity.value}
+						           name={'pickupAddressZipAndCity'}
 						           placeholder={'Postinumero ja postitoimipaikka'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={pickupAddress.zipAndCity.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							pickupAddress.zipAndCity.error &&
+							<FieldError message={pickupAddress.zipAndCity.error} />
 						}
 
-						<TextInput value={''}
+						<TextInput value={pickupAddress.country.value}
+						           name={'pickupAddressCountry'}
 						           placeholder={'Maa'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={pickupAddress.country.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							pickupAddress.country.error &&
+							<FieldError message={pickupAddress.country.error} />
 						}
 
 					</div>
@@ -189,39 +203,42 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextInput value={''}
+						<TextInput value={deliveryAddress.street.value}
+						           name={'deliveryAddressStreet'}
 						           label={'Toimitusosoite'}
 						           descriptionBefore={'Ilmoita rahdin toimitusosoite.'}
 						           placeholder={'Katuosoite'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={deliveryAddress.street.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							deliveryAddress.street.error &&
+							<FieldError message={deliveryAddress.street.error} />
 						}
 
-						<TextInput value={''}
+						<TextInput value={deliveryAddress.zipAndCity.value}
+						           name={'deliveryAddressZipAndCity'}
 						           placeholder={'Postinumero ja postitoimipaikka'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={deliveryAddress.zipAndCity.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							deliveryAddress.zipAndCity.error &&
+							<FieldError message={deliveryAddress.zipAndCity.error} />
 						}
 
-						<TextInput value={''}
+						<TextInput value={deliveryAddress.country.value}
+						           name={'deliveryAddressCountry'}
 						           placeholder={'Maa'}
-						           hasError={null !== null}
-						           onChange={() => {}}
+						           hasError={deliveryAddress.country.error !== null}
+						           onChange={onFormChange}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							deliveryAddress.country.error &&
+							<FieldError message={deliveryAddress.country.error} />
 						}
 
 					</div>
@@ -232,17 +249,18 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextAreaInput value={messageContent}
+						<TextAreaInput value={cargoDescription.value}
+						               name={'cargoDescription'}
 						               label={'Tiedot rahdista'}
 						               descriptionAfter={'Kerro millaista rahtia, kuinka paljon, miten rahti on pakattu, ja miten painavia rahdattavat ovat.'}
-						               hasError={messageContentError !== null}
-						               onChange={onMessageContentChange}
+						               hasError={cargoDescription.error !== null}
+						               onChange={onFormChange}
 						               rows={7}
 						/>
 
 						{
-							messageContentError &&
-							<FieldError message={messageContentError} />
+							cargoDescription.error &&
+							<FieldError message={cargoDescription.error} />
 						}
 
 					</div>
@@ -253,16 +271,17 @@ const ContactForm: React.FC<Props> = () => {
 
 					<div>
 
-						<TextAreaInput value={''}
+						<TextAreaInput value={messageContent.value}
+						               name={'messageContent'}
 						               label={'Vapaamuotoinen viesti (valinnainen)'}
-						               hasError={null !== null}
-						               onChange={() => {}}
+						               hasError={messageContent.error !== null}
+						               onChange={onFormChange}
 						               rows={4}
 						/>
 
 						{
-							'' &&
-							<FieldError message={''} />
+							messageContent.error &&
+							<FieldError message={messageContent.error} />
 						}
 
 					</div>

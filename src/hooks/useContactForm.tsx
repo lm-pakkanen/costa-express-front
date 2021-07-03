@@ -4,43 +4,61 @@ import emailjs from 'emailjs-com';
 
 import { Validator } from '../helpers';
 
-import IContactFormState from '../interfaces/IContactFormState';
+import IContactFormState, { IFormDataValue } from '../interfaces/IContactFormState';
 
+interface IFormData {
+	[key: string]: IFormDataValue
+	/*firstName: IFormDataValue,
+	lastName: IFormDataValue,
+	emailAddress: IFormDataValue,
+	startDate: IFormDataValue,
+	pickupAddressStreet: IFormDataValue,
+	pickupAddressZipAndCity: IFormDataValue,
+	pickupAddressCountry: IFormDataValue,
+	deliveryAddressStreet: IFormDataValue,
+	deliveryAddressZipAndCity: IFormDataValue,
+	deliveryAddressCountry: IFormDataValue,
+	cargoDescription: IFormDataValue,
+	messageContent: IFormDataValue*/
+}
 const useContactForm = (): IContactFormState => {
 
 	const [formError, setFormError] = useState<null | string>(null);
 	const [formAlert, setFormAlert] = useState<null | string>(null);
 
-	const [senderEmail, setSenderEmail] = useState('');
-	const [senderEmailError, setSenderEmailError] = useState<null | string>(null);
-
-	const [senderName, setSenderName] = useState('');
-	const [senderNameError, setSenderNameError] = useState<null | string>(null);
-
-	const [messageContent, setMessageContent] = useState('');
-	const [messageContentError, setMessageContentError] = useState<null | string>(null);
-
-	const onSenderEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
-		setSenderEmailError(null);
-		setFormError(null);
-		setFormAlert(null);
-		setSenderEmail(e.currentTarget.value);
+	const initialValue: IFormDataValue = {
+		value: null,
+		error: null
 	};
 
-	const onSenderNameChange = (e: React.FormEvent<HTMLInputElement>) => {
-		setSenderNameError(null);
-		setFormError(null);
-		setFormAlert(null);
-		setSenderName(e.currentTarget.value);
+	const initialFormData: IFormData = {
+		firstName: initialValue,
+		lastName: initialValue,
+		emailAddress: initialValue,
+		startDate: initialValue,
+		pickupAddressStreet: initialValue,
+		pickupAddressZipAndCity: initialValue,
+		pickupAddressCountry: initialValue,
+		deliveryAddressStreet: initialValue,
+		deliveryAddressZipAndCity: initialValue,
+		deliveryAddressCountry: initialValue,
+		cargoDescription: initialValue,
+		messageContent: initialValue
 	};
 
-	const onMessageContentChange = (e: React.FormEvent<HTMLInputElement>) => {
-		setMessageContentError(null);
-		setFormError(null);
-		setFormAlert(null);
-		setMessageContent(e.currentTarget.value);
+	const [formData, setFormData] = useState<IFormData>(initialFormData);
+
+	const setStartDate = (value: string) => {
+		setFormData({ ...formData, startDate: { ...formData.startDate, value } })
 	};
 
+	const onFormChange = (e:  React.FormEvent<HTMLInputElement>) => {
+		setFormError(null);
+		setFormAlert(null);
+		setFormData({ ...formData, [e.currentTarget.name]: { value: e.currentTarget.value, error: null } });
+	};
+
+	/*
 	const onFormSubmit = (e: React.FormEvent<HTMLInputElement>) => {
 
 		e.preventDefault();
@@ -62,7 +80,7 @@ const useContactForm = (): IContactFormState => {
 
 		/**
 		 * Environment variables missing, email cannot be sent
-		 */
+		 *//*
 		if (!(emailUserID && emailProviderID && emailTemplateID)) {
 			const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 			setFormAlert(errMessage);
@@ -131,30 +149,44 @@ const useContactForm = (): IContactFormState => {
 
 	};
 
+	*/
+
 	const clearFormErrors = () => {
-		setSenderEmailError(null);
-		setSenderNameError(null);
-		setMessageContentError(null);
+
 		setFormError(null);
 		setFormAlert(null);
+
+		Object.keys(formData).forEach((key: string) => {
+			formData[key]['error'] = null;
+		});
+
 	};
 
 	return {
 		sender: {
-			email: senderEmail,
-			emailError: senderEmailError,
-			name: senderName,
-			nameError: senderNameError
+			firstName: formData.firstName,
+			lastName: formData.lastName,
+			emailAddress: formData.emailAddress
 		},
-		messageContent: messageContent,
-		messageContentError: messageContentError,
+		startDate: formData.startDate,
+		pickupAddress: {
+			street: formData.pickupAddressStreet,
+			zipAndCity: formData.pickupAddressZipAndCity,
+			country: formData.pickupAddressCountry
+		},
+		deliveryAddress: {
+			street: formData.deliveryAddressStreet,
+			zipAndCity: formData.deliveryAddressZipAndCity,
+			country: formData.deliveryAddressCountry
+		},
+		cargoDescription: formData.cargoDescription,
+		messageContent: formData.messageContent,
 		formError,
 		formAlert,
 		methods: {
-			onSenderEmailChange,
-			onSenderNameChange,
-			onMessageContentChange,
-			onFormSubmit
+			setStartDate,
+			onFormChange,
+			//onFormSubmit
 		}
 	};
 
