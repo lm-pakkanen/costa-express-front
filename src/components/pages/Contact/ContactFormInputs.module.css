@@ -2,7 +2,7 @@
 .TextAreaInput,
 .SubmitButton
 {
-    margin: .4em 0 .8em;
+    margin: .5em 0 .5em;
 }
 
 .TextInput,
@@ -11,7 +11,7 @@
     padding: .7em .5em;
     background: hsla(216, 20%, 98%, 1);
     border: none;
-    box-shadow: 0 0 .1em .1em hsla(240, 5%, 85%, .9);
+    box-shadow: 0 0 2px .1em hsla(240, 5%, 85%, .6);
     border-radius: .1em;
     font-size: 14px;
     font-weight: inherit;

@@ -22,7 +22,11 @@ const FieldRow: React.FC<IFieldRow> = (props) => {
 		style = addStylesToClass(style, [props.style]);
 	}
 
-	return <div className={style}>{props.children}</div>
+	return (
+		<div className={style}>
+			{ props.children}
+		</div>
+	);
 
 };
 
@@ -80,6 +84,18 @@ const ContactForm: React.FC<Props> = () => {
 
 						<TextInput value={sender.name}
 						           label={'Etu- ja sukunimi'}
+						           placeholder={'Etunimi'}
+						           hasError={sender.nameError !== null}
+						           onChange={onSenderNameChange}
+						/>
+
+						{
+							sender.nameError &&
+							<FieldError message={sender.nameError} />
+						}
+
+						<TextInput value={sender.name}
+						           placeholder={'Sukunimi'}
 						           hasError={sender.nameError !== null}
 						           onChange={onSenderNameChange}
 						/>
@@ -132,7 +148,30 @@ const ContactForm: React.FC<Props> = () => {
 
 						<TextInput value={''}
 						           label={'Nouto-osoite'}
-						           descriptionAfter={'Ilmoita katuosoite, postinumero ja postitoimipaikka rahdin noudolle.'}
+						           descriptionBefore={'Ilmoita rahdin nouto-osoite.'}
+						           placeholder={'Katuosoite'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+						<TextInput value={''}
+						           placeholder={'Postinumero ja postitoimipaikka'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+						<TextInput value={''}
+						           placeholder={'Maa'}
 						           hasError={null !== null}
 						           onChange={() => {}}
 						/>
@@ -152,7 +191,30 @@ const ContactForm: React.FC<Props> = () => {
 
 						<TextInput value={''}
 						           label={'Toimitusosoite'}
-						           descriptionAfter={'Ilmoita kohteen katuosoite, postinumero ja postitoimipaikka.'}
+						           descriptionBefore={'Ilmoita rahdin toimitusosoite.'}
+						           placeholder={'Katuosoite'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+						<TextInput value={''}
+						           placeholder={'Postinumero ja postitoimipaikka'}
+						           hasError={null !== null}
+						           onChange={() => {}}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+						<TextInput value={''}
+						           placeholder={'Maa'}
 						           hasError={null !== null}
 						           onChange={() => {}}
 						/>
@@ -187,9 +249,29 @@ const ContactForm: React.FC<Props> = () => {
 
 				</FieldRow>
 
+				<FieldRow>
+
+					<div>
+
+						<TextAreaInput value={''}
+						               label={'Vapaamuotoinen viesti (valinnainen)'}
+						               hasError={null !== null}
+						               onChange={() => {}}
+						               rows={4}
+						/>
+
+						{
+							'' &&
+							<FieldError message={''} />
+						}
+
+					</div>
+
+				</FieldRow>
+
 				<FieldRow style={styles.SubmitButtonRow}>
 
-					<SubmitButton value={'Lähetä viesti'}
+					<SubmitButton value={'Lähetä tarjouspyyntö'}
 					              onClick={onFormSubmit}
 					/>
 
