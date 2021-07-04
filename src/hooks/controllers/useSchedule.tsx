@@ -16,12 +16,7 @@ const useSchedule = () => {
 
 	const [error, setError] = useState<null | CError>(null);
 
-	const [startCountryList, setStartCountryList] = useState<null | string[]>([]);
-	const [endCountryList, setEndCountryList] = useState<null | string[]>([]);
-	const [startTimeList, setStartTimeList] = useState<null | string[]>([]);
-	const [endTimeList, setEndTimeList] = useState<null | string[]>([]);
-	const [hasSpaceAvailableList, setHasSpaceAvailableList] = useState<null | boolean[]>([]);
-
+	const [scheduleData, setScheduleData] = useState<IScheduleDataRow[]>([]);
 
 	const getScheduleData = async () => {
 
@@ -77,50 +72,36 @@ const useSchedule = () => {
 
 	useEffect(() => {
 
-		getScheduleData().then((data) => {
+		getScheduleData().then((_data) => {
 
-			if (!data) {
+			const data: IScheduleDataRow[] = [];
+
+			if (!_data) {
 				return;
 			}
 
-			const _startCountries = [];
-			const _endCountries = [];
-			const _startTimes = [];
-			const _endTimes = [];
-			const _hasSpaceAvailableList = [];
-
-			for (let _row of data) {
+			for (let _row of _data) {
 
 				const row = _row as IScheduleDataRow;
 
-				_startCountries.push(row.startCountry);
-				_endCountries.push(row.endCountry);
-				_startTimes.push(row.startTime);
-				_endTimes.push(row.endTime);
-				_hasSpaceAvailableList.push(JSON.parse(row.hasSpaceAvailable.toLowerCase()));
+				const rowData = {
+					startCountry: row.startCountry,
+					endCountry: row.endCountry,
+					startTime: row.startTime,
+					endTime: row.endTime,
+					hasSpaceAvailable: JSON.parse(row.hasSpaceAvailable.toLowerCase())
+				};
 
+				data.push(rowData);
 			}
 
-			setStartCountryList(_startCountries);
-			setEndCountryList(_endCountries);
-			setStartTimeList(_startTimes);
-			setEndTimeList(_endTimes);
-			setHasSpaceAvailableList(_hasSpaceAvailableList)
+			setScheduleData(data);
 
 		});
 
 	}, []);
 
-	return {
-		error,
-		data: {
-			startCountryList,
-			endCountryList,
-			startTimeList,
-			endTimeList,
-			hasSpaceAvailableList
-		}
-	};
+	return scheduleData;
 
 }
 

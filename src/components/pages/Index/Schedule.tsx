@@ -1,41 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
 import { RequestProposalButton, TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
+import { start } from 'repl';
 
 interface IScheduleData {
-	startCountryList: null | string[],
-	endCountryList: null | string[],
-	startTimeList: null | string[],
-	endTimeList: null | string[],
-	hasSpaceAvailableList: null | boolean[]
+	startCountry: string,
+	endCountry: string,
+	startTime: string,
+	endTime: string,
+	hasSpaceAvailable: string
 }
 
 interface IGetDataRows {
-	data: null | IScheduleData
-	column: IScheduleFields,
+	data: IScheduleData[],
+	toCountry: 'Espanja' | 'Suomi'
 }
 
 interface IGetRequestButton {
-	data: null | IScheduleData
+	rowData: IScheduleData
 }
-
-type IScheduleFields = 'startCountryList' | 'endCountryList' | 'startTimeList' | 'endTimeList';
 
 interface IScheduleTitle {}
 
 interface IScheduleBody {}
 
-interface ISchedule {}
+const ScheduleTitle: React.FC = () => {
+	return (
+		<h2 className={styles.ScheduleTitle}>
+			Kuljetusaikataulu
+		</h2>
+	)
 
-const ScheduleTitle: React.FC<IScheduleTitle> = () => {
+};
+
+const ToFinlandScheduleTitle: React.FC<IScheduleTitle> = () => {
 
 	return (
-		<h3 className={styles.ScheduleTitle}>
-			Tulevat kuljetukset
+		<h3 className={styles.ScheduleBodyTitle}>
+			Costalta Suomeen
+		</h3>
+	);
+
+};
+
+const ToSpainScheduleTitle: React.FC<IScheduleTitle> = () => {
+
+	return (
+		<h3 className={styles.ScheduleBodyTitle}>
+			Suomesta Costalle
 		</h3>
 	);
 
@@ -43,13 +59,30 @@ const ScheduleTitle: React.FC<IScheduleTitle> = () => {
 
 const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
-	if (!(props.data && props.column)) { return <TableRow /> }
+	if (!(props.data && props.toCountry)) { return <></> }
 
-	const data = props.data[props.column];
+	const jsx = props.data.map((row) => (
 
-	if (!data) { return <TableRow /> }
+		row.endCountry === props.toCountry
+			?
+			<TableRow key={Math.random()}>
 
-	const jsx = data.map((row: string) => <TableRow key={Math.random()}>{ <span>{row}</span> }</TableRow> );
+				<TableColumn>
+					{ row.startTime }
+				</TableColumn>
+
+				<TableColumn>
+					{ row.endTime }
+				</TableColumn>
+
+				<TableColumn>
+					<GetRequestButton rowData={row} />
+				</TableColumn>
+
+			</TableRow>
+			:
+			<span key={Math.random()} />
+	));
 
 	return (
 		<>{jsx}</>
@@ -59,101 +92,90 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 
 const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 
-	if (!props.data) { return <TableRow /> }
+	if (!props.rowData) { return <></> }
 
-	const data = props.data['hasSpaceAvailableList'];
+	const startTime = props.rowData.startTime;
 
-	if (!data) { return <TableRow /> }
-
-	const jsx = data.map((row: boolean) => <TableRow key={Math.random()}> {
-		row ?
-			<span><RequestProposalButton /></span>
-			:
-			<span>Kuljetus täynnä</span>
-	} </TableRow> );
-
-	return <>{jsx}</>;
-
+	return props.rowData.hasSpaceAvailable
+		?
+		<RequestProposalButton startTime={startTime} />
+		:
+		<span>
+			Kuljetus täynnä
+		</span>;
 };
 
-const ScheduleBody: React.FC<IScheduleBody> = () => {
+const Schedule: React.FC<IScheduleBody> = () => {
 
-	const { error, data: scheduleData } = useSchedule();
+	const scheduleData = useSchedule();
 
-	return (
-		<div className={styles.ScheduleBody}>
+	const ToSpain: React.FC = () => {
 
-			<TableColumn>
+		return (
+			<div className={styles.ScheduleBody}>
 
 				<TableRow>
-					<span>Lähtöpaikka</span>
+					<TableColumn>
+						<span>Lähtee</span>
+					</TableColumn>
+					<TableColumn>
+						<span>Kohteessa (arvio)</span>
+					</TableColumn>
+					<TableColumn>
+						<span>Pyydä tarjous</span>
+					</TableColumn>
 				</TableRow>
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'startCountryList'} />
+				<GetDataRows data={scheduleData} toCountry={'Espanja'} />
 
-			</TableColumn>
+			</div>
+		);
 
-			<TableColumn>
+	};
+
+	const ToFinland: React.FC = () => {
+
+		return (
+			<div className={styles.ScheduleBody}>
 
 				<TableRow>
-					<span>Kohde</span>
+					<TableColumn>
+						<span>Lähtee</span>
+					</TableColumn>
+					<TableColumn>
+						<span>Kohteessa (arvio)</span>
+					</TableColumn>
+					<TableColumn>
+						<span>Pyydä tarjous</span>
+					</TableColumn>
 				</TableRow>
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} column={'endCountryList'} />
+				<GetDataRows data={scheduleData} toCountry={'Suomi'} />
 
-			</TableColumn>
+			</div>
+		);
 
-			<TableColumn>
-
-				<TableRow>
-					<span>Lähtee</span>
-				</TableRow>
-
-				<TableRowSeparator />
-
-				<GetDataRows data={scheduleData} column={'startTimeList'} />
-
-			</TableColumn>
-
-			<TableColumn>
-
-				<TableRow>
-					<span>Perillä</span>
-				</TableRow>
-
-				<TableRowSeparator />
-
-				<GetDataRows data={scheduleData} column={'endTimeList'} />
-
-			</TableColumn>
-
-			<TableColumn>
-
-				<TableRow>
-					<span>Pyydä tarjous</span>
-				</TableRow>
-
-				<TableRowSeparator />
-
-				<GetRequestButton data={scheduleData} />
-
-			</TableColumn>
-
-		</div>
-	);
-
-};
-
-const Schedule: React.FC<ISchedule> = () => {
+	};
 
 	return (
 		<div className={styles.Wrapper}>
+
 			<ScheduleTitle />
-			<ScheduleBody />
+
+			<ToFinlandScheduleTitle />
+			<div className={styles.ScheduleBodyWrapper}>
+				<ToFinland />
+			</div>
+
+			<ToSpainScheduleTitle />
+			<div className={styles.ScheduleBodyWrapper}>
+				<ToSpain />
+			</div>
+
 		</div>
 	);
 

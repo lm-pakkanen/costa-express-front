@@ -1,26 +1,40 @@
 .Wrapper {
     display: flex;
     flex-direction: column;
-    overflow: auto;
     padding: 10px;
     margin-bottom: 50px;
+    overflow: hidden;
 }
 
 .ScheduleTitle {
-    margin-bottom: 1em;
+    margin-bottom: .7em;
     color: hsla(240, 5%, 10%, 1);
-    text-align: center;
     font-size: 1.6em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ScheduleBodyWrapper {
+    display: flex;
+    margin: 0 0 1em;
+    padding: 0;
+    background: hsla(240, 5%, 20%, 1);
+    border: 2px solid hsla(240, 5%, 3%, .2);
+    border-radius: .5em;
+    box-shadow: .1em .1em .2em .1em hsla(240, 5%, 20%, .6);
+    overflow: auto;
+}
+
+.ScheduleBodyTitle {
+    margin: 1.5em 0 .8em;
+    color: hsla(240, 5%, 10%, 1);
+    font-size: 20px;
     font-weight: bold;
 }
 
 .ScheduleBody {
     display: flex;
-    overflow: auto;
+    flex-direction: column;
     color: hsla(240, 35%, 95%, 1);
-    background: hsla(240, 5%, 20%, 1);
-    border: 2px solid hsla(240, 5%, 3%, .2);
-    border-radius: .5em;
-    box-shadow: .1em .1em .2em .1em hsla(240, 5%, 20%, .6);
-    box-sizing: border-box;
+    flex: 1;
 }

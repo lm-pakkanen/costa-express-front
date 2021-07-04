@@ -1,11 +1,13 @@
 .TableColumn {
     display: flex;
     flex-direction: column;
+    width: 130px;
+    padding: 0 20px;
     text-align: center;
 }
 
 .TableRow {
-    padding: 0 20px;
+    display: flex;
     text-align: center;
     white-space: nowrap;
 }

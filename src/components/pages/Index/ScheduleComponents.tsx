@@ -1,6 +1,11 @@
 import React from 'react';
 
 import styles from './ScheduleComponents.module.css';
+import constants from '../../../config/constants';
+
+interface IRequestProposalButton {
+	startTime: string
+}
 
 export const TableColumn: React.FC = (props) => {
 	return (
@@ -24,11 +29,18 @@ export const TableRowSeparator: React.FC = () => {
 	);
 }
 
-export const RequestProposalButton: React.FC = () => {
-	return (
+export const RequestProposalButton: React.FC<IRequestProposalButton> = (props) => {
 
+	if (!props.startTime) { return <></>; }
+
+	const onClick = () => {
+		window.location.href = `${constants.BASE_URI}/tarjouspyynto?date=${props.startTime}`;
+	};
+
+	return (
 		<button
 			className={styles.RequestProposalButton}
+			onClick={onClick}
 		>
 			Pyydä tarjous
 		</button>
