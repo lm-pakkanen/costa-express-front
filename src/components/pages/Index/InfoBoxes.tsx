@@ -34,9 +34,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 				<div className={styles.Row}>
 
-					<div className={styles.RowImage}>
-
-					</div>
+					<img className={styles.RowImage} src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
 
 					<div className={styles.RowText}>
 						<div>
@@ -48,15 +46,12 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 							</span>
 						</div>
 					</div>
-
 				</div>
 
 				<div className={styles.Row}>
 
 					<div className={styles.RowText}>
-
 						<div>
-
 							<span>
 								Moottoripyörät
 							</span>
@@ -66,36 +61,26 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 							<span>
 								Sähköskootterit
 							</span>
-
 						</div>
-
 					</div>
 
-					<div className={styles.RowImage}>
-						<img src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
-					</div>
+					<img className={styles.RowImage} src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
 
 				</div>
 
 				<div className={styles.Row}>
 
-					<div className={styles.RowImage}>
-						<img src={infobox2.url} alt={infobox2.alt} title={infobox2.title} />
-					</div>
+					<img className={styles.RowImage} src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
 
 					<div className={styles.RowText}>
-
 						<div>
-
 							<span>
-								Muuttotavarat
-							</span>
+							Muuttotavarat
+						</span>
 							<span>
-								Juotavat
-							</span>
-
+							Juotavat
+						</span>
 						</div>
-
 					</div>
 
 				</div>
