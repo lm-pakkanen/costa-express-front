@@ -49,7 +49,7 @@ const useSchedule = () => {
 			return setError(new CError('No data was found for Schedule', 404, false));
 		}
 
-		const parsedData = papa.parse(csvData, { header: true });
+		const parsedData = papa.parse(csvData, { header: true, skipEmptyLines: true });
 
 		if (parsedData.errors.length !== 0) {
 
