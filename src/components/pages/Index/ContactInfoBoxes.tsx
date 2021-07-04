@@ -1,0 +1,71 @@
+import React from 'react';
+
+import styles from './ContactInfoBoxes.module.css';
+import IImage from '../../../interfaces/IImage';
+import constants from '../../../config/constants';
+
+interface IContactInfoBoxes {
+
+}
+
+const emailIcon: IImage = {
+	url:  `${constants.BASE_URI}/img/FontAwesome/envelope.svg`,
+	alt: 'Sähköposti',
+	title: 'Sähköposti'
+};
+
+const whatsappIcon: IImage = {
+	url:  `${constants.BASE_URI}/img/FontAwesome/whatsapp.svg`,
+	alt: 'Whatsapp',
+	title: 'Whatsapp'
+};
+
+const phoneIcon: IImage = {
+	url:  `${constants.BASE_URI}/img/FontAwesome/phone-square-alt.svg`,
+	alt: 'Puhelin',
+	title: 'Puhelin'
+};
+
+const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
+
+	return (
+		<div className={styles.Wrapper}>
+
+			<h3 className={styles.Title}>
+				Ota meihin yhteyttä!
+			</h3>
+
+			<div className={styles.Container}>
+
+				<div className={styles.Item}>
+					<i className={styles.ItemIcon}>
+						<img src={emailIcon.url} alt={emailIcon.alt} title={emailIcon.title} />
+					</i>
+					<div>info@costaexpress.fi</div>
+				</div>
+
+				<div className={styles.Item}>
+					<i className={styles.ItemIcon}>
+						<img src={whatsappIcon.url} alt={whatsappIcon.alt} title={whatsappIcon.title} />
+					</i>
+					<i className={styles.ItemIcon}>
+						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
+					</i>
+					<div>+34646503676</div>
+				</div>
+
+				<div className={styles.Item}>
+					<i className={styles.ItemIcon}>
+						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
+					</i>
+					<div>+358407151474</div>
+				</div>
+
+			</div>
+
+		</div>
+	);
+
+}
+
+export default ContactInfoBoxes;

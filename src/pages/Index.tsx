@@ -11,6 +11,7 @@ import Schedule from '../components/pages/Index/Schedule';
 import InfoBoxes from '../components/pages/Index/InfoBoxes';
 
 import styles from './Index.module.css';
+import ContactInfoBoxes from '../components/pages/Index/ContactInfoBoxes';
 
 interface Props {}
 
@@ -43,8 +44,14 @@ const Index: React.FC<Props> = () => {
 
                         <Schedule />
 
-                        <InfoBoxes />
+                    </LayoutContainer>
 
+                    <LayoutContainer>
+                        <InfoBoxes />
+                    </LayoutContainer>
+
+                    <LayoutContainer>
+                        <ContactInfoBoxes />
                     </LayoutContainer>
 
                 </SubPage>
