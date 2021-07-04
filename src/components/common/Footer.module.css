@@ -15,6 +15,8 @@
     display: flex;
     flex-direction: column;
     height: 62px;
+    padding: 0 2em;
+    margin: 0 auto;
     font-size: 15px;
     box-sizing: border-box;
 }
@@ -45,7 +47,6 @@
 
     .Footer {
         max-width: 1366px;
-        margin: 0 auto;
     }
 
     .ContentWrapper.Links {
