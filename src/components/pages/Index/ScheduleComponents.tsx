@@ -1,10 +1,24 @@
 import React from 'react';
 
-import styles from './ScheduleComponents.module.css';
 import constants from '../../../config/constants';
+
+import { addStylesToClass } from '../../../helpers';
+
+import styles from './ScheduleComponents.module.css';
 
 interface IRequestProposalButton {
 	startTime: string
+}
+
+export const TableColumnTitle: React.FC = (props) => {
+
+	const style = addStylesToClass(styles.TableColumn, [styles.Title]);
+
+	return (
+		<div className={style}>
+			{ props.children }
+		</div>
+	)
 }
 
 export const TableColumn: React.FC = (props) => {

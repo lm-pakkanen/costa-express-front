@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
-import { RequestProposalButton, TableColumn, TableRow, TableRowSeparator } from './ScheduleComponents';
+import {
+	RequestProposalButton,
+	TableColumn,
+	TableColumnTitle,
+	TableRow,
+	TableRowSeparator
+} from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
 import { start } from 'repl';
@@ -115,15 +121,15 @@ const Schedule: React.FC<IScheduleBody> = () => {
 			<div className={styles.ScheduleBody}>
 
 				<TableRow>
-					<TableColumn>
+					<TableColumnTitle>
 						<span>Lähtee</span>
-					</TableColumn>
-					<TableColumn>
+					</TableColumnTitle>
+					<TableColumnTitle>
 						<span>Kohteessa (arvio)</span>
-					</TableColumn>
-					<TableColumn>
+					</TableColumnTitle>
+					<TableColumnTitle>
 						<span>Pyydä tarjous</span>
-					</TableColumn>
+					</TableColumnTitle>
 				</TableRow>
 
 				<TableRowSeparator />
@@ -141,15 +147,15 @@ const Schedule: React.FC<IScheduleBody> = () => {
 			<div className={styles.ScheduleBody}>
 
 				<TableRow>
-					<TableColumn>
+					<TableColumnTitle>
 						<span>Lähtee</span>
-					</TableColumn>
-					<TableColumn>
+					</TableColumnTitle>
+					<TableColumnTitle>
 						<span>Kohteessa (arvio)</span>
-					</TableColumn>
-					<TableColumn>
+					</TableColumnTitle>
+					<TableColumnTitle>
 						<span>Pyydä tarjous</span>
-					</TableColumn>
+					</TableColumnTitle>
 				</TableRow>
 
 				<TableRowSeparator />

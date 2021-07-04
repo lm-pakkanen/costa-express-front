@@ -2,8 +2,13 @@
     display: flex;
     flex-direction: column;
     width: 130px;
-    padding: 0 20px;
+    padding: 0 10px;
     text-align: center;
+    font-size: 14px;
+}
+
+.TableColumn.Title {
+    font-size: 16px;
 }
 
 .TableRow {
@@ -12,11 +17,15 @@
     white-space: nowrap;
 }
 
+.TableRow:nth-child(even) {
+    background: hsla(240, 5%, 18%, 1);
+}
+
 .TableRow > * {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 65px;
+    height: 55px;
 }
 
 .TableRowSeparator {
@@ -25,7 +34,7 @@
 }
 
 .RequestProposalButton {
-    padding: .6em .8em;
+    padding: .4em .5em;
     color: hsla(240, 35%, 95%, 1);
     background-color: hsla(141, 70%, 45%, 1);
     background-image: linear-gradient(hsla(141, 70%, 45%, .4), hsla(141, 70%, 30%, .8));
