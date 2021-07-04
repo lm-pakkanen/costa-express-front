@@ -27,7 +27,6 @@
     flex-direction: column;
     margin: auto 0;
     padding: 2em 2em 2em;
-    color: hsla(240, 35%, 95%, 1);
     background: hsla(240, 5%, 100%, 1);
     border-radius: .5em;
     box-shadow: .1em .1em .2em .1em hsla(240, 5%, 60%, .6);

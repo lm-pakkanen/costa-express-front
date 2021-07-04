@@ -21,10 +21,9 @@
     max-width: 600px;
     margin: 0 auto 3em;
     padding: 0;
-    background: hsla(240, 5%, 20%, 1);
-    border: 2px solid hsla(240, 5%, 3%, .2);
+    background: hsla(240, 5%, 100%, 1);
     border-radius: .5em;
-    box-shadow: .1em .1em .2em .1em hsla(240, 5%, 20%, .6);
+    box-shadow: .1em .1em .2em .1em hsla(240, 5%, 60%, .6);
     overflow: auto;
 }
 
@@ -39,6 +38,6 @@
 .ScheduleBody {
     display: flex;
     flex-direction: column;
-    color: hsla(240, 35%, 95%, 1);
+    color: hsla(240, 5%, 10%, 1);
     flex: 1;
 }
