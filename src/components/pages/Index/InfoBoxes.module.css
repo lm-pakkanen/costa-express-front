@@ -1,3 +1,7 @@
+.Wrapper {
+    padding: 10px;
+}
+
 .Title {
     color: hsla(240, 5%, 10%, 1);
     margin-bottom: 1em;

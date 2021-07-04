@@ -23,7 +23,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 	return (
 
-		<>
+		<div className={styles.Wrapper}>
 
 			<h2 className={styles.Title}>
 				Kuljetamme mitä vaan!
@@ -87,7 +87,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 			</div>
 
-		</>
+		</div>
 
 	);
 
