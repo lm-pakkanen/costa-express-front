@@ -31,3 +31,8 @@
     position: absolute;
     bottom: 20px;
 }
+
+.ContactInfoAnchor {
+    position: absolute;
+    top: -100px;
+}

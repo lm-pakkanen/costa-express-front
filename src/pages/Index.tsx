@@ -51,6 +51,7 @@ const Index: React.FC<Props> = () => {
                     </LayoutContainer>
 
                     <LayoutContainer>
+                        <span id={'ContactInfo'} className={styles.ContactInfoAnchor} />
                         <ContactInfoBoxes />
                     </LayoutContainer>
 

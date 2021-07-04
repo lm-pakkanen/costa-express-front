@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
@@ -11,13 +11,11 @@ import {
 } from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
-import { start } from 'repl';
 
 interface IScheduleData {
 	startCountry: string,
 	endCountry: string,
 	startTime: string,
-	endTime: string,
 	hasSpaceAvailable: string
 }
 
@@ -78,10 +76,6 @@ const GetDataRows: React.FC<IGetDataRows> = (props) => {
 				</TableColumn>
 
 				<TableColumn>
-					{ row.endTime }
-				</TableColumn>
-
-				<TableColumn>
 					<GetRequestButton rowData={row} />
 				</TableColumn>
 
@@ -125,9 +119,6 @@ const Schedule: React.FC<IScheduleBody> = () => {
 						<span>Lähtee</span>
 					</TableColumnTitle>
 					<TableColumnTitle>
-						<span>Kohteessa (arvio)</span>
-					</TableColumnTitle>
-					<TableColumnTitle>
 						<span>Pyydä tarjous</span>
 					</TableColumnTitle>
 				</TableRow>
@@ -149,9 +140,6 @@ const Schedule: React.FC<IScheduleBody> = () => {
 				<TableRow>
 					<TableColumnTitle>
 						<span>Lähtee</span>
-					</TableColumnTitle>
-					<TableColumnTitle>
-						<span>Kohteessa (arvio)</span>
 					</TableColumnTitle>
 					<TableColumnTitle>
 						<span>Pyydä tarjous</span>

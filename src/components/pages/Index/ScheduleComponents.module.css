@@ -1,10 +1,9 @@
 .TableColumn {
     display: flex;
     flex-direction: column;
-    width: 130px;
-    padding: 0 10px;
     text-align: center;
     font-size: 14px;
+    box-sizing: border-box;
     flex: 1;
 }
 
@@ -35,7 +34,8 @@
 }
 
 .RequestProposalButton {
-    padding: .4em .3em;
+    padding: .5em .8em;
+    margin: 0 auto;
     color: hsla(240, 35%, 95%, 1);
     background-color: hsla(141, 70%, 45%, 1);
     background-image: linear-gradient(hsla(141, 70%, 50%, .4), hsla(141, 70%, 33%, .8));

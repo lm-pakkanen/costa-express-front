@@ -7,13 +7,13 @@ interface IScheduleDataRow {
 	startCountry: string,
 	endCountry: string,
 	startTime: string,
-	endTime: string,
 	hasSpaceAvailable: string
 }
 
 
 const useSchedule = () => {
 
+	// TODO: Throw error
 	const [error, setError] = useState<null | CError>(null);
 
 	const [scheduleData, setScheduleData] = useState<IScheduleDataRow[]>([]);
@@ -88,7 +88,6 @@ const useSchedule = () => {
 					startCountry: row.startCountry,
 					endCountry: row.endCountry,
 					startTime: row.startTime,
-					endTime: row.endTime,
 					hasSpaceAvailable: JSON.parse(row.hasSpaceAvailable.toLowerCase())
 				};
 

@@ -21,12 +21,18 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 		title: 'Muuttolaatikot'
 	};
 
+	const infobox3: IImage = {
+		url:  `${constants.BASE_URI}/img/img3-landing.svg`,
+		alt: 'Eläimet',
+		title: 'Eläimet'
+	};
+
 	return (
 
 		<div className={styles.Wrapper}>
 
 			<h2 className={styles.Title}>
-				Kuljetamme mitä vaan!
+				Kuljetamme mitä vaan
 			</h2>
 
 			<div className={styles.Container}>

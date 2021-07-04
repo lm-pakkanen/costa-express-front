@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './ContactInfoBoxes.module.css';
 import IImage from '../../../interfaces/IImage';
 import constants from '../../../config/constants';
+import { addStylesToClass } from '../../../helpers';
 
 interface IContactInfoBoxes {
 
@@ -28,21 +29,26 @@ const phoneIcon: IImage = {
 
 const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
 
+	const emailButtonStyle = addStylesToClass(styles.Item, [styles.ItemButton]);
+
 	return (
 		<div className={styles.Wrapper}>
 
 			<h3 className={styles.Title}>
-				Ota meihin yhteyttä!
+				Ota meihin yhteyttä
 			</h3>
 
 			<div className={styles.Container}>
 
-				<div className={styles.Item}>
+				<a className={emailButtonStyle}
+				   href={'mailto:info@costaexpress.fi'}
+				   title={'Lähetä sähköposti'}
+				>
 					<i className={styles.ItemIcon}>
 						<img src={emailIcon.url} alt={emailIcon.alt} title={emailIcon.title} />
 					</i>
 					<div>info@costaexpress.fi</div>
-				</div>
+				</a>
 
 				<div className={styles.Item}>
 					<i className={styles.ItemIcon}>

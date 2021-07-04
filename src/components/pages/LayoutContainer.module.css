@@ -1,9 +1,10 @@
 .LayoutContainer {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0;
-    padding: 50px;
+    padding: 50px 25px;
     box-sizing: border-box;
     overflow: hidden;
     flex: 1;

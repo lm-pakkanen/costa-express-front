@@ -16,8 +16,8 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 600px;
-    padding: 2em;
+    max-width: 550px;
+    padding: 1em .5em;
     margin: 0 auto;
     color: hsla(240, 5%, 10%, 1);
     background: hsla(240, 5%, 100%, 1);
@@ -31,18 +31,28 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 210px;
     padding: 1em;
     margin: .5em 0;
-    color: hsla(240, 35%, 95%, 1);
     background: hsla(240, 5%, 10%, .95);
     border-radius: .5em;
     box-shadow: .1em .1em .2em .1em hsla(240, 5%, 60%, .4);
-    font-weight: bold;
     font-size: 14px;
+}
+
+.ItemButton {
+    text-decoration: none;
+}
+
+.ItemButton:hover {
+    background: hsla(240, 5%, 15%, .95);
+    cursor: pointer;
 }
 
 .Item > div {
     padding-top: 5px;
+    color: hsla(240, 35%, 95%, 1);
+    font-weight: bold;
 }
 
 .Item > * {
@@ -54,4 +64,10 @@
     width: 25px;
 }
 
-@scree
+@media screen and (min-width: 600px) {
+
+    .Item {
+        margin: .5em .6em;
+    }
+
+}
