@@ -9,3 +9,11 @@
     overflow: hidden;
     flex: 1;
 }
+
+@media screen and (min-width: 600px) {
+
+    .LayoutContainer {
+        padding: 50px;
+    }
+
+}

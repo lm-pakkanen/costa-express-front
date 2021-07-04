@@ -25,6 +25,7 @@
 .ContactForm {
     display: flex;
     flex-direction: column;
+    max-width: 650px;
     margin: auto 0;
     padding: 2em 2em 2em;
     background: hsla(240, 5%, 100%, 1);
@@ -53,8 +54,7 @@
 
     .FormTitleWrapper {
         max-width: 700px;
-        padding-left: 4.5em;
-        margin: 2.5em auto 4.5em;
+        margin: 2.5em auto 3.5em;
         box-sizing: border-box;
     }
 
@@ -65,7 +65,6 @@
     }
 
     .ContactForm {
-        max-width: 700px;
         padding: 3em 4.5em 3em;
         margin: 0 auto;
     }
@@ -76,6 +75,21 @@
 
     .SubmitButtonRow {
         margin: 0 .5em 0 0;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+
+    .ContactForm {
+        padding: 2.5em 4em 2.5em;
+        margin: 0 auto;
+    }
+
+    .FormTitle,
+    .FormDescription
+    {
+        max-width: 400px;
     }
 
 }
