@@ -77,7 +77,7 @@
 }
 
 .FieldDescription {
-    padding: 0 0 .3em .1em;
+    padding: .1em 0 .3em .1em;
     color: hsla(240, 5%, 40%, 1);
     font-size: 14px;
 }
@@ -95,7 +95,11 @@
 @media screen and (min-width: 1000px) {
 
     .TextInput {
-        max-width: 500px;
+        max-width: 300px;
+    }
+
+    .SubmitButton {
+        width: 100%;
     }
 
 }
