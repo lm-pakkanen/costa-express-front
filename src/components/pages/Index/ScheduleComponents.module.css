@@ -47,3 +47,23 @@
 .RequestProposalButton:hover {
     background-image: linear-gradient(hsla(141, 70%, 18%, .2), hsla(141, 70%, 12%, .2));
 }
+
+@media screen and (min-width: 600px) {
+
+    .TableColumn {
+        font-size: 16px;
+    }
+
+    .TableColumn.Title {
+        font-weight: bold;
+    }
+
+    .TableRow {
+        padding: 0 2em;
+    }
+
+    .TableRow > * {
+        height: 65px;
+    }
+
+}
