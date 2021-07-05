@@ -10,7 +10,7 @@ interface IViewportState {
 	deviceType: IDeviceType
 }
 
-const useViewport = (onResizedCallback: () => void): IViewportState => {
+const useViewport = (onResizedCallback?: () => void): IViewportState => {
 
 	// TODO: Variables
 	const mobileWidth = 400;

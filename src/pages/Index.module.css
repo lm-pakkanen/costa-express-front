@@ -15,8 +15,6 @@
 
 .HeroSubPage {
     min-height: 100vh;
-    background: url('http://localhost:3000/img/Mobile hero.svg') no-repeat center;
-    background-size: cover;
 }
 
 .HeroLayoutContainer {

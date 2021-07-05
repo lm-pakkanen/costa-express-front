@@ -10,19 +10,19 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 
 	const infobox1: IImage = {
-		url:  `${constants.BASE_URI}/img/img1-landing.svg`,
+		url:  `${constants.BASE_URI}/img/img1-landing-20.jpg`,
 		alt: 'Moottoripyörä',
 		title: 'Moottoripyörä'
 	};
 
 	const infobox2: IImage = {
-		url:  `${constants.BASE_URI}/img/img2-landing.svg`,
+		url:  `${constants.BASE_URI}/img/img2-landing-20.jpg`,
 		alt: 'Muuttolaatikot',
 		title: 'Muuttolaatikot'
 	};
 
 	const infobox3: IImage = {
-		url:  `${constants.BASE_URI}/img/img3-landing.svg`,
+		url:  `${constants.BASE_URI}/img/img3-landing-20.jpg`,
 		alt: 'Eläimet',
 		title: 'Eläimet'
 	};
@@ -40,7 +40,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 				<div className={styles.Row}>
 
-					<img className={styles.RowImage} src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
+					<img className={styles.RowImage} src={infobox3.url} alt={infobox3.alt} title={infobox3.title} />
 
 					<div className={styles.RowText}>
 						<div>
@@ -49,6 +49,9 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 							</span>
 							<span>
 								Kissat
+							</span>
+							<span>
+								Vuokrahäkit
 							</span>
 						</div>
 					</div>
@@ -67,6 +70,9 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 							<span>
 								Sähköskootterit
 							</span>
+							<span>
+								Henkilöautot
+							</span>
 						</div>
 					</div>
 
@@ -76,16 +82,19 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 				<div className={styles.Row}>
 
-					<img className={styles.RowImage} src={infobox1.url} alt={infobox1.alt} title={infobox1.title} />
+					<img className={styles.RowImage} src={infobox2.url} alt={infobox2.alt} title={infobox2.title} />
 
 					<div className={styles.RowText}>
 						<div>
 							<span>
-							Muuttotavarat
-						</span>
+								Laukut, laatikot
+							</span>
 							<span>
-							Juotavat
-						</span>
+								Muuttokuormat
+							</span>
+							<span>
+								Alkoholijuomat
+							</span>
 						</div>
 					</div>
 

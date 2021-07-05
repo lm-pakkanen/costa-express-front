@@ -1,3 +1,20 @@
+.HeroBackgroundMobile {
+
+}
+
+.HeroBackgroundDesktop {
+
+}
+
+.HeroBackgroundMobile,
+.HeroBackgroundDesktop
+{
+    position: absolute;
+    min-height: 100vh;
+    width: auto;
+    z-index: -1;
+}
+
 .HeroCTA {
     display: flex;
     flex-direction: column;

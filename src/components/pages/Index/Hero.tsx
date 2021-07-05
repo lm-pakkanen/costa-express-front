@@ -6,6 +6,7 @@ import { addStylesToClass } from '../../../helpers';
 
 import styles from './Hero.module.css'
 import IImage from '../../../interfaces/IImage';
+import useViewport from '../../../hooks/useViewport';
 
 interface IHeroLogo {}
 
@@ -19,6 +20,47 @@ interface IHeroCTAButton {
 interface IHeroCTA {}
 
 interface IHero  {}
+
+const HeroBackground: React.FC = () => {
+
+	const { viewport } = useViewport();
+	const { width } = viewport;
+
+	const backgroundMobile: IImage = {
+		url:  `${constants.BASE_URI}/img/Landing_mobile-80.jpg`,
+		alt: '',
+		title: 'CostaExpress'
+	};
+
+	const backgroundDesktop: IImage = {
+		url:  `${constants.BASE_URI}/img/Landing_desktop-80.jpg`,
+		alt: '',
+		title: 'CostaExpress'
+	};
+
+	if (width <= 400) {
+
+		return (
+			<img className={styles.HeroBackgroundMobile}
+			     src={backgroundMobile.url}
+			     alt={backgroundMobile.alt}
+			     title={backgroundMobile.title}
+			/>
+		);
+
+	} else {
+
+		return (
+			<img className={styles.HeroBackgroundDesktop}
+			     src={backgroundDesktop.url}
+			     alt={backgroundDesktop.alt}
+			     title={backgroundDesktop.title}
+			/>
+		);
+
+	}
+
+}
 
 const HeroLogo: React.FC<IHeroLogo> = (props) => {
 
@@ -94,6 +136,7 @@ const Hero: React.FC<IHero> = (props) => {
 
 	return (
 		<>
+			<HeroBackground />
 			<HeroLogo />
 			<HeroCTA />
 		</>
