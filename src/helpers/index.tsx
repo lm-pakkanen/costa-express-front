@@ -1,5 +1,6 @@
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
+import isMobilePhone from 'validator/lib/isMobilePhone';
 
 import constants from '../config/constants';
 
@@ -48,6 +49,10 @@ export const Validator = {
 			return fieldEmptyError;
 		}
 
+		if (name.length > 100) {
+			return 'Viesti on liian pitkä.';
+		}
+
 		return true;
 	},
 
@@ -93,10 +98,26 @@ export const Validator = {
 
 	},
 
+	validatePhoneNumber: (number: ValidatorArgument) => {
+
+		if (number && !isEmpty(number)) {
+			if (!isMobilePhone(number, 'any', { strictMode: true })) {
+				return 'Numero on epäkelpo.'
+			}
+		}
+
+		return true;
+
+	},
+
 	validateContactFormCargoInformation: (message: ValidatorArgument) => {
 
 		if (!message || isEmpty(message)) {
 			return fieldEmptyError;
+		}
+
+		if (message.length > 5000) {
+			return 'Viesti on liian pitkä.';
 		}
 
 		return true;
@@ -105,8 +126,12 @@ export const Validator = {
 
 	validateContactFormMessage: (message: ValidatorArgument) => {
 
-		if (!message || isEmpty(message)) {
-			return fieldEmptyError;
+		if (message && !isEmpty(message)) {
+
+			if (message.length > 5000) {
+				return 'Viesti on liian pitkä.';
+			}
+
 		}
 
 		return true;

@@ -7,8 +7,8 @@ interface IInput {
 	value: null | string,
 	name?: string,
 	style?: string,
-	descriptionBefore?: string,
-	descriptionAfter?: string,
+	descriptionBefore?: string | React.ReactElement,
+	descriptionAfter?: string | React.ReactElement,
 	hasError?: boolean
 	readonly?: boolean
 	required?: boolean
@@ -59,7 +59,7 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 			)}
 
 			{ props.descriptionBefore && (
-				<span className={styles.FieldDescription}>
+				<span className={addStylesToClass(styles.FieldDescription, [styles.TextInputFieldDescription])}>
 					{ props.descriptionBefore }
 				</span>
 			)}
@@ -75,7 +75,7 @@ export const TextInput: React.FC<ITextInput> = (props) => {
 			/>
 
 			{ props.descriptionAfter && (
-				<span className={styles.FieldDescription}>
+				<span className={addStylesToClass(styles.FieldDescription, [styles.TextInputFieldDescription])}>
 					{ props.descriptionAfter }
 				</span>
 			)}

@@ -82,6 +82,11 @@
     font-size: 14px;
 }
 
+.FieldDescription.TextInputFieldDescription {
+    display: flex;
+    flex-direction: column;
+}
+
 .FieldError {
     margin: .2em 0 0;
     color: hsla(0, 70%, 50%, 1) !important;
@@ -94,7 +99,9 @@
 
 @media screen and (min-width: 600px) {
 
-    .TextInput {
+    .TextInput,
+    .TextInputFieldDescription
+    {
         max-width: 300px;
     }
 

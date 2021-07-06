@@ -201,10 +201,12 @@ const useContactForm = (): IContactFormState => {
 		const pickupStreetValid = Validator.validateAddressStreet(data.pickupAddress.street.value);
 		const pickupZipAndCityValid = Validator.validateAddressZip(data.pickupAddress.zipAndCity.value);
 		const pickupCountryValid = Validator.validateAddressCountry(data.pickupAddress.country.value);
+		const pickupPhoneValid = Validator.validatePhoneNumber(data.pickupPhone.value);
 
 		const deliveryStreetValid = Validator.validateAddressStreet(data.deliveryAddress.street.value);
 		const deliveryZipAndCityValid = Validator.validateAddressZip(data.deliveryAddress.zipAndCity.value);
 		const deliveryCountryValid = Validator.validateAddressCountry(data.deliveryAddress.country.value);
+		const deliveryPhoneValid = Validator.validatePhoneNumber(data.deliveryPhone.value);
 
 		const cargoMessageValid = Validator.validateContactFormCargoInformation(data.cargoDescription.value);
 		const messageValid = Validator.validateContactFormMessage(data.messageContent.value);
@@ -251,6 +253,11 @@ const useContactForm = (): IContactFormState => {
 			hasError = true;
 		}
 
+		if (!(typeof pickupPhoneValid === 'boolean' && pickupPhoneValid)) {
+			errors = updateErrors(errors, 'pickupPhone', pickupPhoneValid);
+			hasError = true;
+		}
+
 		/** Delivery address */
 
 		if (!(typeof deliveryStreetValid === 'boolean' && deliveryStreetValid)) {
@@ -265,6 +272,11 @@ const useContactForm = (): IContactFormState => {
 
 		if (!(typeof deliveryCountryValid === 'boolean' && deliveryCountryValid)) {
 			errors = updateErrors(errors, 'deliveryAddressCountry', deliveryCountryValid);
+			hasError = true;
+		}
+
+		if (!(typeof deliveryPhoneValid === 'boolean' && deliveryPhoneValid)) {
+			errors = updateErrors(errors, 'deliveryPhone', deliveryPhoneValid);
 			hasError = true;
 		}
 
