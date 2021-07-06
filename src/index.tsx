@@ -5,8 +5,6 @@ import ReactGA from 'react-ga';
 
 import reportWebVitals from './reportWebVitals';
 
-import constants from './config/constants';
-
 import { AppContextProvider } from './contexts/AppContext';
 import AppBoundary from './components/boundaries/AppBoundary';
 
@@ -19,7 +17,10 @@ const configureApp = async () => {
     reportWebVitals(console.log);
 
     /** Google Analytics configuration */
-    ReactGA.initialize(constants.ANALYTICS.GOOGLE.TRACKING_ID);
+    ReactGA.initialize(process.env.REACT_APP_ANALYTICS_TRACKING_ID ?? '', {
+        debug: true
+    });
+
     ReactGA.pageview(window.location.pathname + window.location.search);
 
 };

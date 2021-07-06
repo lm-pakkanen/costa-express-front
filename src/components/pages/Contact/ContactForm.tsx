@@ -34,7 +34,6 @@ const FieldRow: React.FC<IFieldRow> = (props) => {
 const ContactForm: React.FC<Props> = () => {
 
 	const urlParams = new URLSearchParams(window.location.search);
-
 	const selectedDate = urlParams.get('date');
 
 	const contactForm = useContactForm();
@@ -60,11 +59,17 @@ const ContactForm: React.FC<Props> = () => {
 	} = methods;
 
 	useEffect(() => {
-		setStartDate(selectedDate);
-	}, [ setStartDate, selectedDate ]);
+
+		if (!startDate.value) {
+			setStartDate(selectedDate);
+		}
+
+	}, [ startDate, setStartDate, selectedDate ]);
 
 	useEffect(() => {
+
 		if (formAlert) { alert(formAlert); }
+
 	}, [ formAlert ]);
 
 	return (

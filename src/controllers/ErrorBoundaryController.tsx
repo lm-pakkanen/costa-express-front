@@ -1,10 +1,11 @@
+import React from 'react';
+
 import { CError, FatalCError } from '../models/Errors';
 
 import IBoundaryState from '../interfaces/IBoundaryState';
 import ICError from '../interfaces/ICError';
 import IFatalCError from '../interfaces/IFatalCError';
 import { AnyError, AnyErrorArray } from '../interfaces/types';
-import React from 'react';
 
 class ErrorBoundaryController {
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import constants from './config/constants';
+
 import { useStoreConfigure } from './hooks/useStoreConfigure';
 
 import NotFound from './pages/Errors/NotFound';
@@ -17,6 +19,8 @@ import Contact from './pages/Contact';
 interface Props {}
 
 const App: React.FC<Props> = () => {
+
+    console.debug(process.env.NODE_ENV, constants.BASE_URI);
 
     const [isConfigReady, setIsConfigReady] = useState(false);
 

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import constants from '../../config/constants';
-
 import Page from '../../components/pages/Page';
 
 import ICError from '../../interfaces/ICError';
@@ -35,12 +33,12 @@ const FatalError: React.FC<Props> = (props) => {
 
 	const MailToLink: React.FC = () => {
 		return (
-			<a href={`mailto:${constants.WEBMASTER_EMAIL}`}
+			<a href={`mailto:${process.env.REACT_APP_WEBMASTER_EMAIL}`}
 			   className={styles.EmailLink}
 			   target={'_blank'}
 			   rel={'noreferrer'}
 			>
-				{constants.WEBMASTER_EMAIL}
+				{ process.env.REACT_APP_WEBMASTER_EMAIL }
 			</a>
 		);
 	};

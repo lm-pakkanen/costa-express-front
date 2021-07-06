@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import papa from 'papaparse';
 
 import { CError } from '../../models/Errors';
+import useMemoryController from './useMemoryController';
 
 interface IScheduleDataRow {
 	startCountry: string,
@@ -10,15 +11,9 @@ interface IScheduleDataRow {
 	hasSpaceAvailable: string
 }
 
-interface IUseSchedule {
-	data: IScheduleDataRow[]
-	error: null | CError
-}
+const useSchedule = (): IScheduleDataRow[] => {
 
-const useSchedule = (): IUseSchedule => {
-
-	// TODO: Throw error
-	const [error, setError] = useState<null | CError>(null);
+	const memoryController = useMemoryController();
 
 	const [scheduleData, setScheduleData] = useState<IScheduleDataRow[]>([]);
 
@@ -31,7 +26,9 @@ const useSchedule = (): IUseSchedule => {
 				const fileContents = await fetch('/assets/Schedule.csv');
 
 				if (!fileContents.body) {
-					return setError(new CError('No data was found for Schedule', 404, false));
+					const error = new CError('No data was found for Schedule', 404, false);
+					memoryController.addMemoryError(error);
+					return;
 				}
 
 				const reader = fileContents.body.getReader();
@@ -42,7 +39,8 @@ const useSchedule = (): IUseSchedule => {
 				return decoder.decode(readResult.value);
 
 			} catch (err) {
-				return setError(new CError(err.message, err.code, false));
+				memoryController.addMemoryError(new CError(err.message, err.code, false));
+				return;
 			}
 
 		};
@@ -50,7 +48,8 @@ const useSchedule = (): IUseSchedule => {
 		const csvData = await getCSVData();
 
 		if (!csvData) {
-			return setError(new CError('No data was found for Schedule', 404, false));
+			memoryController.addMemoryError(new CError('No data was found for Schedule', 404, false));
+			return;
 		}
 
 		const parsedData = papa.parse(csvData, { header: true, skipEmptyLines: true });
@@ -62,12 +61,16 @@ const useSchedule = (): IUseSchedule => {
 			const errMessage = err.message;
 			const errCode = parseInt(err.code);
 
-			return setError(new CError(errMessage, errCode,false));
+			memoryController.addMemoryError(new CError(errMessage, errCode,false));
+			return;
+
 
 		}
 
 		if (!parsedData.data) {
-			return setError(new CError('No data was found for Schedule', 404,false));
+			const error = new CError('No data was found for Schedule', 404,false);
+			memoryController.addMemoryError(error);
+			return;
 		}
 
 		return parsedData.data;
@@ -104,10 +107,7 @@ const useSchedule = (): IUseSchedule => {
 
 	}, []);
 
-	return {
-		data: scheduleData,
-		error
-	};
+	return scheduleData;
 
 }
 

@@ -117,7 +117,7 @@ const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 
 const Schedule: React.FC<IScheduleBody> = () => {
 
-	const { data } = useSchedule();
+	const data = useSchedule();
 
 	const ToSpain: React.FC = () => {
 

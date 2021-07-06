@@ -41,7 +41,7 @@ const CookiesConsent: React.FC<ICookiesConsent> = (props) => {
 
 	const handleAllCookiesAccept = () => {
 
-		const cookiesLevel = constants.COOKIES_LEVELS.ALL;
+		const cookiesLevel = constants.COOKIES_LEVELS.MARKETING;
 
 		dispatch({ type: meta.setCookiesAccepted, payload: { accepted: true, level: cookiesLevel } });
 		storeCookieConsent(true, cookiesLevel);

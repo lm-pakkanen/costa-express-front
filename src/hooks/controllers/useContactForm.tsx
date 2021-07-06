@@ -211,8 +211,6 @@ const useContactForm = (): IContactFormState => {
 		const cargoMessageValid = Validator.validateContactFormCargoInformation(data.cargoDescription.value);
 		const messageValid = Validator.validateContactFormMessage(data.messageContent.value);
 
-		// TODO: Validate rest of the fields
-
 		let errors = {};
 
 		let hasError = false;
