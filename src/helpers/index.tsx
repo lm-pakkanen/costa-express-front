@@ -25,12 +25,14 @@ export function addStylesToClass(originStyle: string, styleList: string[]) {
 
 }
 
+const fieldEmptyError = 'Kenttä ei voi olla tyhjä';
+
 export const Validator = {
 
 	validateContactFormEmail: (email: ValidatorArgument) => {
 
 		if (!email) {
-			return 'Kenttä ei voi olla tyhjä.';
+			return fieldEmptyError;
 		}
 
 		if (!isEmail(email)) {
@@ -43,19 +45,71 @@ export const Validator = {
 	validateContactFormName: (name: ValidatorArgument) => {
 
 		if (!name || isEmpty(name)) {
-			return 'Kenttä ei voi olla tyhjä.'
+			return fieldEmptyError;
 		}
 
 		return true;
 	},
 
-	validateContactFormMessage: (message: ValidatorArgument) => {
+	validateAddressStreet: (street: ValidatorArgument) => {
 
-		if (!message || isEmpty(message)) {
-			return 'Kenttä ei voi olla tyhjä.'
+		if (!street || isEmpty(street)) {
+			return fieldEmptyError;
+		}
+
+		if (street.length > 150) {
+			return 'Osoite on liian pitkä.'
 		}
 
 		return true;
-	}
+
+	},
+
+	validateAddressZip: (zip: ValidatorArgument) => {
+
+		if (!zip || isEmpty(zip)) {
+			return fieldEmptyError;
+		}
+
+		if (zip.length > 150) {
+			return 'Osoite on liian pitkä.'
+		}
+
+		return true;
+
+	},
+
+	validateAddressCountry: (country: ValidatorArgument) => {
+
+		if (!country || isEmpty(country)) {
+			return fieldEmptyError;
+		}
+
+		if (country.length > 100) {
+			return 'Osoite on liian pitkä.'
+		}
+
+		return true;
+
+	},
+
+	validateContactFormCargoInformation: (message: ValidatorArgument) => {
+
+		if (!message || isEmpty(message)) {
+			return fieldEmptyError;
+		}
+
+		return true;
+
+	},
+
+	validateContactFormMessage: (message: ValidatorArgument) => {
+
+		if (!message || isEmpty(message)) {
+			return fieldEmptyError;
+		}
+
+		return true;
+	},
 
 };

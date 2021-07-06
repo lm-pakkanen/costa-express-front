@@ -197,6 +197,16 @@ const useContactForm = (): IContactFormState => {
 		const emailValid = Validator.validateContactFormEmail(data.sender.emailAddress.value);
 		const firstNameValid = Validator.validateContactFormName(data.sender.firstName.value);
 		const lastNameValid = Validator.validateContactFormName(data.sender.lastName.value);
+
+		const pickupStreetValid = Validator.validateAddressStreet(data.pickupAddress.street.value);
+		const pickupZipAndCityValid = Validator.validateAddressZip(data.pickupAddress.zipAndCity.value);
+		const pickupCountryValid = Validator.validateAddressCountry(data.pickupAddress.country.value);
+
+		const deliveryStreetValid = Validator.validateAddressStreet(data.deliveryAddress.street.value);
+		const deliveryZipAndCityValid = Validator.validateAddressZip(data.deliveryAddress.zipAndCity.value);
+		const deliveryCountryValid = Validator.validateAddressCountry(data.deliveryAddress.country.value);
+
+		const cargoMessageValid = Validator.validateContactFormCargoInformation(data.cargoDescription.value);
 		const messageValid = Validator.validateContactFormMessage(data.messageContent.value);
 
 		// TODO: Validate rest of the fields
@@ -205,10 +215,14 @@ const useContactForm = (): IContactFormState => {
 
 		let hasError = false;
 
+		/** Email address */
+
 		if (!(typeof emailValid === 'boolean' && emailValid)) {
 			errors = updateErrors(errors, 'emailAddress', emailValid);
 			hasError = true;
 		}
+
+		/** First- and last name */
 
 		if (!(typeof firstNameValid === 'boolean' && firstNameValid)) {
 			errors = updateErrors(errors, 'firstName', firstNameValid);
@@ -219,6 +233,49 @@ const useContactForm = (): IContactFormState => {
 			errors = updateErrors(errors, 'lastName', lastNameValid);
 			hasError = true;
 		}
+
+		/** Pickup address */
+
+		if (!(typeof pickupStreetValid === 'boolean' && pickupStreetValid)) {
+			errors = updateErrors(errors, 'pickupAddressStreet', pickupStreetValid);
+			hasError = true;
+		}
+
+		if (!(typeof pickupZipAndCityValid === 'boolean' && pickupZipAndCityValid)) {
+			errors = updateErrors(errors, 'pickupAddressZipAndCity', pickupZipAndCityValid);
+			hasError = true;
+		}
+
+		if (!(typeof pickupCountryValid === 'boolean' && pickupCountryValid)) {
+			errors = updateErrors(errors, 'pickupAddressCountry', pickupCountryValid);
+			hasError = true;
+		}
+
+		/** Delivery address */
+
+		if (!(typeof deliveryStreetValid === 'boolean' && deliveryStreetValid)) {
+			errors = updateErrors(errors, 'deliveryAddressStreet', deliveryStreetValid);
+			hasError = true;
+		}
+
+		if (!(typeof deliveryZipAndCityValid === 'boolean' && deliveryZipAndCityValid)) {
+			errors = updateErrors(errors, 'deliveryAddressZipAndCity', deliveryZipAndCityValid);
+			hasError = true;
+		}
+
+		if (!(typeof deliveryCountryValid === 'boolean' && deliveryCountryValid)) {
+			errors = updateErrors(errors, 'deliveryAddressCountry', deliveryCountryValid);
+			hasError = true;
+		}
+
+		/** Cargo description */
+
+		if (!(typeof cargoMessageValid === 'boolean' && cargoMessageValid)) {
+			errors = updateErrors(errors, 'cargoDescription', cargoMessageValid);
+			hasError = true;
+		}
+
+		/** Message content */
 
 		if (!(typeof messageValid === 'boolean' && messageValid)) {
 			errors = updateErrors(errors, 'messageContent', messageValid);
