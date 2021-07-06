@@ -38,24 +38,26 @@ const HeroBackground: React.FC = () => {
 		title: 'CostaExpress'
 	};
 
-	if (width <= 400) {
+	if (width <= 600) {
 
 		return (
-			<img className={styles.HeroBackgroundMobile}
-			     src={backgroundMobile.url}
-			     alt={backgroundMobile.alt}
-			     title={backgroundMobile.title}
-			/>
+			<div className={styles.HeroBackgroundMobile}>
+				<img src={backgroundMobile.url}
+				     alt={backgroundMobile.alt}
+				     title={backgroundMobile.title}
+				/>
+			</div>
 		);
 
 	} else {
 
 		return (
-			<img className={styles.HeroBackgroundDesktop}
-			     src={backgroundDesktop.url}
-			     alt={backgroundDesktop.alt}
-			     title={backgroundDesktop.title}
-			/>
+			<div className={styles.HeroBackgroundDesktop}>
+				<img src={backgroundDesktop.url}
+				     alt={backgroundDesktop.alt}
+				     title={backgroundDesktop.title}
+				/>
+			</div>
 		);
 
 	}

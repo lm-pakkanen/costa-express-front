@@ -6,13 +6,38 @@
 
 }
 
+.HeroBackgroundMobile:after,
+.HeroBackgroundDesktop:after
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    background: hsla(0, 0%, 0%, 0.3);
+}
+
 .HeroBackgroundMobile,
 .HeroBackgroundDesktop
 {
     position: absolute;
-    min-height: 100vh;
-    width: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
     z-index: -1;
+}
+
+.HeroBackgroundMobile > img,
+.HeroBackgroundDesktop > img
+{
+
 }
 
 .HeroCTA {

@@ -8,9 +8,7 @@
 .Wrapper {
     display: flex;
     flex-direction: column;
-    max-width: 1366px;
     min-height: calc(100% - 65px);
-    margin: 0 auto;
     box-sizing: border-box;
     overflow: visible;
 }

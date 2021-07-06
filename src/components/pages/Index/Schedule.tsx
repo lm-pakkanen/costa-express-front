@@ -34,9 +34,19 @@ interface IScheduleBody {}
 
 const ScheduleTitle: React.FC = () => {
 	return (
-		<h2 className={styles.ScheduleTitle}>
-			Kuljetusaikataulu (kansainväliset reitit)
-		</h2>
+		<>
+			<h2 className={styles.ScheduleTitle}>
+				Kuljetusaikataulu
+			</h2>
+			<h3 className={styles.SubTitle}>
+				<span>
+					Lisäksi järjestämme aikatauluttomia
+				</span>
+				<span>
+					kuljetuksia paikallisesti Espanjassa
+				</span>
+			</h3>
+		</>
 	)
 
 };

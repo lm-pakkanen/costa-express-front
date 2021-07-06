@@ -35,15 +35,6 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 				Kuljetamme mitä vaan
 			</h2>
 
-			<h2 className={styles.SubTitle}>
-				<span>
-					Lisäksi erilliset kuljetukset
-				</span>
-				<span>
-					paikallisesti Espanjassa
-				</span>
-			</h2>
-
 			<div className={styles.Container}>
 
 
