@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 
-import { appStore } from '../../../contexts/AppContext';
+import { appStore } from '../../../../contexts/AppContext';
 
-import { addStylesToClass } from '../../../helpers';
+import { addStylesToClass } from '../../../../helpers';
 
 import floaterStyles from './NavFloater.module.css';
-import useScrollStatus from '../../../hooks/useScrollStatus';
+import useScrollStatus from '../../../../hooks/useScrollStatus';
 
 interface Props {}
 

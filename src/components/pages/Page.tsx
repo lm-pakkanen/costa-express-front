@@ -2,7 +2,7 @@ import React from 'react';
 
 import { addStylesToClass } from '../../helpers';
 
-import Navigation from '../navigation/Navigation';
+import Navigation from '../common/navigation/Navigation';
 import CookiesConsent from '../common/CookiesConsent';
 import Footer from '../common/Footer';
 

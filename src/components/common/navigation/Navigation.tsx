@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { appStore } from '../../contexts/AppContext';
+import { appStore } from '../../../contexts/AppContext';
 
-import { addStylesToClass } from '../../helpers';
+import { addStylesToClass } from '../../../helpers';
 
 import DesktopNavigation from './subcomponents/_DesktopNavigation';
 import TabletNavigation from './subcomponents/_TabletNavigation';
 import MobileNavigation from './subcomponents/_MobileNavigation';
 
 import styles from './Navigation.module.css';
-import useScrollStatus from '../../hooks/useScrollStatus';
+import useScrollStatus from '../../../hooks/useScrollStatus';
 
 interface Props {
     style?: string,

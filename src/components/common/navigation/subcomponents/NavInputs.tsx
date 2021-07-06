@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import { navigation } from '../../../config/actions';
+import { navigation } from '../../../../config/actions';
 
-import { appStore } from '../../../contexts/AppContext';
+import { appStore } from '../../../../contexts/AppContext';
 
-import { addStylesToClass } from '../../../helpers';
+import { addStylesToClass } from '../../../../helpers';
 
-import IImage from '../../../interfaces/IImage';
+import IImage from '../../../../interfaces/IImage';
 
 import styles from './NavInputs.module.css';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import constants from '../../../config/constants';
+import constants from '../../../../config/constants';
 
 import { NavLink } from './NavInputs';
 
-import IImage from '../../../interfaces/IImage';
+import IImage from '../../../../interfaces/IImage';
 
 import inputStyles from './NavInputs.module.css';
 
