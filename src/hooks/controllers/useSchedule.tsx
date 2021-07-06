@@ -10,8 +10,12 @@ interface IScheduleDataRow {
 	hasSpaceAvailable: string
 }
 
+interface IUseSchedule {
+	data: IScheduleDataRow[]
+	error: null | CError
+}
 
-const useSchedule = () => {
+const useSchedule = (): IUseSchedule => {
 
 	// TODO: Throw error
 	const [error, setError] = useState<null | CError>(null);
@@ -100,7 +104,10 @@ const useSchedule = () => {
 
 	}, []);
 
-	return scheduleData;
+	return {
+		data: scheduleData,
+		error
+	};
 
 }
 

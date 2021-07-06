@@ -6,7 +6,7 @@ import styles from './ContactForm.module.css';
 import inputStyles from './ContactFormInputs.module.css';
 
 import { addStylesToClass } from '../../../helpers';
-import useContactForm from '../../../hooks/useContactForm';
+import useContactForm from '../../../hooks/controllers/useContactForm';
 import IContactFormState from '../../../interfaces/IContactFormState';
 
 interface Props {}
@@ -61,7 +61,7 @@ const ContactForm: React.FC<Props> = () => {
 
 	useEffect(() => {
 		setStartDate(selectedDate);
-	}, [ selectedDate ]);
+	}, [ setStartDate, selectedDate ]);
 
 	useEffect(() => {
 		if (formAlert) { alert(formAlert); }

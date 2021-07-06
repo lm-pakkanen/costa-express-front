@@ -55,7 +55,7 @@ const useViewport = (onResizedCallback?: () => void): IViewportState => {
 			window.removeEventListener('resize', handleResize);
 		}
 
-	}, [ mobileWidth, tabletWidth ]);
+	}, [ onResizedCallback, mobileWidth, tabletWidth ]);
 
 	return {
 		viewport: {

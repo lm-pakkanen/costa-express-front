@@ -9,8 +9,6 @@ import { NavFloaterToggler } from './NavInputs';
 
 import { appStore } from '../../../../contexts/AppContext';
 
-import styles from './NavInputs.module.css';
-
 // TODO: visible order of links
 const MobileNavigation: React.FC = () => {
 

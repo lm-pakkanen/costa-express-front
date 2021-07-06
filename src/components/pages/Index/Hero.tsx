@@ -6,7 +6,7 @@ import { addStylesToClass } from '../../../helpers';
 
 import styles from './Hero.module.css'
 import IImage from '../../../interfaces/IImage';
-import useViewport from '../../../hooks/useViewport';
+import useViewport from '../../../hooks/controllers/useViewport';
 
 interface IHeroLogo {}
 

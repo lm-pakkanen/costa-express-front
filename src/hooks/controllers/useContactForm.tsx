@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import emailjs from 'emailjs-com';
 
-import { Validator } from '../helpers';
+import { Validator } from '../../helpers';
 
-import IContactFormState, { IFormDataValue } from '../interfaces/IContactFormState';
+import IContactFormState, { IFormDataValue } from '../../interfaces/IContactFormState';
 
 interface IFormData {
 	[key: string]: IFormDataValue

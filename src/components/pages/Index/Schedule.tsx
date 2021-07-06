@@ -117,7 +117,7 @@ const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 
 const Schedule: React.FC<IScheduleBody> = () => {
 
-	const scheduleData = useSchedule();
+	const { data } = useSchedule();
 
 	const ToSpain: React.FC = () => {
 
@@ -135,7 +135,7 @@ const Schedule: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} toCountry={'Espanja'} />
+				<GetDataRows data={data} toCountry={'Espanja'} />
 
 			</div>
 		);
@@ -158,7 +158,7 @@ const Schedule: React.FC<IScheduleBody> = () => {
 
 				<TableRowSeparator />
 
-				<GetDataRows data={scheduleData} toCountry={'Suomi'} />
+				<GetDataRows data={data} toCountry={'Suomi'} />
 
 			</div>
 		);
