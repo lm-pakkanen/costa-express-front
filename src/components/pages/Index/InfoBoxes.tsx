@@ -93,7 +93,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 								Muuttokuormat
 							</span>
 							<span>
-								Alkoholijuomat
+								Noudot kaupoista
 							</span>
 						</div>
 					</div>
