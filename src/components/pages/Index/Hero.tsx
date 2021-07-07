@@ -27,18 +27,18 @@ const HeroBackground: React.FC = () => {
 	const { width } = viewport;
 
 	const backgroundMobile: IImage = {
-		url:  `${constants.BASE_URI}/img/Landing_mobile-80.jpg`,
+		url:  `${constants.BASE_URI}/img/Landing_mobile-10.jpg`,
 		alt: '',
 		title: 'CostaExpress'
 	};
 
 	const backgroundDesktop: IImage = {
-		url:  `${constants.BASE_URI}/img/Landing_desktop-80.jpg`,
+		url:  `${constants.BASE_URI}/img/Landing_desktop-10.jpg`,
 		alt: '',
 		title: 'CostaExpress'
 	};
 
-	if (width <= 400) {
+	if (width <= 600) {
 
 		return (
 			<div className={styles.HeroBackgroundMobile}>

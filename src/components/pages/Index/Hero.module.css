@@ -16,7 +16,7 @@
     bottom: 0;
     content: '';
     display: block;
-    background: hsla(0, 0%, 0%, 0);
+    background: hsla(0, 0%, 0%, .6);
 }
 
 .HeroBackgroundMobile,
@@ -44,7 +44,7 @@
 }
 
 .HeroBackgroundMobile > img {
-    left: calc(-1*((400px - 100vw) / 2));
+    left: calc(-1*((600px - 100vw) / 2));
 }
 
 
