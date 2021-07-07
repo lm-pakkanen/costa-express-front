@@ -7,15 +7,17 @@ const useScrollStatus = (target: Document | Element = document) => {
 	useEffect(() => {
 
 		const handleScroll = () => {
-			setScrolled(window.scrollY !== 0);
+			setScrolled(window.pageYOffset !== 0);
 		};
 
 		handleScroll();
 
 		target.addEventListener('scroll', handleScroll);
+		target.addEventListener('touchMove', handleScroll);
 
 		return () => {
 			target.removeEventListener('scroll', handleScroll);
+			target.removeEventListener('touchMove', handleScroll);
 		};
 
 	}, [ target, scrolled ]);

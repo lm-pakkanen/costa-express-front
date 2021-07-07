@@ -31,12 +31,12 @@
 }
 
 .Row > * {
+    width: 50%;
     flex: 1;
 }
 
 .RowImage {
     height: auto;
-    width: 100%;
 }
 
 .RowText {

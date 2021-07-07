@@ -13,7 +13,7 @@ interface IViewportState {
 const useViewport = (onResizedCallback?: () => void): IViewportState => {
 
 	// TODO: Variables
-	const mobileWidth = 400;
+	const mobileWidth = 600;
 	const tabletWidth = 800;
 
 	const [viewportWidth, setViewportWidth] = useState(0);

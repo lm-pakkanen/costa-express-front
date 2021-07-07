@@ -18,7 +18,7 @@ const configureApp = async () => {
 
     /** Google Analytics configuration */
     ReactGA.initialize(process.env.REACT_APP_ANALYTICS_TRACKING_ID ?? '', {
-        debug: true
+        debug: process.env.NODE_ENV === 'development'
     });
 
     ReactGA.pageview(window.location.pathname + window.location.search);
