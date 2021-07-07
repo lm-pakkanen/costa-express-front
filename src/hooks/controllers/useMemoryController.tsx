@@ -3,7 +3,7 @@ import { CError, FatalCError } from '../../models/Errors';
 import ICError from '../../interfaces/ICError';
 import IFatalCError from '../../interfaces/IFatalCError';
 
-const domain = process.env.MEMORY_DOMAIN;
+const domain = process.env.REACT_APP_MEMORY_DOMAIN;
 
 const useMemoryController = () => {
 

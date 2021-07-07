@@ -38,7 +38,7 @@ const HeroBackground: React.FC = () => {
 		title: 'CostaExpress'
 	};
 
-	if (width <= 600) {
+	if (width <= 400) {
 
 		return (
 			<div className={styles.HeroBackgroundMobile}>

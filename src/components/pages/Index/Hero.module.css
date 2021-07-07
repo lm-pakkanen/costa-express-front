@@ -16,7 +16,7 @@
     bottom: 0;
     content: '';
     display: block;
-    background: hsla(0, 0%, 0%, 0.3);
+    background: hsla(0, 0%, 0%, 0);
 }
 
 .HeroBackgroundMobile,
@@ -27,18 +27,26 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    justify-content: center;
     height: 100vh;
     width: 100vw;
     z-index: -1;
 }
 
-.HeroBackgroundMobile > img,
-.HeroBackgroundDesktop > img
+.HeroBackgroundDesktop > img,
+.HeroBackgroundMobile > img
 {
-
+    position: absolute;
+    bottom: 0;
 }
+
+.HeroBackgroundDesktop > img {
+    left: calc(-1*((1920px - 100vw) / 2));
+}
+
+.HeroBackgroundMobile > img {
+    left: calc(-1*((400px - 100vw) / 2));
+}
+
 
 .HeroCTA {
     display: flex;
