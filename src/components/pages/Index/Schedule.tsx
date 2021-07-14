@@ -3,6 +3,7 @@ import React from 'react';
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
 import {
+	DisabledRequestProposalButton,
 	RequestProposalButton,
 	TableColumn,
 	TableColumnTitle,
@@ -11,6 +12,7 @@ import {
 } from './ScheduleComponents';
 
 import styles from './Schedule.module.css';
+import { addStylesToClass } from '../../../helpers';
 
 interface IScheduleData {
 	startCountry: string,
@@ -38,33 +40,45 @@ const ScheduleTitle: React.FC = () => {
 			<h2 className={styles.ScheduleTitle}>
 				Kuljetusaikataulu
 			</h2>
-			<h3 className={styles.SubTitle}>
-				<span>
-					Lisäksi järjestämme aikatauluttomia
-				</span>
-				<span>
-					kuljetuksia paikallisesti Espanjassa
-				</span>
-			</h3>
 		</>
 	)
 
 };
 
-const ToFinlandScheduleTitle: React.FC<IScheduleTitle> = () => {
+interface IToFinlandScheduleTitle extends IScheduleTitle {
+	styles?: string[]
+}
+
+const ToFinlandScheduleTitle: React.FC<IToFinlandScheduleTitle> = (props) => {
+
+	let style = styles.ScheduleBodyTitle;
+
+	if (props.styles) {
+		style = addStylesToClass(style, props.styles);
+	}
 
 	return (
-		<h3 className={styles.ScheduleBodyTitle}>
+		<h3 className={style}>
 			Costalta Suomeen
 		</h3>
 	);
 
 };
 
-const ToSpainScheduleTitle: React.FC<IScheduleTitle> = () => {
+interface IToSpainScheduleTitle extends IScheduleTitle {
+	styles?: string[]
+}
+
+const ToSpainScheduleTitle: React.FC<IToSpainScheduleTitle> = (props) => {
+
+	let style = styles.ScheduleBodyTitle;
+
+	if (props.styles) {
+		style = addStylesToClass(style, props.styles);
+	}
 
 	return (
-		<h3 className={styles.ScheduleBodyTitle}>
+		<h3 className={style}>
 			Suomesta Costalle
 		</h3>
 	);
@@ -111,7 +125,7 @@ const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 		<RequestProposalButton startTime={startTime} />
 		:
 		<span>
-			Kuljetus täynnä
+			<DisabledRequestProposalButton />
 		</span>;
 };
 
@@ -168,16 +182,22 @@ const Schedule: React.FC<IScheduleBody> = () => {
 	return (
 		<div className={styles.Wrapper}>
 
-			<ScheduleTitle />
+			<div className={styles.ScheduleBodyWrapperWrapper}>
 
-			<ToFinlandScheduleTitle />
-			<div className={styles.ScheduleBodyWrapper}>
-				<ToFinland />
-			</div>
+				<div>
+					<ToFinlandScheduleTitle />
+					<div className={styles.ScheduleBodyWrapper}>
+						<ToFinland />
+					</div>
+				</div>
 
-			<ToSpainScheduleTitle />
-			<div className={styles.ScheduleBodyWrapper}>
-				<ToSpain />
+				<div>
+					<ToSpainScheduleTitle styles={[styles.black]}/>
+					<div className={styles.ScheduleBodyWrapper}>
+						<ToSpain />
+					</div>
+				</div>
+
 			</div>
 
 		</div>

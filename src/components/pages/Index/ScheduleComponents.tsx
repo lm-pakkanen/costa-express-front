@@ -61,3 +61,15 @@ export const RequestProposalButton: React.FC<IRequestProposalButton> = (props) =
 
 	);
 }
+
+export const DisabledRequestProposalButton: React.FC = () => {
+
+	return (
+		<button
+			className={addStylesToClass(styles.RequestProposalButton, [styles.disabled])}
+		>
+			Kuljetus täynnä
+		</button>
+
+	);
+}

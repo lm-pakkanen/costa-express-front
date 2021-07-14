@@ -16,7 +16,7 @@ interface ILink {
 export const Brand: React.FC<ILink> = () => {
 
 	const logo: IImage = {
-		url:  `${constants.BASE_URI}/img/logo.svg`,
+		url:  `${constants.BASE_URI}/img/LogoV1.svg`,
 		alt: 'Etusivu',
 		title: 'CostaExpress etusivu'
 	};

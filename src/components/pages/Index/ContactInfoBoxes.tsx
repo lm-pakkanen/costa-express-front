@@ -57,14 +57,14 @@ const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
 					<i className={styles.ItemIcon}>
 						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
 					</i>
-					<div>+34646503676</div>
+					<div>+34 646503676</div>
 				</div>
 
 				<div className={styles.Item}>
 					<i className={styles.ItemIcon}>
 						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
 					</i>
-					<div>+358407151474</div>
+					<div>+358 40 7151474</div>
 				</div>
 
 			</div>

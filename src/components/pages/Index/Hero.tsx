@@ -67,7 +67,7 @@ const HeroBackground: React.FC = () => {
 const HeroLogo: React.FC<IHeroLogo> = (props) => {
 
 	const logo: IImage = {
-		url:  `${constants.BASE_URI}/img/logo.svg`,
+		url:  `${constants.BASE_URI}/img/LogoV1.svg`,
 		alt: 'CostaExpress',
 		title: 'CostaExpress'
 	};
@@ -106,10 +106,6 @@ const HeroCTAButton: React.FC<IHeroCTAButton> = (props) => {
 
 const HeroCTA: React.FC<IHeroCTA> = (props) => {
 
-	const ScrollToSchedule = () => {
-		window.location.hash = 'Schedule';
-	};
-
 	const ScrollToContactInfo = () => {
 		window.location.hash = 'ContactInfo';
 	};
@@ -120,7 +116,7 @@ const HeroCTA: React.FC<IHeroCTA> = (props) => {
 
 			<HeroCTAButton value={'Katso aikataulu'}
 			               title={'Tutustu aikatauluumme'}
-			               onClick={ScrollToSchedule}
+			               onClick={() => {}}
 			/>
 
 			<HeroCTAButton value={'Ota yhteyttä'}
@@ -140,7 +136,6 @@ const Hero: React.FC<IHero> = (props) => {
 		<>
 			<HeroBackground />
 			<HeroLogo />
-			<HeroCTA />
 		</>
 	);
 

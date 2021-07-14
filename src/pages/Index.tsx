@@ -32,19 +32,13 @@ const Index: React.FC<Props> = () => {
 
                         <Hero />
 
-                        <span id={'Schedule'} className={styles.ScheduleScrollAnchor} />
+                        <Schedule />
 
                     </LayoutContainer>
 
                 </SubPage>
 
                 <SubPage>
-
-                    <LayoutContainer style={styles.ScheduleLayoutContainer}>
-
-                        <Schedule />
-
-                    </LayoutContainer>
 
                     <LayoutContainer>
                         <InfoBoxes />

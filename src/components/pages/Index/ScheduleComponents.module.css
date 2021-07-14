@@ -42,10 +42,28 @@
     border: 2px solid hsla(141, 70%, 20%, .2);;
     border-radius: .5em;
     box-shadow: 0 0 .1em .1em hsla(240, 5%, 30%, .3);
+    font-size: 14px;
 }
 
 .RequestProposalButton:hover {
     background-image: linear-gradient(hsla(141, 70%, 18%, .2), hsla(141, 70%, 12%, .2));
+}
+
+.RequestProposalButton.disabled {
+    padding: .5em .8em;
+    margin: 0 auto;
+    color: hsla(240, 35%, 95%, 1);
+    background-color: hsla(0, 70%, 45%, 1);
+    background-image: linear-gradient(hsla(0, 70%, 50%, .4), hsla(0, 70%, 33%, .8));
+    border: 2px solid hsla(0, 70%, 20%, .2);;
+    border-radius: .5em;
+    box-shadow: 0 0 .1em .1em hsla(240, 5%, 30%, .3);
+    font-size: 13px;
+}
+
+.RequestProposalButton:hover {
+    cursor: not-allowed;
+    background-image: linear-gradient(hsla(0, 70%, 18%, .2), hsla(0, 70%, 12%, .2));
 }
 
 @media screen and (min-width: 600px) {
@@ -63,7 +81,7 @@
     }
 
     .TableRow > * {
-        height: 65px;
+        height: 60px;
     }
 
 }

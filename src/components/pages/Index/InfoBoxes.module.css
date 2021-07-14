@@ -55,11 +55,19 @@
     margin: 0 auto;
 }
 
-.RowText > span {
+.RowText > div > span {
+    line-height: 18px;
 }
 
 @media screen and (min-width: 600px) {
     .RowText {
         font-size: 16px;
+    }
+}
+
+
+@media screen and (min-width: 1000px) {
+    .Wrapper {
+        margin-top: 3rem;
     }
 }
