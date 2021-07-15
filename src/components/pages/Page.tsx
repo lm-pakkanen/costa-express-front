@@ -3,7 +3,6 @@ import React from 'react';
 import { addStylesToClass } from '../../helpers';
 
 import Navigation from '../common/navigation/Navigation';
-import CookiesConsent from '../common/CookiesConsent';
 import Footer from '../common/Footer';
 
 import styles from './Page.module.css';

@@ -6,7 +6,6 @@ import { meta, navigation } from '../config/actions';
 
 import useMemoryController from '../hooks/controllers/useMemoryController';
 import constants from '../config/constants';
-import { isContext } from 'vm';
 
 const useNavConfigure = () => {
 
@@ -67,8 +66,6 @@ const useMetaConfigure = () => {
 		isCookiesAccepted = storedCookieConsent.isCookiesAccepted;
 		cookiesLevel = storedCookieConsent.cookiesLevel;
 	}
-
-	console.debug(isCookiesAccepted);
 
 	useEffect(() => {
 

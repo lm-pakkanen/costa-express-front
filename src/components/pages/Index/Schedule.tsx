@@ -34,17 +34,6 @@ interface IScheduleTitle {}
 
 interface IScheduleBody {}
 
-const ScheduleTitle: React.FC = () => {
-	return (
-		<>
-			<h2 className={styles.ScheduleTitle}>
-				Kuljetusaikataulu
-			</h2>
-		</>
-	)
-
-};
-
 interface IToFinlandScheduleTitle extends IScheduleTitle {
 	styles?: string[]
 }

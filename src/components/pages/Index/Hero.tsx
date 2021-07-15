@@ -86,6 +86,8 @@ const HeroLogo: React.FC<IHeroLogo> = (props) => {
 
 };
 
+
+// eslint-disable-next-line
 const HeroCTAButton: React.FC<IHeroCTAButton> = (props) => {
 
 	let style = styles.HeroCTAButton;
@@ -104,6 +106,8 @@ const HeroCTAButton: React.FC<IHeroCTAButton> = (props) => {
 	);
 };
 
+
+// eslint-disable-next-line
 const HeroCTA: React.FC<IHeroCTA> = (props) => {
 
 	const ScrollToContactInfo = () => {

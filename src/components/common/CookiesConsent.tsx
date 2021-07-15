@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { meta } from '../../config/actions';
 import constants from '../../config/constants';
 
 import { appStore } from '../../contexts/AppContext';
@@ -16,7 +15,7 @@ interface ICookiesConsent {}
 const CookiesConsent: React.FC<ICookiesConsent> = (props) => {
 
 	const appContext = useContext(appStore);
-	const { state, dispatch } = appContext;
+	const { state } = appContext;
 
 	const { storeCookieConsent } = useMemoryController();
 

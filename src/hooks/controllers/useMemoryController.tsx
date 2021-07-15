@@ -5,14 +5,29 @@ import IFatalCError from '../../interfaces/IFatalCError';
 
 const domain = process.env.REACT_APP_MEMORY_DOMAIN;
 
-const useMemoryController = () => {
+export interface IUSeMemoryController {
+	storeCookieConsent: (isCookiesAccepted: boolean, cookiesLevel: number) => void,
+	getCookieConsent: () => GetCookieConsentResult,
+	getMemoryErrors: () => Array<ICError | IFatalCError>,
+	addMemoryError: (error: ICError | IFatalCError) => void,
+	clearMemoryErrors: () => void
+}
+
+type GetCookieConsentResult = IGetCookieConsent | undefined;
+
+interface IGetCookieConsent {
+	isCookiesAccepted: boolean,
+	cookiesLevel: number
+}
+
+const useMemoryController = (): IUSeMemoryController => {
 
 	/** Stores user's cookie consent values */
 	const storeCookieConsent = (isCookiesAccepted: boolean, cookiesLevel: number) => {
 		const data = { isCookiesAccepted, cookiesLevel };
 		localStorage.setItem(`${domain}/user-cookie-data`, JSON.stringify(data));
 	};
-	const getCookieConsent = (): { isCookiesAccepted: boolean, cookiesLevel: number } | undefined => {
+	const getCookieConsent = (): GetCookieConsentResult => {
 		const data = localStorage.getItem(`${domain}/user-cookie-data`);
 		if (!data) { return undefined; }
 		return JSON.parse(data);
