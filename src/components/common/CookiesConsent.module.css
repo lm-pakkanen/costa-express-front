@@ -1,43 +1,27 @@
-.Wrapper {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: hsla(240, 6%, 0%, .5);
-    z-index: 9000;
-}
-
-.Wrapper.hidden {
-    display: none;
-}
-
 .Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 3em 2em;
+    right: 1.5rem;
+    bottom: 1rem;
+    max-width: 240px;
+    padding: 1rem 2rem;
     color: hsla(240, 5%, 10%, 1);
     background: hsla(216, 20%, 100%, 1);
     box-shadow: 0 0 .3em .3em hsla(240, 5%, 10%, .4);
     border-radius: .5em;
     text-align: center;
-    max-width: 440px;
+    box-sizing: border-box;
+}
+
+.Container.hidden {
+    display: none;
 }
 
 .Header {
-    margin-bottom: 2em;
-}
-
-.Header > div {
-    max-width: 350px;
-    margin: .5em 0;
-}
-
-.Header > div:first-of-type {
-    margin: 0 0 .5em 0;
-    font-size: 1.4em;
+    margin: .5rem 0 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
@@ -45,20 +29,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
 }
 
 
 .CookieButton {
     width: 100%;
-    max-width: 300px;
-    padding: .7em 1em;
-    margin: .5em 0;
-    border: none;
+    max-width: 210px;
+    padding: .45em .6em;
+    margin: .4em 0;
     border-radius: .5em;
     color: hsla(240, 35%, 95%, 1);
-    box-shadow: 0 0 .2em .1em hsla(240, 5%, 10%, .4);
-    font-size: 16px;
+    box-shadow: 0 0 1px 1px hsla(216, 5%, 10%, .3);
+    font-size: .9rem;
     font-weight: bold;
 }
 .CookieButton.accept {

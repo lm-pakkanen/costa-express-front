@@ -1,7 +1,8 @@
 .Index {
-    padding-top: 0;
+    //padding-top: 0;
 }
 
+/*
 .Navigation {
     background: hsla(0, 0%, 0%, 0);
     border: none;
@@ -12,15 +13,18 @@
 .Navigation * {
     color: hsla(240, 35%, 95%, 1);
 }
+*/
 
 .HeroSubPage {
-    min-height: 100vh;
+    //min-height: 100vh;
 }
+
 
 .HeroLayoutContainer {
     justify-content: center;
+    /*
     padding: 0;
-    max-width: initial;
+    max-width: initial;*/
 }
 
 .ScheduleLayoutContainer {

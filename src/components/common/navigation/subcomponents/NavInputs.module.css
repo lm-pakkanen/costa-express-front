@@ -4,8 +4,7 @@
 .NavLink {
     display: flex;
     flex-direction: column;
-    padding: 0 .6em;
-    margin: 0 .2em;
+    margin: 0 10px;
     background: none;
     font-size: 16px;
     text-decoration: none;

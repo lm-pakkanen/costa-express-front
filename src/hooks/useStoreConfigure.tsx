@@ -5,6 +5,8 @@ import { appStore } from '../contexts/AppContext';
 import { meta, navigation } from '../config/actions';
 
 import useMemoryController from '../hooks/controllers/useMemoryController';
+import constants from '../config/constants';
+import { isContext } from 'vm';
 
 const useNavConfigure = () => {
 
@@ -56,18 +58,24 @@ const useMetaConfigure = () => {
 
 	const storedCookieConsent = getCookieConsent();
 
-	const { isCookiesAccepted: accepted, cookiesLevel: level } = storedCookieConsent ?? {};
+	let isCookiesAccepted: boolean, cookiesLevel: number;
+
+	if (!storedCookieConsent) {
+		isCookiesAccepted = false;
+		cookiesLevel = constants.COOKIES_LEVELS.NONE;
+	} else {
+		isCookiesAccepted = storedCookieConsent.isCookiesAccepted;
+		cookiesLevel = storedCookieConsent.cookiesLevel;
+	}
+
+	console.debug(isCookiesAccepted);
 
 	useEffect(() => {
 
-		if ((typeof accepted === 'undefined' || typeof level === 'undefined')) {
-			return;
-		}
-
-		dispatch({ type: meta.setCookiesAccepted, payload: { accepted, level } });
+		dispatch({ type: meta.setCookiesAccepted, payload: { accepted: isCookiesAccepted, level: cookiesLevel } });
 
 
-	}, [ accepted, level, dispatch ]);
+	}, [ isCookiesAccepted, cookiesLevel, dispatch ]);
 
 	/** Sets path to state */
 	useEffect(() => {

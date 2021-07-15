@@ -1,8 +1,7 @@
 .Wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: 25%;
-    padding: .5rem 1.5rem;
+    padding: 10px;
     overflow: hidden;
 }
 
@@ -40,15 +39,18 @@
 .ScheduleBodyTitle {
     margin: 1.5em auto .6em;
     max-width: 450px;
-    color: hsla(225, 5%, 97%, 1);
+    color: hsla(240, 5%, 10%, 1);
+    //color: hsla(225, 5%, 97%, 1);
     font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
 
+/*
 .ScheduleBodyTitle.black {
     color: hsla(240, 5%, 10%, 1);
 }
+*/
 
 .ScheduleBody {
     display: flex;
@@ -59,23 +61,47 @@
 }
 
 @media screen and (min-width: 1000px) {
+
     .Wrapper {
         margin-top: initial;
     }
+
     .ScheduleBodyWrapperWrapper {
         justify-content: center;
         flex-direction: row;
         max-width: initial;
     }
-    .ScheduleBodyTitle.black {
-        color: hsla(225, 5%, 97%, 1);
-    }
+
     .ScheduleBodyWrapperWrapper > div {
-        margin: 0 4rem;
         max-width: 600px;
         flex: 1;
     }
+
+    .ScheduleBodyWrapperWrapper > div:first-of-type {
+        margin: 0 1.5rem 0 0;
+    }
+
+    .ScheduleBodyWrapperWrapper > div:nth-of-type(2) {
+        margin: 0 0 0 1.5rem;
+    }
+
     .ScheduleBodyTitle {
         font-size: 1.6rem;
+    }
+
+    /*
+    .ScheduleBodyTitle.black {
+        color: hsla(225, 5%, 97%, 1);
+    }*/
+
+}
+
+@media screen and (min-width: 1400px) {
+    .ScheduleBodyWrapperWrapper > div:first-of-type {
+        margin: 0 3rem 0 0;
+    }
+
+    .ScheduleBodyWrapperWrapper > div:nth-of-type(2) {
+        margin: 0 0 0 3rem;
     }
 }

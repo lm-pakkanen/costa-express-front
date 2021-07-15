@@ -68,7 +68,7 @@ export const DisabledRequestProposalButton: React.FC = () => {
 		<button
 			className={addStylesToClass(styles.RequestProposalButton, [styles.disabled])}
 		>
-			Kuljetus täynnä
+			Kuljetus täysi
 		</button>
 
 	);

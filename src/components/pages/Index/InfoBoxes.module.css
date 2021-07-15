@@ -6,7 +6,7 @@
 .Title {
     color: hsla(240, 5%, 10%, 1);
     margin: 0 auto 1em;
-    font-size: 1.6em;
+    font-size: 1.6rem;
     font-weight: bold;
     text-align: center;
 }
@@ -51,17 +51,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 65%;
+    max-width: 75%;
     margin: 0 auto;
+    font-size: 1rem;
 }
 
 .RowText > div > span {
-    line-height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
 }
 
 @media screen and (min-width: 600px) {
     .RowText {
-        font-size: 16px;
+        font-size: 1.2rem;
+    }
+    .RowText > div > span {
+        height: 1.5rem;
     }
 }
 

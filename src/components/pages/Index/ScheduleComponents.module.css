@@ -34,7 +34,7 @@
 }
 
 .RequestProposalButton {
-    padding: .5em .8em;
+    padding: .35em .6em;
     margin: 0 auto;
     color: hsla(240, 35%, 95%, 1);
     background-color: hsla(141, 70%, 45%, 1);
@@ -50,7 +50,7 @@
 }
 
 .RequestProposalButton.disabled {
-    padding: .5em .8em;
+    padding: .35em .6em;
     margin: 0 auto;
     color: hsla(240, 35%, 95%, 1);
     background-color: hsla(0, 70%, 45%, 1);
@@ -58,7 +58,7 @@
     border: 2px solid hsla(0, 70%, 20%, .2);;
     border-radius: .5em;
     box-shadow: 0 0 .1em .1em hsla(240, 5%, 30%, .3);
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .RequestProposalButton:hover {

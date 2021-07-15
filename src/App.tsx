@@ -13,8 +13,18 @@ import './global.css';
 import styles from './App.module.css';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
+import CookiesConsent from './components/common/CookiesConsent';
 
 interface Props {}
+
+const WithCookieConsent: React.FC = (props) => {
+    return (
+        <>
+            { props.children }
+            <CookiesConsent />
+        </>
+    )
+}
 
 const App: React.FC<Props> = () => {
 
@@ -41,7 +51,11 @@ const App: React.FC<Props> = () => {
                     path={'/tietosuoja'}
                     exact
                     component={
-                        () => <PrivacyPolicy />
+                        () => (
+                            <WithCookieConsent>
+                                <PrivacyPolicy />
+                            </WithCookieConsent>
+                        )
                     }
                 />
 
@@ -49,7 +63,11 @@ const App: React.FC<Props> = () => {
                     path={'/tarjouspyynto'}
                     exact
                     component={
-                        () => <Contact />
+                        () => (
+                            <WithCookieConsent>
+                                <Contact />
+                            </WithCookieConsent>
+                        )
                     }
                 />
 
@@ -57,15 +75,22 @@ const App: React.FC<Props> = () => {
                     path={'/'}
                     exact
                     component={
-                        () => <Index />
+                        () => (
+                            <WithCookieConsent>
+                                <Index />
+                            </WithCookieConsent>
+                        )
                     }
                 />
 
                 <Route
                     path={'*'}
                     component={
-                        () =>
-                            <NotFound />
+                        () => (
+                            <WithCookieConsent>
+                                <NotFound />
+                            </WithCookieConsent>
+                        )
                     }
                 />
 
@@ -73,6 +98,6 @@ const App: React.FC<Props> = () => {
 
         </div>
     );
-}
+};
 
 export default App;

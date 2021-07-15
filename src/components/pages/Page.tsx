@@ -34,7 +34,6 @@ const Page: React.FC<Props> = (props) => {
                 {props.children}
             </div>
             <Footer />
-            <CookiesConsent />
         </div>
     );
 }

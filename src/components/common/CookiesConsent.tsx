@@ -11,21 +11,7 @@ import { addStylesToClass } from '../../helpers';
 
 import styles from './CookiesConsent.module.css';
 
-interface IDetailedCookiesConsent {}
 interface ICookiesConsent {}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const DetailedCookiesConsent: React.FC<IDetailedCookiesConsent> = (props) => {
-
-	return (
-
-		<div>
-
-		</div>
-
-	);
-
-};
 
 const CookiesConsent: React.FC<ICookiesConsent> = (props) => {
 
@@ -36,24 +22,15 @@ const CookiesConsent: React.FC<ICookiesConsent> = (props) => {
 
 	const { isCookiesAccepted } = state.meta;
 
-	const defaultStyle = addStylesToClass(styles.Wrapper, [styles.hidden]);
+	const defaultStyle = styles.Container;
 	const [componentStyle, setComponentStyle] = useState(defaultStyle);
 
 	const handleAllCookiesAccept = () => {
 
 		const cookiesLevel = constants.COOKIES_LEVELS.MARKETING;
 
-		dispatch({ type: meta.setCookiesAccepted, payload: { accepted: true, level: cookiesLevel } });
 		storeCookieConsent(true, cookiesLevel);
-
-	};
-
-	const handleCookiesAccept = () => {
-
-		const cookiesLevel = constants.COOKIES_LEVELS.BASIC;
-
-		dispatch({ type: meta.setCookiesAccepted, payload: { accepted: true, level: cookiesLevel } });
-		storeCookieConsent(true, cookiesLevel);
+		setComponentStyle(addStylesToClass(styles.Container, [styles.hidden]));
 
 	};
 
@@ -61,58 +38,46 @@ const CookiesConsent: React.FC<ICookiesConsent> = (props) => {
 
 		const cookiesLevel = constants.COOKIES_LEVELS.NONE;
 
-		dispatch({ type: meta.setCookiesAccepted, payload: { accepted: false, level: cookiesLevel } });
 		storeCookieConsent(false, cookiesLevel);
+		setComponentStyle(addStylesToClass(styles.Container, [styles.hidden]));
 
 	};
 
 	useEffect(() => {
-		if (!isCookiesAccepted) {
-			setComponentStyle(styles.Wrapper);
+
+		if (typeof isCookiesAccepted === 'undefined') {
+			return;
 		}
+
+		if (isCookiesAccepted) {
+			setComponentStyle(addStylesToClass(styles.Container, [styles.hidden]));
+		}
+
 	}, [ isCookiesAccepted ]);
 
 	return (
 
 		<div className={componentStyle}>
 
-			<div className={styles.Container}>
+			<div className={styles.Header}>
+				Tämä sivusto käyttää evästeitä.
+			</div>
 
-				<div className={styles.Header}>
+			<div className={styles.Controls}>
 
-					<div>
-						Tämä sivusto käyttää evästeitä.
-					</div>
-					<div>
-						Jatkaaksesi sivuston käyttämistä, hyväksy evästeiden käyttö.
-					</div>
+				<button
+					className={addStylesToClass(styles.CookieButton, [styles.accept])}
+					onClick={handleAllCookiesAccept}
+				>
+					Hyväksy evästeet
+				</button>
 
-				</div>
-
-				<div className={styles.Controls}>
-
-					<button
-						className={addStylesToClass(styles.CookieButton, [styles.accept])}
-						onClick={handleAllCookiesAccept}
-					>
-						Hyväksy kaikki
-					</button>
-
-					<button
-						className={addStylesToClass(styles.CookieButton, [styles.accept])}
-						onClick={handleCookiesAccept}
-					>
-						Hyväksy välttämättömät
-					</button>
-
-					<button
-						className={addStylesToClass(styles.CookieButton, [styles.reject])}
-						onClick={handleCookiesReject}
-					>
-						Kiellä evästeiden käyttö
-					</button>
-
-				</div>
+				<button
+					className={addStylesToClass(styles.CookieButton, [styles.reject])}
+					onClick={handleCookiesReject}
+				>
+					Kiellä evästeet
+				</button>
 
 			</div>
 
