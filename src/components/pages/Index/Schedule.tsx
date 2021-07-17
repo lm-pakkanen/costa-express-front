@@ -173,7 +173,7 @@ const Schedule: React.FC<IScheduleBody> = () => {
 
 			<div className={styles.ScheduleBodyWrapperWrapper}>
 
-				<div>
+				<div className={styles.ToFinland}>
 					<ToFinlandScheduleTitle />
 					<div className={styles.ScheduleBodyWrapper}>
 						<ToFinland />
