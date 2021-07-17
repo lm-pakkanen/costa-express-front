@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-height: 100vh;
     max-width: 600px;
     margin: 0 auto 0;
     padding: 0 10px;
@@ -51,11 +52,16 @@
         flex-direction: row;
         justify-content: center;
         max-width: initial;
+        padding-bottom: 10%;
     }
 
     .Schedule {
         margin: 0 2rem;
         flex: 1;
+    }
+
+    .Schedule:first-of-type {
+        min-height: initial;
     }
 
     .ScheduleTitle {
