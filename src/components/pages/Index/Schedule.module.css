@@ -41,8 +41,8 @@
     padding: 0;
     color: hsla(240, 5%, 10%, 1);
     background: hsla(240, 5%, 10%, .85);
+    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .80);
     border-radius: .5em;
-    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .80);;
 }
 
 @media screen and (min-width: 1000px) {
@@ -60,6 +60,11 @@
 
     .ScheduleTitle {
         color: #FFC900;
+    }
+
+    .ScheduleBody {
+        background: hsla(240, 5%, 10%, .65);
+        box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .60);
     }
 
 }
