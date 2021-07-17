@@ -26,7 +26,7 @@
 }
 
 .ScheduleBodyWrapperWrapper > div {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 }
 
 .ScheduleBodyWrapper {
@@ -41,8 +41,8 @@
 }
 
 .ScheduleBodyWrapper {
-    background: hsla(240, 5%, 10%, .6);
-    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
+    background: hsla(240, 5%, 10%, .85);
+    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .80);;
 }
 
 .ScheduleBodyTitle {
@@ -71,6 +71,11 @@
 
     .Wrapper {
         margin-top: 5rem;
+    }
+
+    .ScheduleBodyWrapper {
+        background: hsla(240, 5%, 10%, .6);
+        box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
     }
 
     .ScheduleBodyWrapperWrapper {
