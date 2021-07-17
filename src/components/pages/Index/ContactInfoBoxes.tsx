@@ -34,10 +34,6 @@ const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
 	return (
 		<div className={styles.Wrapper}>
 
-			<h3 className={styles.Title}>
-				Ota meihin yhteyttä
-			</h3>
-
 			<div className={styles.Container}>
 
 				<a className={emailButtonStyle}

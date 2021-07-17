@@ -27,9 +27,11 @@
 }
 
 .ScheduleTitle {
-    margin: 0 auto 1.2em;
+    padding: .4em 1em;
+    margin: 0 auto 1em;
     color: hsla(240, 5%, 10%, 1);
-    font-size: 1.6rem;
+    border-radius: .3em;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     box-sizing: border-box;
@@ -42,7 +44,7 @@
     padding: 0;
     color: hsla(240, 5%, 10%, 1);
     background: hsla(240, 5%, 10%, .85);
-    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .80);
+    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .8);
     border-radius: .5em;
 }
 
@@ -62,6 +64,12 @@
 
     .Schedule:first-of-type {
         min-height: initial;
+    }
+
+    .ScheduleTitle,
+    .Schedule:first-of-type .ScheduleTitle
+    {
+        color: #FFC900;
     }
 
     .ScheduleTitle {
