@@ -7,7 +7,7 @@
 
 .ScheduleTitle {
     margin: 0 auto .3em;
-    color: hsla(225, 5%, 97%, 1);
+    color: #FF6A00;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -52,15 +52,9 @@
 }
 
 .ScheduleBodyTitle {
-    color: hsla(225, 5%, 97%, 1);
+    color: hsl(25, 100%, 50%);
     margin: 1.5em auto 1.2em;
 }
-
-/*
-.ScheduleBodyTitle.black {
-    color: hsla(240, 5%, 10%, 1);
-}
-*/
 
 .ScheduleBody {
     display: flex;

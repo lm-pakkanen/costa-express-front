@@ -1,7 +1,7 @@
 .TableColumn {
     display: flex;
     flex-direction: column;
-    color: hsla(225, 5%, 97%, 1);
+    color: hsl(25, 100%, 50%);
     font-size: 14px;
     text-align: center;
     box-sizing: border-box;
@@ -9,6 +9,7 @@
 }
 
 .TableColumn.Title {
+    color: hsla(225, 5%, 97%, 1);
     font-size: 16px;
 }
 

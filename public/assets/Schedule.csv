@@ -1,7 +1,5 @@
 startCountry,endCountry,startTime,hasSpaceAvailable
 
-Espanja,Suomi,4.7.2021,false
-Espanja,Suomi,12.7.2021,false
 Espanja,Suomi,20.7.2021,false
 Espanja,Suomi,30.7.2021,true
 Espanja,Suomi,7.8.2021,false
@@ -9,7 +7,6 @@ Espanja,Suomi,15.8.2021,true
 Espanja,Suomi,30.8.2021,true
 Espanja,Suomi,15.9.2021,true
 
-Suomi,Espanja,9.7.2021,false
 Suomi,Espanja,18.7.2021,true
 Suomi,Espanja,27.7.2021,false
 Suomi,Espanja,4.8.2021,true
