@@ -30,15 +30,14 @@ interface IGetRequestButton {
 	rowData: IScheduleData
 }
 
-interface IScheduleTitle {}
+interface IScheduleTitle {
+	value: string,
+	styles?: string[]
+}
 
 interface IScheduleBody {}
 
-interface IToFinlandScheduleTitle extends IScheduleTitle {
-	styles?: string[]
-}
-
-const ToFinlandScheduleTitle: React.FC<IToFinlandScheduleTitle> = (props) => {
+const ScheduleTitle: React.FC<IScheduleTitle> = (props) => {
 
 	let style = styles.ScheduleTitle;
 
@@ -48,27 +47,7 @@ const ToFinlandScheduleTitle: React.FC<IToFinlandScheduleTitle> = (props) => {
 
 	return (
 		<h3 className={style}>
-			Costalta Suomeen
-		</h3>
-	);
-
-};
-
-interface IToSpainScheduleTitle extends IScheduleTitle {
-	styles?: string[]
-}
-
-const ToSpainScheduleTitle: React.FC<IToSpainScheduleTitle> = (props) => {
-
-	let style = styles.ScheduleTitle;
-
-	if (props.styles) {
-		style = addStylesToClass(style, props.styles);
-	}
-
-	return (
-		<h3 className={style}>
-			Suomesta Costalle
+			{ props.value }
 		</h3>
 	);
 
@@ -172,12 +151,12 @@ const Schedule: React.FC<IScheduleBody> = () => {
 		<div className={styles.Wrapper}>
 
 			<div className={styles.Schedule}>
-				<ToFinlandScheduleTitle />
+				<ScheduleTitle value={'Costalta Suomeen'} />
 				<ToFinland />
 			</div>
 
 			<div className={styles.Schedule}>
-				<ToSpainScheduleTitle />
+				<ScheduleTitle value={'Suomesta Costalle'} />
 				<ToSpain />
 			</div>
 
