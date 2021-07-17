@@ -29,7 +29,6 @@
     display: flex;
     width: 100%;
     padding: 0;
-    margin-bottom: 7rem;
     background: hsla(240, 5%, 100%, 1);
     border-radius: .5em;
     box-shadow: .1em .1em .2em .1em hsla(240, 5%, 60%, .6);
@@ -38,6 +37,7 @@
 }
 
 .ScheduleBodyWrapper {
+    margin-bottom: 7rem;
     background: hsla(240, 5%, 10%, .6);
     box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
 }
