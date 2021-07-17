@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
+.Wrapper {
+    margin-top: 1rem;
+}
+
 .ScheduleTitle {
     margin: 0 auto .3em;
     color: #FF6A00;
@@ -37,7 +41,6 @@
 }
 
 .ScheduleBodyWrapper {
-    margin-bottom: 7rem;
     background: hsla(240, 5%, 10%, .6);
     box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
 }
@@ -67,7 +70,7 @@
 @media screen and (min-width: 1000px) {
 
     .Wrapper {
-        margin-top: initial;
+        margin-top: 5rem;
     }
 
     .ScheduleBodyWrapperWrapper {
@@ -92,11 +95,6 @@
     .ScheduleBodyTitle {
         font-size: 1.6rem;
     }
-
-    /*
-    .ScheduleBodyTitle.black {
-        color: hsla(225, 5%, 97%, 1);
-    }*/
 
 }
 
