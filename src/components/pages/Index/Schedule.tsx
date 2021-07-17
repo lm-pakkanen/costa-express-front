@@ -40,7 +40,7 @@ interface IToFinlandScheduleTitle extends IScheduleTitle {
 
 const ToFinlandScheduleTitle: React.FC<IToFinlandScheduleTitle> = (props) => {
 
-	let style = styles.ScheduleBodyTitle;
+	let style = styles.ScheduleTitle;
 
 	if (props.styles) {
 		style = addStylesToClass(style, props.styles);
@@ -60,7 +60,7 @@ interface IToSpainScheduleTitle extends IScheduleTitle {
 
 const ToSpainScheduleTitle: React.FC<IToSpainScheduleTitle> = (props) => {
 
-	let style = styles.ScheduleBodyTitle;
+	let style = styles.ScheduleTitle;
 
 	if (props.styles) {
 		style = addStylesToClass(style, props.styles);
@@ -171,22 +171,14 @@ const Schedule: React.FC<IScheduleBody> = () => {
 	return (
 		<div className={styles.Wrapper}>
 
-			<div className={styles.ScheduleBodyWrapperWrapper}>
+			<div className={styles.Schedule}>
+				<ToFinlandScheduleTitle />
+				<ToFinland />
+			</div>
 
-				<div className={styles.ToFinland}>
-					<ToFinlandScheduleTitle />
-					<div className={styles.ScheduleBodyWrapper}>
-						<ToFinland />
-					</div>
-				</div>
-
-				<div>
-					<ToSpainScheduleTitle styles={[styles.black]}/>
-					<div className={styles.ScheduleBodyWrapper}>
-						<ToSpain />
-					</div>
-				</div>
-
+			<div className={styles.Schedule}>
+				<ToSpainScheduleTitle />
+				<ToSpain />
 			</div>
 
 		</div>
