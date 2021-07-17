@@ -98,7 +98,7 @@ const ContactForm: React.FC<Props> = () => {
 
 						<TextInput value={sender.firstName.value}
 						           name={'firstName'}
-						           label={'Etu- ja sukunimi'}
+						           label={'Nimi'}
 						           placeholder={'Etunimi'}
 						           hasError={sender.firstName.error !== null}
 						           onChange={onFormChange}
@@ -213,13 +213,13 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Puhelinnumero'}
 						           descriptionAfter={(
 							           <>
-								           <span>Puhelinnumero on vapaaehtoinen. </span>
 								           <span>Käytä maakoodillista numeroa (+358...) </span>
 							           </>
 						           )}
 						           name={'pickupPhone'}
 						           hasError={pickupPhone.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{
@@ -280,13 +280,13 @@ const ContactForm: React.FC<Props> = () => {
 						           placeholder={'Puhelinnumero'}
 						           descriptionAfter={(
 							           <>
-								           <span>Puhelinnumero on vapaaehtoinen. </span>
 								           <span>Käytä maakoodillista numeroa (+358...) </span>
 							           </>
 						           )}
 						           name={'deliveryPhone'}
 						           hasError={deliveryPhone.error !== null}
 						           onChange={onFormChange}
+						           required
 						/>
 
 						{

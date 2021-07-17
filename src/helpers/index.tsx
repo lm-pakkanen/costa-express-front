@@ -100,10 +100,8 @@ export const Validator = {
 
 	validatePhoneNumber: (number: ValidatorArgument) => {
 
-		if (number && !isEmpty(number)) {
-			if (!isMobilePhone(number, 'any', { strictMode: true })) {
-				return 'Numero on epäkelpo.'
-			}
+		if (!(number && isMobilePhone(number, 'any', { strictMode: true }))) {
+			return 'Numero on epäkelpo.'
 		}
 
 		return true;
