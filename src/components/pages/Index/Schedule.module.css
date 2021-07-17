@@ -101,6 +101,10 @@
         box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
     }
 
+    .ScheduleBodyWrapperWrapper > div:not(.ToFinland) > h3 {
+        color: #FFC900;
+    }
+
     .ScheduleBodyWrapperWrapper {
         justify-content: center;
         flex-direction: row;
