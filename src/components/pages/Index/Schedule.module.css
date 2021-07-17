@@ -36,14 +36,23 @@
     flex: 1;
 }
 
+.ScheduleBodyWrapper {
+    background: hsla(240, 5%, 10%, .6);
+    box-shadow: 0 0 .1em .2em hsla(240, 5%, 10%, .65);;
+}
+
 .ScheduleBodyTitle {
     margin: 1.5em auto .6em;
     max-width: 450px;
     color: hsla(240, 5%, 10%, 1);
-    //color: hsla(225, 5%, 97%, 1);
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+.ScheduleBodyTitle {
+    color: hsla(225, 5%, 97%, 1);
+    margin: 1.5em auto 1.2em;
 }
 
 /*

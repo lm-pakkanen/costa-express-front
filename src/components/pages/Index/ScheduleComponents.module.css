@@ -1,8 +1,9 @@
 .TableColumn {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    color: hsla(225, 5%, 97%, 1);
     font-size: 14px;
+    text-align: center;
     box-sizing: border-box;
     flex: 1;
 }
@@ -18,7 +19,7 @@
 }
 
 .TableRow:nth-child(even) {
-    background: hsla(240, 5%, 98%, 1);
+    //background: hsla(240, 5%, 98%, 1);
 }
 
 .TableRow > * {
@@ -31,6 +32,11 @@
 .TableRowSeparator {
     height: 2px;
     background: hsla(240, 5%, 12%, 1);
+}
+
+.TableRowSeparator {
+    height: 2px;
+    background: hsla(240, 5%, 97%, .8)
 }
 
 .RequestProposalButton {
@@ -61,7 +67,7 @@
     font-size: 14px;
 }
 
-.RequestProposalButton:hover {
+.RequestProposalButton.disabled:hover {
     cursor: not-allowed;
     background-image: linear-gradient(hsla(0, 70%, 18%, .2), hsla(0, 70%, 12%, .2));
 }
