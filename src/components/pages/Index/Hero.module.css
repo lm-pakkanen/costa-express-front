@@ -16,7 +16,7 @@
     bottom: 0;
     content: '';
     display: block;
-    background: hsla(0, 0%, 0%, .5);
+    background: hsla(0, 0%, 0%, .6);
 }
 
 .HeroBackgroundMobile,
