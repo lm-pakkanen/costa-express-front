@@ -13,7 +13,8 @@ import useScrollStatus from '../../../hooks/useScrollStatus';
 
 interface Props {
     style?: string,
-    scrolledStyle?: string
+    scrolledStyle?: string,
+    enableColorChangeOnScroll?: true
 }
 
 const Navigation: React.FC<Props> = (props) => {
@@ -75,13 +76,13 @@ const Navigation: React.FC<Props> = (props) => {
                 {
                     deviceType === 'desktop'
                         ?
-                        <DesktopNavigation />
+                        <DesktopNavigation enableColorChangeOnScroll={props.enableColorChangeOnScroll} />
                         :
                         deviceType === 'tablet'
                             ?
-                            <TabletNavigation />
+                            <TabletNavigation enableColorChangeOnScroll={props.enableColorChangeOnScroll} />
                             :
-                            <MobileNavigation />
+                            <MobileNavigation enableColorChangeOnScroll={props.enableColorChangeOnScroll} />
 
                 }
             </div>

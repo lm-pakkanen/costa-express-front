@@ -7,19 +7,45 @@ import { NavLink } from './NavInputs';
 import IImage from '../../../../interfaces/IImage';
 
 import inputStyles from './NavInputs.module.css';
+import useScrollStatus from '../../../../hooks/useScrollStatus';
 
 interface ILink {
 	path: string,
 	style?: string
 }
 
-export const Brand: React.FC<ILink> = () => {
+interface IBrand extends ILink {
+	enableColorChangeOnScroll?: true;
+}
 
-	const logo: IImage = {
-		url:  `${constants.BASE_URI}/img/LogoV1.svg`,
-		alt: 'Etusivu',
-		title: 'CostaExpress etusivu'
-	};
+
+const logoLight: IImage = {
+	url:  `${constants.BASE_URI}/img/Logo-light.svg`,
+	alt: 'Etusivu',
+	title: 'CostaExpress etusivu'
+};
+
+const logoDark: IImage = {
+	url:  `${constants.BASE_URI}/img/Logo-dark.svg`,
+	alt: 'Etusivu',
+	title: 'CostaExpress etusivu'
+};
+
+export const Brand: React.FC<IBrand> = (props) => {
+
+	const isPageScrolled = useScrollStatus();
+
+	let logo = logoDark;
+
+	if (props.enableColorChangeOnScroll) {
+
+		if (isPageScrolled) {
+			logo = logoDark;
+		} else {
+			logo = logoLight;
+		}
+
+	}
 
 	return (
 		<NavLink

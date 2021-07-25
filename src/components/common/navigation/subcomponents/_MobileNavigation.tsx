@@ -9,8 +9,12 @@ import { NavFloaterToggler } from './NavInputs';
 
 import { appStore } from '../../../../contexts/AppContext';
 
+interface IMobileNavigation {
+	enableColorChangeOnScroll?: true
+}
+
 // TODO: visible order of links
-const MobileNavigation: React.FC = () => {
+const MobileNavigation: React.FC<IMobileNavigation> = (props) => {
 
 	const appContext = useContext(appStore);
 	const path = appContext.state.meta.path;
@@ -18,7 +22,7 @@ const MobileNavigation: React.FC = () => {
 	return (
 		<>
 			<NavLinksLeft>
-				<Brand path={path} />
+				<Brand path={path} enableColorChangeOnScroll={props.enableColorChangeOnScroll} />
 			</NavLinksLeft>
 
 			<NavLinksRight>

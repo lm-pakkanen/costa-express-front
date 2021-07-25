@@ -24,6 +24,7 @@ const Index: React.FC<Props> = () => {
                 style={styles.Index}
                 wrapperStyle={styles.PageWrapper}
                 navigationStyle={styles.Navigation}
+                enableNavigationColorChangeOnScroll={true}
             >
 
                 <SubPage style={styles.HeroSubPage}>

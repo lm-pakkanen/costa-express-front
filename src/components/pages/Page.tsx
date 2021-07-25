@@ -13,6 +13,7 @@ interface Props {
     wrapperStyle?: string,
     footerStyle?: string,
     cookieConsentStyle?: string
+    enableNavigationColorChangeOnScroll?: true;
 }
 
 const Page: React.FC<Props> = (props) => {
@@ -28,7 +29,7 @@ const Page: React.FC<Props> = (props) => {
 
     return (
         <div className={style}>
-            <Navigation style={props.navigationStyle} />
+            <Navigation style={props.navigationStyle} enableColorChangeOnScroll={props.enableNavigationColorChangeOnScroll} />
             <div className={wrapperStyle}>
                 {props.children}
             </div>
