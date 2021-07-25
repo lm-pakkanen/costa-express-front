@@ -27,6 +27,12 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 		title: 'Eläimet'
 	};
 
+	const infobox4: IImage = {
+		url:  `${constants.BASE_URI}/img/paku-592x592-80.jpg`,
+		alt: 'Pakettiauto',
+		title: 'Pakettiauto'
+	};
+
 	return (
 
 		<div className={styles.Wrapper}>
@@ -97,6 +103,26 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 							</span>
 						</div>
 					</div>
+
+				</div>
+
+				<div className={styles.Row}>
+
+					<div className={styles.RowText}>
+						<div>
+							<span>
+								Laukut, laatikot
+							</span>
+							<span>
+								Muuttokuormat
+							</span>
+							<span>
+								Noudot kaupoista
+							</span>
+						</div>
+					</div>
+
+					<img className={styles.RowImage} src={infobox4.url} alt={infobox4.alt} title={infobox4.title} />
 
 				</div>
 

@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     color: hsla(240, 35%, 95%, 1);
     background: hsla(240, 5%, 100%, 1);
@@ -22,6 +22,7 @@
     box-shadow: .1em .1em .2em .1em hsla(240, 5%, 60%, .6);
     box-sizing: border-box;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
 .Row {
