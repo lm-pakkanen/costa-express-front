@@ -80,14 +80,6 @@ const ContactForm: React.FC<Props> = () => {
 				<h1 className={styles.FormTitle}>
 					Lähetä tarjouspyyntö kuljetukselle
 				</h1>
-				<h2 className={styles.FormDescription}>
-					<span>
-						Tällä lomakkeella voit lähettää tarjouspyynnön kuljetukselle.
-					</span>
-					<span>
-						Ilmoitathan tiedot rahdista mahdollisimman tarkasti.
-					</span>
-				</h2>
 			</div>
 
 			<div className={styles.ContactForm}>
