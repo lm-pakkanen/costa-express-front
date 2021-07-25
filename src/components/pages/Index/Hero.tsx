@@ -2,11 +2,13 @@ import React from 'react';
 
 import constants from '../../../config/constants';
 
+import useViewport from '../../../hooks/controllers/useViewport';
+
 import { addStylesToClass } from '../../../helpers';
 
-import styles from './Hero.module.css'
 import IImage from '../../../interfaces/IImage';
-import useViewport from '../../../hooks/controllers/useViewport';
+
+import styles from './Hero.module.css'
 
 interface IHeroLogo {}
 
@@ -24,21 +26,27 @@ interface IHero  {}
 const HeroBackground: React.FC = () => {
 
 	const { viewport } = useViewport();
-	const { width } = viewport;
+	const { height, width } = viewport;
 
 	const backgroundMobile: IImage = {
-		url:  `${constants.BASE_URI}/img/Landing_mobile-10.jpg`,
+		url:  `${constants.BASE_URI}/img/Landing_mobile-675x1125-80.jpg`,
 		alt: '',
 		title: 'CostaExpress'
 	};
 
 	const backgroundDesktop: IImage = {
-		url:  `${constants.BASE_URI}/img/Landing_desktop-10.jpg`,
+		url:  `${constants.BASE_URI}/img/Landing_desktop-2000x1125-80.jpg`,
 		alt: '',
 		title: 'CostaExpress'
 	};
 
-	if (width <= 600) {
+	const backgroundDesktopLarge: IImage = {
+		url:  `${constants.BASE_URI}/img/Landing_desktop-3000x1687-80.jpg`,
+		alt: '',
+		title: 'CostaExpress'
+	};
+
+	if (width <= 650 && height <= 1100) {
 
 		return (
 			<div className={styles.HeroBackgroundMobile}>
@@ -49,13 +57,24 @@ const HeroBackground: React.FC = () => {
 			</div>
 		);
 
-	} else {
+	} else if (width <= 1950 && height <= 1100) {
 
 		return (
 			<div className={styles.HeroBackgroundDesktop}>
 				<img src={backgroundDesktop.url}
 				     alt={backgroundDesktop.alt}
 				     title={backgroundDesktop.title}
+				/>
+			</div>
+		);
+
+	} else {
+
+		return (
+			<div className={styles.HeroBackgroundDesktopLarge}>
+				<img src={backgroundDesktopLarge.url}
+				     alt={backgroundDesktopLarge.alt}
+				     title={backgroundDesktopLarge.title}
 				/>
 			</div>
 		);

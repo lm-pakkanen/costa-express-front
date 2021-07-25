@@ -1,11 +1,4 @@
-.HeroBackgroundMobile {
-
-}
-
-.HeroBackgroundDesktop {
-
-}
-
+.HeroBackgroundDesktopLarge:after,
 .HeroBackgroundMobile:after,
 .HeroBackgroundDesktop:after
 {
@@ -19,6 +12,8 @@
     background: hsla(0, 0%, 0%, .3);
 }
 
+
+.HeroBackgroundDesktopLarge,
 .HeroBackgroundMobile,
 .HeroBackgroundDesktop
 {
@@ -32,6 +27,7 @@
     z-index: -1;
 }
 
+.HeroBackgroundDesktopLarge > img,
 .HeroBackgroundDesktop > img,
 .HeroBackgroundMobile > img
 {
@@ -39,12 +35,16 @@
     bottom: 0;
 }
 
+.HeroBackgroundDesktopLarge > img {
+    left: calc(-1*((3000px - 100vw) / 2));
+}
+
 .HeroBackgroundDesktop > img {
-    left: calc(-1*((1920px - 100vw) / 2));
+    left: calc(-1*((2000px - 100vw) / 2));
 }
 
 .HeroBackgroundMobile > img {
-    left: calc(-1*((600px - 100vw) / 2));
+    left: calc(-1*((675px - 100vw) / 2));
 }
 
 
