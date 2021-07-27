@@ -110,14 +110,18 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 					<div className={styles.RowText}>
 						<div>
+							<span>Costa De Solilla:</span>
 							<span>
-								Laukut, laatikot
+								Muutot
 							</span>
 							<span>
-								Muuttokuormat
+								Jakelut
 							</span>
 							<span>
-								Noudot kaupoista
+								IKEA -noudot
+							</span>
+							<span>
+								Muut kuljetukset
 							</span>
 						</div>
 					</div>
