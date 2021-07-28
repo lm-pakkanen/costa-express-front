@@ -71,16 +71,19 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 					<div className={styles.RowText}>
 						<div>
 							<span>
-								Moottoripyörät
+								Motot ja mopot
 							</span>
 							<span>
-								Polkupyörät (myös sähkö)
+								Invamopot
 							</span>
 							<span>
-								Scuutit (myös sähkö)
+								Polkupyörät
 							</span>
 							<span>
-								Henkilö- ymt. autot (ajaen)
+								Scootit ymt.
+							</span>
+							<span>
+								Autot (ajaen)
 							</span>
 						</div>
 					</div>
