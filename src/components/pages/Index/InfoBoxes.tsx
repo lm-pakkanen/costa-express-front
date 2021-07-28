@@ -57,7 +57,10 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 								Kissat
 							</span>
 							<span>
-								Vuokrahäkit
+								Muut lemmikit
+							</span>
+							<span>
+								Tarvittaessa vuokrahäkit
 							</span>
 						</div>
 					</div>
@@ -71,13 +74,13 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 								Moottoripyörät
 							</span>
 							<span>
-								Polkupyörät
+								Polkupyörät (myös sähkö)
 							</span>
 							<span>
-								Sähköskootterit
+								Scuutit (myös sähkö)
 							</span>
 							<span>
-								Henkilöautot
+								Henkilö- ymt. autot (ajaen)
 							</span>
 						</div>
 					</div>
@@ -99,7 +102,10 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 								Muuttokuormat
 							</span>
 							<span>
-								Noudot kaupoista
+								Juomatoimitukset
+							</span>
+							<span>
+								Muut kaupoista noudot
 							</span>
 						</div>
 					</div>
@@ -110,7 +116,7 @@ const InfoBoxes: React.FC<IProps> = (props) => {
 
 					<div className={styles.RowText}>
 						<div>
-							<span>Costa Del Sol:</span>
+							<span>Costa del Solilla:</span>
 							<span>
 								Muutot
 							</span>
