@@ -96,7 +96,7 @@ const useSchedule = (): IScheduleDataRow[] => {
 					startCountry: row.startCountry,
 					endCountry: row.endCountry,
 					startTime: row.startTime,
-					hasSpaceAvailable: JSON.parse(row.hasSpaceAvailable.toLowerCase())
+					hasSpaceAvailable: row.hasSpaceAvailable.toLowerCase()
 				};
 
 				data.push(rowData);

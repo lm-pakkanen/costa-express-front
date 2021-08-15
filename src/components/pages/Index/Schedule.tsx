@@ -3,7 +3,7 @@ import React from 'react';
 import useSchedule from '../../../hooks/controllers/useSchedule';
 
 import {
-	DisabledRequestProposalButton,
+	DisabledRequestProposalButton, ErrorRequestProposalButton,
 	RequestProposalButton,
 	TableColumn,
 	TableColumnTitle,
@@ -88,13 +88,23 @@ const GetRequestButton: React.FC<IGetRequestButton> = (props) => {
 
 	const startTime = props.rowData.startTime;
 
-	return props.rowData.hasSpaceAvailable
+	let hasSpaceAvailable;
+
+	if (props.rowData.hasSpaceAvailable === 'true') {
+		hasSpaceAvailable = true;
+	} else if (props.rowData.hasSpaceAvailable === 'false') {
+		hasSpaceAvailable = false;
+	} else {
+
+		return <ErrorRequestProposalButton />
+
+	}
+
+	return hasSpaceAvailable
 		?
 		<RequestProposalButton startTime={startTime} />
 		:
-		<span>
-			<DisabledRequestProposalButton />
-		</span>;
+		<DisabledRequestProposalButton />;
 };
 
 const Schedule: React.FC<IScheduleBody> = () => {

@@ -72,4 +72,16 @@ export const DisabledRequestProposalButton: React.FC = () => {
 		</button>
 
 	);
+};
+
+export const ErrorRequestProposalButton: React.FC = () => {
+
+	return (
+		<button
+			className={addStylesToClass(styles.RequestProposalButton, [styles.error])}
+		>
+			Virhe
+		</button>
+	)
+
 }
