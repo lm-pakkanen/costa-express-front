@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { Validator } from '../../helpers';
 
@@ -13,6 +14,8 @@ interface IFormData {
 }
 
 const useContactForm = (): IContactFormState => {
+
+	const { executeRecaptcha } = useGoogleReCaptcha();
 
 	const [formError, setFormError] = useState<null | string>(null);
 	const [formAlert, setFormAlert] = useState<null | string>(null);
@@ -145,23 +148,6 @@ const useContactForm = (): IContactFormState => {
 
 		if (!validateFields(data)) { return;  }
 
-		const messageVariables = {
-			senderFirstName: data.sender.firstName.value,
-			senderLastName: data.sender.lastName.value,
-			senderEmailAddress: data.sender.emailAddress.value,
-			startDate: data.startDate.value,
-			pickupAddressStreet: data.pickupAddress.street.value,
-			pickupAddressZipAndCity: data.pickupAddress.zipAndCity.value,
-			pickupAddressCountry: data.pickupAddress.country.value,
-			pickupPhone: data.pickupPhone.value,
-			deliveryAddressStreet: data.deliveryAddress.street.value,
-			deliveryAddressZipAndCity: data.deliveryAddress.zipAndCity.value,
-			deliveryAddressCountry: data.deliveryAddress.country.value,
-			deliveryPhone: data.deliveryPhone.value,
-			cargoDescription: data.cargoDescription.value,
-			messageContent: data.messageContent.value,
-		};
-
 		const templateID = process.env.REACT_APP_REQUEST_PROPOSAL_TEMPLATE_ID;
 
 		/**
@@ -174,17 +160,50 @@ const useContactForm = (): IContactFormState => {
 			return;
 		}
 
-		sendEmail(templateID, messageVariables)
-			.then(() => {
-				setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
+		if (!executeRecaptcha) {
+			return console.log('reCaptcha execution function is not yet ready.');
+		}
+
+		executeRecaptcha('formSubmit')
+			.then((token) => {
+
+				const messageVariables = {
+					senderFirstName: data.sender.firstName.value,
+					senderLastName: data.sender.lastName.value,
+					senderEmailAddress: data.sender.emailAddress.value,
+					startDate: data.startDate.value,
+					pickupAddressStreet: data.pickupAddress.street.value,
+					pickupAddressZipAndCity: data.pickupAddress.zipAndCity.value,
+					pickupAddressCountry: data.pickupAddress.country.value,
+					pickupPhone: data.pickupPhone.value,
+					deliveryAddressStreet: data.deliveryAddress.street.value,
+					deliveryAddressZipAndCity: data.deliveryAddress.zipAndCity.value,
+					deliveryAddressCountry: data.deliveryAddress.country.value,
+					deliveryPhone: data.deliveryPhone.value,
+					cargoDescription: data.cargoDescription.value,
+					messageContent: data.messageContent.value,
+					reCaptchaToken: token
+				};
+
+				sendEmail(templateID, messageVariables)
+					.then(() => {
+						setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
+					})
+					.catch((err) => {
+
+						console.error(err);
+						const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
+						setFormError(errMessage);
+						setFormAlert(errMessage);
+
+					});
+
 			})
 			.catch((err) => {
-
 				console.error(err);
 				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 				setFormError(errMessage);
 				setFormAlert(errMessage);
-
 			})
 			.finally(() => {
 				setIsResponseLoading(false);
