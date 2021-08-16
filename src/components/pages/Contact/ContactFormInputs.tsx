@@ -29,7 +29,8 @@ interface ITextAreaInput extends IInput {
 }
 
 interface ISubmitButton extends IInput {
-	onClick: (e: any) => void
+	onClick: (e: any) => void,
+	shouldLoadingShow: boolean
 }
 
 interface IFieldError {
@@ -140,13 +141,22 @@ export const SubmitButton: React.FC<ISubmitButton> = (props) => {
 		style = addStylesToClass(style, [props.style]);
 	}
 
+	if (props.shouldLoadingShow) {
+		style = addStylesToClass(style, [styles.loading]);
+	}
+
 	return (
 		<button type={'button'}
 		        name={props.name}
 		        className={style}
 		        onClick={props.onClick}
 		>
-			{props.value}
+			{ props.shouldLoadingShow
+				?
+				'Lähetetään tarjouspyyntöä...'
+				:
+				props.value
+			}
 		</button>
 	);
 

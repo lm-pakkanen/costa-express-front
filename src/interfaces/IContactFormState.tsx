@@ -26,6 +26,7 @@ interface IContactFormState {
 	messageContent: IFormDataValue,
 	formError: null | string,
 	formAlert: null | string,
+	isResponseLoading: boolean,
 	methods: {
 		[key: string]: (e: any) => void
 	}

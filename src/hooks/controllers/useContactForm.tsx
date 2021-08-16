@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-import emailjs from 'emailjs-com';
-
 import { Validator } from '../../helpers';
 
 import IContactFormState, { IFormDataValue } from '../../interfaces/IContactFormState';
+import constants from '../../config/constants';
+import { AxiosResponse } from 'axios';
+
+const axios = require('axios').default;
 
 interface IFormData {
 	[key: string]: IFormDataValue
@@ -14,6 +16,7 @@ const useContactForm = (): IContactFormState => {
 
 	const [formError, setFormError] = useState<null | string>(null);
 	const [formAlert, setFormAlert] = useState<null | string>(null);
+	const [isResponseLoading, setIsResponseLoading] = useState<boolean>(false);
 
 	const initialValue: IFormDataValue = {
 		value: null,
@@ -130,6 +133,12 @@ const useContactForm = (): IContactFormState => {
 
 		e.preventDefault();
 
+		if (isResponseLoading) {
+			return;
+		}
+
+		setIsResponseLoading(true);
+
 		clearFormErrors();
 
 		const data = getFormData();
@@ -153,22 +162,19 @@ const useContactForm = (): IContactFormState => {
 			messageContent: data.messageContent.value,
 		};
 
-		const emailUserID = process.env.REACT_APP_EMAILJS_USER_ID;
-
-		const emailProviderID = process.env.REACT_APP_EMAILJS_PROVIDER;
-		const emailTemplateID = process.env.REACT_APP_EMAILJS_TEMPLATE;
+		const templateID = process.env.REACT_APP_REQUEST_PROPOSAL_TEMPLATE_ID;
 
 		/**
 		 * Environment variables missing, email cannot be sent
 		 */
-		if (!(emailUserID && emailProviderID && emailTemplateID)) {
+		if (!templateID) {
 			const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 			setFormAlert(errMessage);
 			setFormError(errMessage);
 			return;
 		}
 
-		sendEmail(emailUserID, emailProviderID, emailTemplateID, messageVariables)
+		sendEmail(templateID, messageVariables)
 			.then(() => {
 				setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
 			})
@@ -176,9 +182,12 @@ const useContactForm = (): IContactFormState => {
 
 				console.error(err);
 				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
-				setFormAlert(errMessage);
 				setFormError(errMessage);
+				setFormAlert(errMessage);
 
+			})
+			.finally(() => {
+				setIsResponseLoading(false);
 			});
 
 	};
@@ -215,15 +224,13 @@ const useContactForm = (): IContactFormState => {
 
 		let hasError = false;
 
-		/** Email address */
-
+		// Email address
 		if (!(typeof emailValid === 'boolean' && emailValid)) {
 			errors = updateErrors(errors, 'emailAddress', emailValid);
 			hasError = true;
 		}
 
-		/** First- and last name */
-
+		// First- and last name
 		if (!(typeof firstNameValid === 'boolean' && firstNameValid)) {
 			errors = updateErrors(errors, 'firstName', firstNameValid);
 			hasError = true;
@@ -234,8 +241,7 @@ const useContactForm = (): IContactFormState => {
 			hasError = true;
 		}
 
-		/** Pickup address */
-
+		// Pickup address
 		if (!(typeof pickupStreetValid === 'boolean' && pickupStreetValid)) {
 			errors = updateErrors(errors, 'pickupAddressStreet', pickupStreetValid);
 			hasError = true;
@@ -256,8 +262,7 @@ const useContactForm = (): IContactFormState => {
 			hasError = true;
 		}
 
-		/** Delivery address */
-
+		// Delivery address
 		if (!(typeof deliveryStreetValid === 'boolean' && deliveryStreetValid)) {
 			errors = updateErrors(errors, 'deliveryAddressStreet', deliveryStreetValid);
 			hasError = true;
@@ -278,15 +283,13 @@ const useContactForm = (): IContactFormState => {
 			hasError = true;
 		}
 
-		/** Cargo description */
-
+		// Cargo description
 		if (!(typeof cargoMessageValid === 'boolean' && cargoMessageValid)) {
 			errors = updateErrors(errors, 'cargoDescription', cargoMessageValid);
 			hasError = true;
 		}
 
-		/** Message content */
-
+		// Message content
 		if (!(typeof messageValid === 'boolean' && messageValid)) {
 			errors = updateErrors(errors, 'messageContent', messageValid);
 			hasError = true;
@@ -297,15 +300,25 @@ const useContactForm = (): IContactFormState => {
 		return hasError ? setFormError('Jossain kentässä on virheellistä tietoa.') : true;
 	};
 
-	const sendEmail = async (userID: string, providerID: string, templateID: string, variables: { [key: string]: null | string }) => {
+	const sendEmail = async (templateID: string, variables: { [key: string]: null | string }) => {
 		return new Promise(async (resolve, reject) => {
 
-			try {
-				await emailjs.send(providerID, templateID, variables, userID);
-				resolve(true);
-			} catch (err) {
-				reject(err);
-			}
+			const endpoint =  `${constants.BASE_API_URI}/emails/templates/${encodeURIComponent(templateID)}/send`;
+
+			axios.post(endpoint, variables)
+				.then((result: AxiosResponse) => {
+
+					if (result.status === 200) {
+						resolve(true);
+					} else {
+						reject(new Error('Viestiä ei voitu lähettää.'));
+					}
+
+				})
+				.catch((err: Error) => {
+					console.error(err);
+					reject(err);
+				});
 
 		});
 
@@ -346,6 +359,7 @@ const useContactForm = (): IContactFormState => {
 			messageContent: formData.messageContent,
 			formError,
 			formAlert,
+			isResponseLoading,
 			methods: {
 				setStartDate,
 				onFormChange,

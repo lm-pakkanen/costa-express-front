@@ -49,6 +49,7 @@ const ContactForm: React.FC<Props> = () => {
 		messageContent,
 		formError,
 		formAlert,
+		isResponseLoading,
 		methods
 	}: IContactFormState = contactForm;
 
@@ -339,6 +340,7 @@ const ContactForm: React.FC<Props> = () => {
 
 					<SubmitButton value={'Lähetä tarjouspyyntö'}
 					              onClick={onFormSubmit}
+					              shouldLoadingShow={isResponseLoading}
 					/>
 
 				</FieldRow>
