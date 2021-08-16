@@ -100,7 +100,14 @@ export const Validator = {
 
 	validatePhoneNumber: (number: ValidatorArgument) => {
 
-		if (!(number && isMobilePhone(number, 'any', { strictMode: true }))) {
+		if (!number) {
+			return fieldEmptyError;
+		}
+
+		number = number.replace(/\s/g, '');
+		number = number.replace('-', '');
+
+		if (!isMobilePhone(number, 'any', { strictMode: true })) {
 			return 'Numero on epäkelpo.'
 		}
 

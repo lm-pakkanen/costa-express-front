@@ -137,8 +137,6 @@ const useContactForm = (): IContactFormState => {
 			return;
 		}
 
-		setIsResponseLoading(true);
-
 		clearFormErrors();
 
 		const data = getFormData();
@@ -173,6 +171,8 @@ const useContactForm = (): IContactFormState => {
 			setFormError(errMessage);
 			return;
 		}
+
+		setIsResponseLoading(true);
 
 		sendEmail(templateID, messageVariables)
 			.then(() => {
