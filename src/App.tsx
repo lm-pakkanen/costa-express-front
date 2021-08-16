@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import { useStoreConfigure } from './hooks/useStoreConfigure';
 
@@ -43,60 +44,71 @@ const App: React.FC<Props> = () => {
     }
 
     return (
-        <div id={'app'} className={styles.App}>
+        <GoogleReCaptchaProvider
+            reCaptchaKey={process.env.REACT_APP_RECAPTCHA_KEY}
+            scriptProps={
+                {
+                    async: true
+                }
+            }
+        >
 
-            <Switch>
+            <div id={'app'} className={styles.App}>
 
-                <Route
-                    path={'/tietosuoja'}
-                    exact
-                    component={
-                        () => (
-                            <WithCookieConsent>
-                                <PrivacyPolicy />
-                            </WithCookieConsent>
-                        )
-                    }
-                />
+                <Switch>
 
-                <Route
-                    path={'/tarjouspyynto'}
-                    exact
-                    component={
-                        () => (
-                            <WithCookieConsent>
-                                <Contact />
-                            </WithCookieConsent>
-                        )
-                    }
-                />
+                    <Route
+                        path={'/tietosuoja'}
+                        exact
+                        component={
+                            () => (
+                                <WithCookieConsent>
+                                    <PrivacyPolicy />
+                                </WithCookieConsent>
+                            )
+                        }
+                    />
 
-                <Route
-                    path={'/'}
-                    exact
-                    component={
-                        () => (
-                            <WithCookieConsent>
-                                <Index />
-                            </WithCookieConsent>
-                        )
-                    }
-                />
+                    <Route
+                        path={'/tarjouspyynto'}
+                        exact
+                        component={
+                            () => (
+                                <WithCookieConsent>
+                                    <Contact />
+                                </WithCookieConsent>
+                            )
+                        }
+                    />
 
-                <Route
-                    path={'*'}
-                    component={
-                        () => (
-                            <WithCookieConsent>
-                                <NotFound />
-                            </WithCookieConsent>
-                        )
-                    }
-                />
+                    <Route
+                        path={'/'}
+                        exact
+                        component={
+                            () => (
+                                <WithCookieConsent>
+                                    <Index />
+                                </WithCookieConsent>
+                            )
+                        }
+                    />
 
-            </Switch>
+                    <Route
+                        path={'*'}
+                        component={
+                            () => (
+                                <WithCookieConsent>
+                                    <NotFound />
+                                </WithCookieConsent>
+                            )
+                        }
+                    />
 
-        </div>
+                </Switch>
+
+            </div>
+
+        </GoogleReCaptchaProvider>
     );
 };
 
