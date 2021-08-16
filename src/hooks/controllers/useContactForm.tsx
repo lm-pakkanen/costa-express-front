@@ -140,8 +140,6 @@ const useContactForm = (): IContactFormState => {
 			return;
 		}
 
-		setIsResponseLoading(true);
-
 		clearFormErrors();
 
 		const data = getFormData();
@@ -163,6 +161,8 @@ const useContactForm = (): IContactFormState => {
 		if (!executeRecaptcha) {
 			return console.log('reCaptcha execution function is not yet ready.');
 		}
+
+		setIsResponseLoading(true);
 
 		executeRecaptcha('formSubmit')
 			.then((token) => {
