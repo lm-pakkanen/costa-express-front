@@ -69,6 +69,12 @@
     background-image: linear-gradient(hsla(141, 70%, 35%, .1), hsla(141, 70%, 15%, .1));
 }
 
+.SubmitButton.loading {
+    background-color: hsla(141, 70%, 15%, .6);
+    background-image: linear-gradient(hsla(141, 70%, 45%, .3), hsla(141, 70%, 30%, .6));
+    cursor: progress;
+}
+
 .FieldLabel {
     padding: 0 0 .3em .1em;
     color: hsla(240, 5%, 20%, 1);

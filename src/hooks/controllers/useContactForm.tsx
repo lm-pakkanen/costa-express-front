@@ -16,6 +16,7 @@ const useContactForm = (): IContactFormState => {
 
 	const [formError, setFormError] = useState<null | string>(null);
 	const [formAlert, setFormAlert] = useState<null | string>(null);
+	const [isResponseLoading, setIsResponseLoading] = useState<boolean>(false);
 
 	const initialValue: IFormDataValue = {
 		value: null,
@@ -132,6 +133,12 @@ const useContactForm = (): IContactFormState => {
 
 		e.preventDefault();
 
+		if (isResponseLoading) {
+			return;
+		}
+
+		setIsResponseLoading(true);
+
 		clearFormErrors();
 
 		const data = getFormData();
@@ -175,9 +182,12 @@ const useContactForm = (): IContactFormState => {
 
 				console.error(err);
 				const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
-				setFormAlert(errMessage);
 				setFormError(errMessage);
+				setFormAlert(errMessage);
 
+			})
+			.finally(() => {
+				setIsResponseLoading(false);
 			});
 
 	};
@@ -307,6 +317,7 @@ const useContactForm = (): IContactFormState => {
 				})
 				.catch((err: Error) => {
 					console.error(err);
+					reject(err);
 				});
 
 		});
@@ -348,6 +359,7 @@ const useContactForm = (): IContactFormState => {
 			messageContent: formData.messageContent,
 			formError,
 			formAlert,
+			isResponseLoading,
 			methods: {
 				setStartDate,
 				onFormChange,
