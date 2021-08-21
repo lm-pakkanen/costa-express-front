@@ -43,7 +43,22 @@
 @media screen and (min-width: 450px) {
 
     .Footer {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
+    }
+
+    .ContentWrapper {
+        justify-content: center;
+    }
+
+    .ContentWrapper > * {
+        margin: 0 .5rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .ContentWrapper > .Copyright {
+        display: block;
     }
 
     .ContentWrapper {
@@ -52,13 +67,6 @@
 
     .ContentWrapper > * {
         margin: 0 1.5rem;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-
-    .ContentWrapper > .Copyright {
-        display: block;
     }
 
 }
