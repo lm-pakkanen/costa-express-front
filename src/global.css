@@ -19,6 +19,10 @@ body
     color: hsla(225, 5%, 97%, 1);
 }
 
+.grecaptcha-badge {
+    display: none;
+}
+
 @font-face {
     font-family: 'Helvetica';
     src: url('./_assets/fonts/Helvetica/Helvetica.ttf');

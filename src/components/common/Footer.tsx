@@ -14,15 +14,24 @@ const Footer: React.FC<IFooter> = () => {
 
 			<div className={styles.Footer}>
 
-				<div className={addStylesToClass(styles.ContentWrapper, [styles.Links])}>
+				<div className={styles.ContentWrapper}>
 
-					<span>© Harriot Software</span>
+					<span className={styles.Copyright}>© Harriot Software</span>
 
 					<a
-						href={new URL('tietosuoja', constants.BASE_URI).toString()}
-						title={'Tietosuoja'}
+						href={new URL('COSTA_Express_ohjeet.pdf', constants.BASE_URI).toString()}
+						title={'COSTA Express ohjeet'}
+						target={'_blank'}
 					>
-						Tietosuoja
+						COSTA Express OHJEET
+					</a>
+
+					<a
+						href={new URL('COSTA_Express_lemmikit.pdf', constants.BASE_URI).toString()}
+						title={'COSTA Express lemmikit'}
+						target={'_blank'}
+					>
+						COSTA Express LEMMIKIT
 					</a>
 
 				</div>
