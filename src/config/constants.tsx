@@ -14,12 +14,20 @@ const constants = {
     }
 };
 
-if (process.env.NODE_ENV === 'development') {
-    constants.BASE_URI = process.env.REACT_APP_BASE_URI_DEV ?? '';
-    constants.BASE_API_URI = process.env.REACT_APP_BASE_API_URI_DEV ?? '';
+if (process.env.REACT_APP_IS_STAGING === 'true') {
+    constants.BASE_URI = process.env.REACT_APP_BASE_URI_STAGING ?? '';
+    constants.BASE_API_URI = process.env.REACT_APP_BASE_API_URI_STAGING ?? '';
 } else {
-    constants.BASE_URI = process.env.REACT_APP_BASE_URI ?? '';
-    constants.BASE_API_URI = process.env.REACT_APP_BASE_API_URI ?? '';
+
+    if (process.env.NODE_ENV === 'development') {
+        constants.BASE_URI = process.env.REACT_APP_BASE_URI_DEV ?? '';
+        constants.BASE_API_URI = process.env.REACT_APP_BASE_API_URI_DEV ?? '';
+    } else {
+        constants.BASE_URI = process.env.REACT_APP_BASE_URI ?? '';
+        constants.BASE_API_URI = process.env.REACT_APP_BASE_API_URI ?? '';
+    }
+
 }
+
 
 export default constants;

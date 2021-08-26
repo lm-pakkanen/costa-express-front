@@ -15,6 +15,7 @@ import styles from './App.module.css';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import CookiesConsent from './components/common/CookiesConsent';
+import constants from './config/constants';
 
 interface Props {}
 
@@ -42,6 +43,8 @@ const App: React.FC<Props> = () => {
             <>loading...</>
         );
     }
+
+    console.debug(constants);
 
     return (
         <GoogleReCaptchaProvider
