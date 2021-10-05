@@ -187,10 +187,16 @@ const useContactForm = (): IContactFormState => {
 
 				sendEmail(templateID, messageVariables)
 					.then(() => {
+
+						setFormData(initialFormData);
 						setFormAlert('Sähköpostisi on lähetetty! Vastaamme viestiin mahdollisimman pian.');
+
+						setTimeout(() => {
+							window.location.href = '/';
+						}, 1000);
+
 					})
 					.catch((err) => {
-
 						console.error(err);
 						const errMessage = 'Sähköpostin lähettäminen ei onnistunut. Yritäthän myöhemmin uudelleen!';
 						setFormError(errMessage);
