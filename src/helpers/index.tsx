@@ -107,8 +107,8 @@ export const Validator = {
 		number = number.replace(/\s/g, '');
 		number = number.replace('-', '');
 
-		if (!isMobilePhone(number, 'any', { strictMode: true })) {
-			return 'Numero on epäkelpo.'
+		if (!number.startsWith('+') || number.length < 5 || number.length > 40) {
+			return "Numero on epäkelpo.";
 		}
 
 		return true;
