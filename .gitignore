@@ -7,7 +7,7 @@ node_modules/
 
 /build
 
-**/yarn.log
+**/yarn.lock
 **/yarn-error.log
 **/*.log
 **/package-lock.json
