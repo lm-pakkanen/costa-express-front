@@ -40,7 +40,10 @@ const useSchedule = (): IScheduleDataRow[] => {
 				return decoder.decode(readResult.value);
 
 			} catch (err) {
-				memoryController.addMemoryError(new CError(err.message, err.code, false));
+				if (err instanceof CError) {
+					memoryController.addMemoryError(new CError(err.message, err.code, false));
+				}
+
 				return;
 			}
 

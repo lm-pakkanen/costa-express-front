@@ -1,4 +1,4 @@
-.env
+**/.env
 
 .idea/
 node_modules/
@@ -7,4 +7,7 @@ node_modules/
 
 /build
 
-package-lock.json
+**/yarn.log
+**/yarn-error.log
+**/*.log
+**/package-lock.json

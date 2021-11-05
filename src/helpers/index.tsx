@@ -1,6 +1,5 @@
 import isEmail from 'validator/lib/isEmail';
 import isEmpty from 'validator/lib/isEmpty';
-import isMobilePhone from 'validator/lib/isMobilePhone';
 
 import constants from '../config/constants';
 

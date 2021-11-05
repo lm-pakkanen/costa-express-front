@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import { useStoreConfigure } from './hooks/useStoreConfigure';
@@ -15,7 +15,6 @@ import styles from './App.module.css';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import CookiesConsent from './components/common/CookiesConsent';
-import constants from './config/constants';
 
 interface Props {}
 
@@ -56,56 +55,45 @@ const App: React.FC<Props> = () => {
 
             <div id={'app'} className={styles.App}>
 
-                <Switch>
+                <Routes>
 
                     <Route
                         path={'/tietosuoja'}
-                        exact
-                        component={
-                            () => (
-                                <WithCookieConsent>
-                                    <PrivacyPolicy />
-                                </WithCookieConsent>
-                            )
+                        element={
+                            <WithCookieConsent>
+                                <PrivacyPolicy />
+                            </WithCookieConsent>
                         }
                     />
 
                     <Route
                         path={'/tarjouspyynto'}
-                        exact
-                        component={
-                            () => (
-                                <WithCookieConsent>
-                                    <Contact />
-                                </WithCookieConsent>
-                            )
+                        element={
+                            <WithCookieConsent>
+                                <Contact />
+                            </WithCookieConsent>
                         }
                     />
 
                     <Route
                         path={'/'}
-                        exact
-                        component={
-                            () => (
-                                <WithCookieConsent>
-                                    <Index />
-                                </WithCookieConsent>
-                            )
+                        element={
+                            <WithCookieConsent>
+                                <Index />
+                            </WithCookieConsent>
                         }
                     />
 
                     <Route
                         path={'*'}
-                        component={
-                            () => (
-                                <WithCookieConsent>
-                                    <NotFound />
-                                </WithCookieConsent>
-                            )
+                        element={
+                            <WithCookieConsent>
+                                <NotFound />
+                            </WithCookieConsent>
                         }
                     />
 
-                </Switch>
+                </Routes>
 
             </div>
 

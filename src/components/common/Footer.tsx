@@ -3,7 +3,6 @@ import React from 'react';
 import constants from '../../config/constants';
 
 import styles from './Footer.module.css';
-import { addStylesToClass } from '../../helpers';
 
 interface IFooter {}
 
@@ -22,6 +21,7 @@ const Footer: React.FC<IFooter> = () => {
 						href={new URL('COSTA_Express_ohjeet.pdf', constants.BASE_URI).toString()}
 						title={'COSTA Express ohjeet'}
 						target={'_blank'}
+						rel={'noreferrer'}
 					>
 						COSTA Express OHJEET
 					</a>
@@ -30,6 +30,7 @@ const Footer: React.FC<IFooter> = () => {
 						href={new URL('COSTA_Express_lemmikit.pdf', constants.BASE_URI).toString()}
 						title={'COSTA Express lemmikit'}
 						target={'_blank'}
+						rel={'noreferrer'}
 					>
 						COSTA Express LEMMIKIT
 					</a>
