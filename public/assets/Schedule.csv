@@ -1,17 +1,20 @@
 startCountry,endCountry,startTime,hasSpaceAvailable
 
 
-Espanja,Suomi,15.9.2021,false
-Espanja,Suomi,27.9.2021,false
 Espanja,Suomi,15.10.2021,false
-Espanja,Suomi,26.10.2021,true
+Espanja,Suomi,26.10.2021,false
 Espanja,Suomi,15.11.2021,false
 Espanja,Suomi,26.11.2021,true
+Espanja,Suomi,27.12.2021,true
+Espanja,Suomi,20.1.2022,false
+Espanja,Suomi,10.2.2022,true
 
 
-Suomi,Espanja,4.9.2021,false
-Suomi,Espanja,20.9.2021,false
+
 Suomi,Espanja,2.10.2021,false
 Suomi,Espanja,20.10.2021,false
-Suomi,Espanja,31.10.2021,true
+Suomi,Espanja,31.10.2021,false
 Suomi,Espanja,1.12.2021,true
+Suomi,Espanja,2.1.2022,true
+Suomi,Espanja,25.1.2022,false
+Suomi,Espanja,15.2.2022,true
