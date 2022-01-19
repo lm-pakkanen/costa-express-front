@@ -7,6 +7,13 @@
   "keywords": [],
   "private": true,
   "main": "babel.config.js",
+  "scripts": {
+    "start": "BROWSER=none react-scripts start",
+    "build": "react-scripts build && cp src/Schedule.csv build/Schedule.csv",
+    "build:staging": "REACT_APP_IS_STAGING=true && yarn build",
+    "test": "jest",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -37,12 +44,6 @@
     "validator": "^13.6.0",
     "velocity-animate": "^1.5.2",
     "web-vitals": "2.1.2"
-  },
-  "scripts": {
-    "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
