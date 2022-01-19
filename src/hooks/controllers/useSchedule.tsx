@@ -24,7 +24,7 @@ const useSchedule = (): IScheduleDataRow[] => {
 
 			try {
 
-				const fileContents = await fetch(`${constants.BASE_URI}/assets/Schedule.csv`);
+				const fileContents = await fetch(`${constants.BASE_URI}/Schedule.csv`);
 
 				if (!fileContents.body) {
 					const error = new CError('No data was found for Schedule', 404, false);
