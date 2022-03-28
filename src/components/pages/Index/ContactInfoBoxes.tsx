@@ -27,7 +27,7 @@ const phoneIcon: IImage = {
 	title: 'Puhelin'
 };
 
-const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
+const ContactInfoBoxes: React.FC<IContactInfoBoxes> = () => {
 
 	const emailButtonStyle = addStylesToClass(styles.Item, [styles.ItemButton]);
 
@@ -48,19 +48,16 @@ const ContactInfoBoxes: React.FC<IContactInfoBoxes> = (props) => {
 
 				<div className={styles.Item}>
 					<i className={styles.ItemIcon}>
-						<img src={whatsappIcon.url} alt={whatsappIcon.alt} title={whatsappIcon.title} />
-					</i>
-					<i className={styles.ItemIcon}>
 						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
 					</i>
-					<div>+34 646503676</div>
+					<div>+358 40 6213992</div>
 				</div>
 
 				<div className={styles.Item}>
 					<i className={styles.ItemIcon}>
-						<img src={phoneIcon.url} alt={phoneIcon.alt} title={phoneIcon.title} />
+						<img src={whatsappIcon.url} alt={whatsappIcon.alt} title={whatsappIcon.title} />
 					</i>
-					<div>+358 40 7151474</div>
+					<div>+358 40 6213992</div>
 				</div>
 
 			</div>
