@@ -9,7 +9,7 @@
   "main": "babel.config.js",
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build && cp src/Schedule.csv build/Schedule.csv",
+    "build": "react-scripts build",
     "build:staging": "REACT_APP_IS_STAGING=true && yarn build",
     "test": "jest",
     "eject": "react-scripts eject"
