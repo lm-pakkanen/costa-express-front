@@ -21,7 +21,6 @@
 .TableRow {
     display: flex;
     text-align: center;
-    white-space: nowrap;
 }
 
 .TableRow:nth-child(even) {

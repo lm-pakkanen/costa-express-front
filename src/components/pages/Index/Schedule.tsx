@@ -11,8 +11,9 @@ import {
 	TableRowSeparator
 } from './ScheduleComponents';
 
-import styles from './Schedule.module.css';
 import { addStylesToClass } from '../../../helpers';
+
+import styles from './Schedule.module.css';
 
 interface IScheduleData {
 	startCountry: string,
@@ -129,6 +130,12 @@ const Schedule: React.FC<IScheduleBody> = () => {
 
 				<GetDataRows data={data} toCountry={'Espanja'} />
 
+				<TableRow>
+					<div className={styles.waiver}>
+						Ajopäivät ovat ohjeellisia, ja saattavat muuttua tilanteen mukaan hieman.
+					</div>
+				</TableRow>
+
 			</div>
 		);
 
@@ -151,6 +158,12 @@ const Schedule: React.FC<IScheduleBody> = () => {
 				<TableRowSeparator />
 
 				<GetDataRows data={data} toCountry={'Suomi'} />
+
+				<TableRow>
+					<div className={styles.waiver}>
+						Ajopäivät ovat ohjeellisia, ja saattavat muuttua tilanteen mukaan hieman.
+					</div>
+				</TableRow>
 
 			</div>
 		);
