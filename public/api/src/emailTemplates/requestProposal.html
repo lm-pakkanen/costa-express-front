@@ -1,0 +1,86 @@
+<html lang="fi">
+
+<head>
+    <title>{{messageSubject}}</title>
+    <style>
+
+        .HeroTitle {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .Section {
+            margin: 1rem 0;
+        }
+
+        .SectionTitle {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 1rem auto;
+        }
+
+        .SectionData {
+            padding: 20px;
+            border-left: 3px solid hsla(0, 0%, 40%, 1);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div>
+    <h1 class="HeroTitle">COSTA Express tiedustelu</h1>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Lähettäjän tiedot:</h2>
+        <div class="SectionData">
+            <span>Nimi: {{senderFirstName}} {{senderLastName}}</span><br />
+            <span>Email: <a rel="nofollow" href="#" style="text-decoration: none; color:#333">{{senderEmailAddress}}</a></span>
+        </div>
+    </div>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Valittu kuljetus:</h2>
+        <div class="SectionData">
+            <span>{{startDate}}</span>
+        </div>
+    </div>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Noudon tiedot:</h2>
+        <div class="SectionData">
+            <span>{{pickupAddressStreet}}</span><br />
+            <span>{{pickupAddressZipAndCity}}, {{pickupAddressCountry}}</span><br />
+            <span>{{pickupPhone}}</span>
+        </div>
+    </div>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Toimituksen tiedot:</h2>
+        <div class="SectionData">
+            <span>{{deliveryAddressStreet}}</span><br />
+            <span>{{deliveryAddressZipAndCity}}, {{deliveryAddressCountry}}</span><br />
+            <span>{{deliveryPhone}}</span>
+        </div>
+    </div>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Kuvaus rahdista:</h2>
+        <div class="SectionData">
+            <span>{{cargoDescription}}</span>
+        </div>
+    </div>
+
+    <div class="Section">
+        <h2 class="SectionTitle">Lähettäjän vapaamuotoinen viesti:</h2>
+        <div class="SectionData">
+            <span>{{messageContent}}</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
