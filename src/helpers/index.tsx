@@ -1,9 +1,9 @@
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import constants from "../config/constants";
 import { getHref } from "./getHref";
 
 export * from "./getHref";
+export * from "./getPath";
 
 type ValidatorArgument = null | string;
 

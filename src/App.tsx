@@ -11,6 +11,7 @@ import CookiesConsent from "./components/common/CookiesConsent";
 
 import "./reset.css";
 import "./global.css";
+import { getPath } from "./helpers/getPath";
 
 interface Props {}
 
@@ -46,7 +47,7 @@ const App: React.FC<Props> = () => {
       <div id={"app"} className={styles.App}>
         <Routes>
           <Route
-            path={"/costaexpress/tietosuoja"}
+            path={getPath("/tietosuoja")}
             element={
               <WithCookieConsent>
                 <PrivacyPolicy />
@@ -55,7 +56,7 @@ const App: React.FC<Props> = () => {
           />
 
           <Route
-            path={"/costaexpress/tarjouspyynto"}
+            path={getPath("/tarjouspyynto")}
             element={
               <WithCookieConsent>
                 <Contact />
@@ -64,7 +65,7 @@ const App: React.FC<Props> = () => {
           />
 
           <Route
-            path={"/costaexpress/"}
+            path={getPath("/")}
             element={
               <WithCookieConsent>
                 <Index />

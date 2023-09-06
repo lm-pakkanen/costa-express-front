@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-
 import { Validator, getHref } from "../../helpers";
-
 import IContactFormState, {
   IFormDataValue,
 } from "../../interfaces/IContactFormState";
