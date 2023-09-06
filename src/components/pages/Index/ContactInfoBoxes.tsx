@@ -2,25 +2,24 @@ import React from "react";
 
 import styles from "./ContactInfoBoxes.module.css";
 import IImage from "../../../interfaces/IImage";
-import constants from "../../../config/constants";
-import { addStylesToClass } from "../../../helpers";
+import { addStylesToClass, getHref } from "../../../helpers";
 
 interface IContactInfoBoxes {}
 
 const emailIcon: IImage = {
-  url: `${constants.BASE_URI}/img/FontAwesome/envelope.svg`,
+  url: getHref("/img/FontAwesome/envelope.svg").toString(),
   alt: "Sähköposti",
   title: "Sähköposti",
 };
 
 const whatsappIcon: IImage = {
-  url: `${constants.BASE_URI}/img/FontAwesome/whatsapp.svg`,
+  url: getHref("/img/FontAwesome/whatsapp.svg").toString(),
   alt: "Whatsapp",
   title: "Whatsapp",
 };
 
 const phoneIcon: IImage = {
-  url: `${constants.BASE_URI}/img/FontAwesome/phone-square-alt.svg`,
+  url: getHref("/img/FontAwesome/phone-square-alt.svg").toString(),
   alt: "Puhelin",
   title: "Puhelin",
 };

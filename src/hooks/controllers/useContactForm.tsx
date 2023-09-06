@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-import { Validator } from "../../helpers";
+import { Validator, getHref } from "../../helpers";
 
 import IContactFormState, {
   IFormDataValue,
@@ -197,7 +197,7 @@ const useContactForm = (): IContactFormState => {
       );
 
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = getHref("/").toString();
       }, 1000);
     } catch (err) {
       console.error(err);

@@ -1,118 +1,115 @@
-import { useEffect, useState } from 'react';
-import papa from 'papaparse';
+import { useEffect, useState } from "react";
+import papa from "papaparse";
 
-import { CError } from '../../models/Errors';
-import useMemoryController, { IUSeMemoryController } from './useMemoryController';
-import constants from '../../config/constants';
+import { CError } from "../../models/Errors";
+import useMemoryController, {
+  IUSeMemoryController,
+} from "./useMemoryController";
+import { getHref } from "../../helpers";
 
 interface IScheduleDataRow {
-	startCountry: string,
-	endCountry: string,
-	startTime: string,
-	hasSpaceAvailable: string
+  startCountry: string;
+  endCountry: string;
+  startTime: string;
+  hasSpaceAvailable: string;
 }
 
 const useSchedule = (): IScheduleDataRow[] => {
+  const [scheduleData, setScheduleData] = useState<IScheduleDataRow[]>([]);
 
-	const [scheduleData, setScheduleData] = useState<IScheduleDataRow[]>([]);
+  const memoryController = useMemoryController();
 
-	const memoryController = useMemoryController();
+  const getScheduleData = async (memoryController: IUSeMemoryController) => {
+    const getCSVData = async () => {
+      try {
+        const fileContents = await fetch(getHref("/Schedule.csv").toString());
 
-	const getScheduleData = async (memoryController: IUSeMemoryController) => {
+        if (!fileContents.body) {
+          const error = new CError(
+            "No data was found for Schedule",
+            404,
+            false
+          );
+          memoryController.addMemoryError(error);
+          return;
+        }
 
-		const getCSVData = async () => {
+        const reader = fileContents.body.getReader();
+        const readResult = await reader.read();
 
-			try {
+        const decoder = new TextDecoder("utf-8");
 
-				const fileContents = await fetch(`${constants.BASE_URI}/Schedule.csv`);
+        return decoder.decode(readResult.value);
+      } catch (err) {
+        if (err instanceof CError) {
+          memoryController.addMemoryError(
+            new CError(err.message, err.code, false)
+          );
+        }
 
-				if (!fileContents.body) {
-					const error = new CError('No data was found for Schedule', 404, false);
-					memoryController.addMemoryError(error);
-					return;
-				}
+        return;
+      }
+    };
 
-				const reader = fileContents.body.getReader();
-				const readResult = await reader.read();
+    const csvData = await getCSVData();
 
-				const decoder = new TextDecoder('utf-8');
+    if (!csvData) {
+      memoryController.addMemoryError(
+        new CError("No data was found for Schedule", 404, false)
+      );
+      return;
+    }
 
-				return decoder.decode(readResult.value);
+    const parsedData = papa.parse(csvData, {
+      header: true,
+      skipEmptyLines: true,
+    });
 
-			} catch (err) {
-				if (err instanceof CError) {
-					memoryController.addMemoryError(new CError(err.message, err.code, false));
-				}
+    if (parsedData.errors.length !== 0) {
+      const err = parsedData.errors[0];
 
-				return;
-			}
+      const errMessage = err.message;
+      const errCode = parseInt(err.code);
 
-		};
+      memoryController.addMemoryError(new CError(errMessage, errCode, false));
+      return;
+    }
 
-		const csvData = await getCSVData();
+    if (!parsedData.data) {
+      const error = new CError("No data was found for Schedule", 404, false);
+      memoryController.addMemoryError(error);
+      return;
+    }
 
-		if (!csvData) {
-			memoryController.addMemoryError(new CError('No data was found for Schedule', 404, false));
-			return;
-		}
+    return parsedData.data;
+  };
 
-		const parsedData = papa.parse(csvData, { header: true, skipEmptyLines: true });
+  useEffect(() => {
+    getScheduleData(memoryController).then((_data) => {
+      const data: IScheduleDataRow[] = [];
 
-		if (parsedData.errors.length !== 0) {
+      if (!_data) {
+        return;
+      }
 
-			const err = parsedData.errors[0];
+      for (let _row of _data) {
+        const row = _row as IScheduleDataRow;
 
-			const errMessage = err.message;
-			const errCode = parseInt(err.code);
+        const rowData = {
+          startCountry: row.startCountry,
+          endCountry: row.endCountry,
+          startTime: row.startTime,
+          hasSpaceAvailable: row.hasSpaceAvailable.toLowerCase(),
+        };
 
-			memoryController.addMemoryError(new CError(errMessage, errCode,false));
-			return;
+        data.push(rowData);
+      }
 
+      setScheduleData(data);
+    });
+  }, []);
 
-		}
-
-		if (!parsedData.data) {
-			const error = new CError('No data was found for Schedule', 404,false);
-			memoryController.addMemoryError(error);
-			return;
-		}
-
-		return parsedData.data;
-
-	};
-
-	useEffect(() => {
-
-		getScheduleData(memoryController).then((_data) => {
-
-			const data: IScheduleDataRow[] = [];
-
-			if (!_data) {
-				return;
-			}
-
-			for (let _row of _data) {
-
-				const row = _row as IScheduleDataRow;
-
-				const rowData = {
-					startCountry: row.startCountry,
-					endCountry: row.endCountry,
-					startTime: row.startTime,
-					hasSpaceAvailable: row.hasSpaceAvailable.toLowerCase()
-				};
-
-				data.push(rowData);
-			}
-
-			setScheduleData(data);
-
-		});
-
-	}, []);
-
-	return scheduleData;
-
-}
+  return scheduleData;
+};
 
 export default useSchedule;
