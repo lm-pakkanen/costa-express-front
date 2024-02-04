@@ -1,18 +1,19 @@
 {
   "author": "Harriot Software",
-  "version": "1.0",
+  "version": "1.0.0",
   "name": "costaexpress",
   "description": "CostaExpress home website",
+  "homepage": "https://wwww.qnet.fi/costaexpress",
   "license": "ISC",
   "keywords": [],
   "private": true,
   "main": "babel.config.js",
   "scripts": {
-    "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "build:staging": "REACT_APP_IS_STAGING=true && yarn build",
+    "start": "set BROWSER=none && npx react-scripts start",
+    "build": "set NODE_ENV=production && npx react-scripts build && move build ../built",
+    "build:staging": "set REACT_APP_IS_STAGING=true && yarn build && move build ../built",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "npx react-scripts eject"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
@@ -78,6 +79,6 @@
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "^13.1.9",
     "identity-obj-proxy": "^3.0.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "5.0.1"
   }
 }

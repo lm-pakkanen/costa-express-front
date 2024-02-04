@@ -1,0 +1,7 @@
+.idea/
+.env
+
+composer.lock
+
+vendor/
+gen/

@@ -1,144 +1,125 @@
-import isEmail from 'validator/lib/isEmail';
-import isEmpty from 'validator/lib/isEmpty';
+import isEmail from "validator/lib/isEmail";
+import isEmpty from "validator/lib/isEmpty";
+import { getHref } from "./getHref";
 
-import constants from '../config/constants';
+export * from "./getHref";
+export * from "./getPath";
 
 type ValidatorArgument = null | string;
 
 export function redirectTo(target: string = document.referrer) {
-
-	if (window.location.href !== target) {
-		window.location.href = target;
-	} else {
-		window.location.href = constants.BASE_URI;
-	}
-
+  if (window.location.href !== target) {
+    window.location.href = target;
+  } else {
+    window.location.href = getHref("/").toString();
+  }
 }
 
 export function addStylesToClass(originStyle: string, styleList: string[]) {
+  styleList.forEach((style) => {
+    originStyle += " " + style;
+  });
 
-	styleList.forEach((style) => {
-		originStyle += ' ' + style;
-	});
-
-	return originStyle;
-
+  return originStyle;
 }
 
-const fieldEmptyError = 'Kenttä ei voi olla tyhjä';
+const fieldEmptyError = "Kenttä ei voi olla tyhjä";
 
 export const Validator = {
+  validateContactFormEmail: (email: ValidatorArgument) => {
+    if (!email) {
+      return fieldEmptyError;
+    }
 
-	validateContactFormEmail: (email: ValidatorArgument) => {
+    if (!isEmail(email)) {
+      return "Sähköpostiosoite ei ole kelvollinen.";
+    }
 
-		if (!email) {
-			return fieldEmptyError;
-		}
+    return true;
+  },
 
-		if (!isEmail(email)) {
-			return 'Sähköpostiosoite ei ole kelvollinen.';
-		}
+  validateContactFormName: (name: ValidatorArgument) => {
+    if (!name || isEmpty(name)) {
+      return fieldEmptyError;
+    }
 
-		return true;
-	},
+    if (name.length > 100) {
+      return "Viesti on liian pitkä.";
+    }
 
-	validateContactFormName: (name: ValidatorArgument) => {
+    return true;
+  },
 
-		if (!name || isEmpty(name)) {
-			return fieldEmptyError;
-		}
+  validateAddressStreet: (street: ValidatorArgument) => {
+    if (!street || isEmpty(street)) {
+      return fieldEmptyError;
+    }
 
-		if (name.length > 100) {
-			return 'Viesti on liian pitkä.';
-		}
+    if (street.length > 150) {
+      return "Osoite on liian pitkä.";
+    }
 
-		return true;
-	},
+    return true;
+  },
 
-	validateAddressStreet: (street: ValidatorArgument) => {
+  validateAddressZip: (zip: ValidatorArgument) => {
+    if (!zip || isEmpty(zip)) {
+      return fieldEmptyError;
+    }
 
-		if (!street || isEmpty(street)) {
-			return fieldEmptyError;
-		}
+    if (zip.length > 150) {
+      return "Osoite on liian pitkä.";
+    }
 
-		if (street.length > 150) {
-			return 'Osoite on liian pitkä.'
-		}
+    return true;
+  },
 
-		return true;
+  validateAddressCountry: (country: ValidatorArgument) => {
+    if (!country || isEmpty(country)) {
+      return fieldEmptyError;
+    }
 
-	},
+    if (country.length > 100) {
+      return "Osoite on liian pitkä.";
+    }
 
-	validateAddressZip: (zip: ValidatorArgument) => {
+    return true;
+  },
 
-		if (!zip || isEmpty(zip)) {
-			return fieldEmptyError;
-		}
+  validatePhoneNumber: (number: ValidatorArgument) => {
+    if (!number) {
+      return fieldEmptyError;
+    }
 
-		if (zip.length > 150) {
-			return 'Osoite on liian pitkä.'
-		}
+    number = number.replace(/\s/g, "");
+    number = number.replace("-", "");
 
-		return true;
+    if (!number.startsWith("+") || number.length < 5 || number.length > 40) {
+      return "Numero on epäkelpo.";
+    }
 
-	},
+    return true;
+  },
 
-	validateAddressCountry: (country: ValidatorArgument) => {
+  validateContactFormCargoInformation: (message: ValidatorArgument) => {
+    if (!message || isEmpty(message)) {
+      return fieldEmptyError;
+    }
 
-		if (!country || isEmpty(country)) {
-			return fieldEmptyError;
-		}
+    if (message.length > 5000) {
+      return "Viesti on liian pitkä.";
+    }
 
-		if (country.length > 100) {
-			return 'Osoite on liian pitkä.'
-		}
+    return true;
+  },
 
-		return true;
+  validateContactFormMessage: (message: ValidatorArgument) => {
+    if (message && !isEmpty(message)) {
+      if (message.length > 5000) {
+        return "Viesti on liian pitkä.";
+      }
+    }
 
-	},
-
-	validatePhoneNumber: (number: ValidatorArgument) => {
-
-		if (!number) {
-			return fieldEmptyError;
-		}
-
-		number = number.replace(/\s/g, '');
-		number = number.replace('-', '');
-
-		if (!number.startsWith('+') || number.length < 5 || number.length > 40) {
-			return "Numero on epäkelpo.";
-		}
-
-		return true;
-
-	},
-
-	validateContactFormCargoInformation: (message: ValidatorArgument) => {
-
-		if (!message || isEmpty(message)) {
-			return fieldEmptyError;
-		}
-
-		if (message.length > 5000) {
-			return 'Viesti on liian pitkä.';
-		}
-
-		return true;
-
-	},
-
-	validateContactFormMessage: (message: ValidatorArgument) => {
-
-		if (message && !isEmpty(message)) {
-
-			if (message.length > 5000) {
-				return 'Viesti on liian pitkä.';
-			}
-
-		}
-
-		return true;
-	},
-
+    return true;
+  },
 };
